@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Plataforma interativa de estudos de HTML5, CSS3, Flexbox, CSS Grid e Web Design Responsivo.">
+  <title>FrontLab — Plataforma Interativa de Front-End</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-mark">&lt;/&gt;</div>
+        <div>
+          <strong>FrontLab</strong>
+          <span>Estudo Front-End</span>
+        </div>
+      </div>
+
+      <div class="progress-mini">
+        <div class="progress-row"><span>Progresso geral</span><strong id="progressPercent">0%</strong></div>
+        <div class="progress-bar"><i id="progressBar"></i></div>
+      </div>
+
+      <nav class="nav" aria-label="Navegação principal">
+        <button class="nav-item active" data-view="dashboard">⌂ <span>Dashboard</span></button>
+        <button class="nav-item" data-view="trilha">▣ <span>Trilha de estudos</span></button>
+        <button class="nav-item" data-view="aulas">▤ <span>Aulas</span></button>
+        <button class="nav-item" data-view="quiz">? <span>Quiz inteligente</span></button>
+        <button class="nav-item" data-view="flashcards">◆ <span>Flashcards</span></button>
+        <button class="nav-item" data-view="desafios">⚡ <span>Desafios práticos</span></button>
+        <button class="nav-item" data-view="playground">⌘ <span>Meus códigos</span></button>
+        <button class="nav-item" data-view="anotacoes">✎ <span>Minhas anotações</span></button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <button class="ghost-btn" id="resetProgress">↻ Reiniciar progresso</button>
+        <small>© 2026 Desenvolvido por C.D. | Todos os direitos reservados..</small>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="icon-btn mobile-only" id="menuBtn" aria-label="Abrir menu">☰</button>
+        <div class="breadcrumbs"><span>FrontLab</span><b>/</b><strong id="viewTitle">Dashboard</strong></div>
+        <div class="top-actions">
+          <label class="search">
+            <span>⌕</span>
+            <input id="globalSearch" type="search" placeholder="Buscar aula, conceito ou exercício...">
+          </label>
+          <button class="icon-btn" id="fontDown" title="Diminuir tamanho do texto">A−</button><button class="icon-btn" id="fontUp" title="Aumentar tamanho do texto">A+</button><button class="icon-btn" id="themeBtn" title="Alternar tema">◐</button>
+        </div>
+      </header>
+
+      <div id="searchResults" class="search-results hidden"></div>
+
+      <section id="view-dashboard" class="view active">
+        <div class="hero-card">
+          <div>
+            <span class="eyebrow">SUA CENTRAL DE APRENDIZADO</span>
+            <h1>Aprenda Front-End <em>fazendo</em>.</h1>
+            <p>Uma trilha interativa construída a partir dos quatro livros do seu material, transformada em aulas, revisões, testes e desafios.</p>
+            <div class="hero-actions">
+              <button class="primary-btn" data-go="trilha">Continuar trilha →</button>
+              <button class="secondary-btn" data-go="quiz">Testar meus conhecimentos</button>
+            </div>
+          </div>
+          <div class="hero-orbit" aria-hidden="true">
+            <div class="orbit o1"></div><div class="orbit o2"></div><div class="orbit o3"></div>
+            <div class="code-orb">&lt;/&gt;</div>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <article class="stat-card"><span>📚</span><div><small>Módulos</small><strong>16 partes</strong></div></article>
+          <article class="stat-card"><span>🧠</span><div><small>Conceitos</small><strong>40+ conceitos</strong></div></article>
+          <article class="stat-card"><span>⚡</span><div><small>Desafios</small><strong>4 projetos</strong></div></article>
+          <article class="stat-card"><span>🎯</span><div><small>Revisão</small><strong id="dashAccuracy">0% acerto</strong></div></article>
+        </div>
+
+        <div class="section-head"><div><span class="eyebrow">PRÓXIMO PASSO</span><h2>Continue de onde parou</h2></div></div>
+        <article class="continue-card" id="continueCard"></article>
+
+        <div class="dashboard-grid">
+          <section class="panel">
+            <div class="panel-head"><div><span class="eyebrow">MAPA</span><h2>Os 4 livros</h2></div></div>
+            <div id="bookMap" class="book-map"></div>
+          </section>
+          <section class="panel">
+            <div class="panel-head"><div><span class="eyebrow">REVISÃO</span><h2>Memória ativa</h2></div></div>
+            <div class="review-tip">
+              <div class="tip-icon">🧠</div>
+              <div><strong>Não apenas releia.</strong><p>Use o quiz, tente explicar o conceito com suas próprias palavras e depois aplique-o no playground.</p></div>
+            </div>
+            <button class="wide-btn" data-go="flashcards">Abrir flashcards →</button>
+          </section>
+        </div>
+      </section>
+
+      <section id="view-trilha" class="view">
+        <div class="page-intro"><span class="eyebrow">TRILHA COMPLETA</span><h1>Do HTML ao projeto responsivo</h1><p>Avance por partes. Cada etapa mistura teoria, recuperação ativa e prática.</p></div>
+        <div id="roadmap" class="roadmap"></div>
+      </section>
+
+      <section id="view-aulas" class="view">
+        <div class="lesson-layout">
+          <div class="lesson-list panel" id="lessonList"></div>
+          <article class="lesson-content panel" id="lessonContent"></article>
+        </div>
+      </section>
+
+      <section id="view-quiz" class="view">
+        <div class="page-intro"><span class="eyebrow">RECUPERAÇÃO ATIVA</span><h1>Quiz inteligente</h1><p>Responda sem consultar. O sistema registra seu desempenho e explica a resposta.</p></div>
+        <div class="quiz-shell panel" id="quizShell"></div>
+      </section>
+
+      <section id="view-flashcards" class="view">
+        <div class="page-intro"><span class="eyebrow">REVISÃO</span><h1>Flashcards</h1><p>Leia a pergunta, tente responder mentalmente e revele a resposta.</p></div>
+        <div class="flash-wrap" id="flashWrap"></div>
+      </section>
+
+      <section id="view-desafios" class="view">
+        <div class="page-intro"><span class="eyebrow">APRENDIZAGEM POR PROJETO</span><h1>Desafios práticos</h1><p>Os quatro desafios do material foram transformados em missões com checklist e autoavaliação.</p></div>
+        <div id="challengeGrid" class="challenge-grid"></div>
+      </section>
+
+      <section id="view-playground" class="view">
+        <div class="page-intro"><span class="eyebrow">APRENDA CONSTRUINDO</span><h1>Meus códigos</h1><p>Seu laboratório pessoal: pratique HTML, CSS e JavaScript com sugestões inteligentes e prévia em tempo real.</p></div>
+        <div class="playground panel">
+          <div class="code-workspace-head">
+            <div>
+              <span class="eyebrow">LABORATÓRIO PESSOAL</span>
+              <h2>Escreva, experimente e salve seus códigos</h2>
+              <p>Digite no editor à esquerda e veja o resultado à direita. O assistente sugere propriedades, tags, valores e snippets enquanto você escreve.</p>
+            </div>
+            <div class="code-actions">
+              <button class="secondary-btn small" id="runCode">▶ Executar</button>
+              <button class="ghost-btn small" id="resetCode">↺ Restaurar exemplo</button>
+              <button class="primary-btn small" id="saveCode">💾 Salvar código</button>
+            </div>
+          </div>
+          <div class="code-layout">
+            <aside class="code-library">
+              <div class="library-head"><strong>Meus códigos</strong><button class="icon-btn" id="newCode" title="Novo código">＋</button></div>
+              <div id="codeList" class="code-list"></div>
+              <div class="library-tip"><strong>💡 Atalho</strong><p>Digite <b>cor</b>, <b>display</b>, <b>grid</b>, <b>flex</b>, <b>&lt;form&gt;</b> ou outras palavras e escolha uma sugestão.</p></div>
+            </aside>
+            <div class="code-main">
+              <div class="editor-toolbar">
+                <button class="tab-btn active" data-editor="html">HTML</button>
+                <button class="tab-btn" data-editor="css">CSS</button>
+                <button class="tab-btn" data-editor="js">JS</button>
+                <span class="autosave-state" id="autosaveState">Salvo automaticamente</span>
+              </div>
+              <div class="editor-grid">
+                <div class="editors">
+                  <div class="editor-pane">
+                    <textarea id="editor-html" spellcheck="false" autocomplete="off"></textarea>
+                    <div class="suggestions hidden" id="suggestions-html"></div>
+                  </div>
+                  <div class="editor-pane hidden">
+                    <textarea id="editor-css" spellcheck="false" autocomplete="off"></textarea>
+                    <div class="suggestions hidden" id="suggestions-css"></div>
+                  </div>
+                  <div class="editor-pane hidden">
+                    <textarea id="editor-js" spellcheck="false" autocomplete="off"></textarea>
+                    <div class="suggestions hidden" id="suggestions-js"></div>
+                  </div>
+                </div>
+                <div class="preview">
+                  <div class="preview-label">PRÉVIA EM TEMPO REAL</div>
+                  <iframe id="previewFrame" title="Prévia do código"></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="challenge-prompt"><strong>Missão rápida:</strong> altere a cor do botão, depois use <code>:hover</code> para criar uma mudança visual. Em seguida, tente centralizar o conteúdo com Flexbox.</div>
+        </div>
+      </section>
+
+      <section id="view-anotacoes" class="view">
+        <div class="page-intro"><span class="eyebrow">SEU CADERNO</span><h1>Anotações</h1><p>Registre dúvidas, descobertas e explicações com suas próprias palavras. O conteúdo fica salvo no navegador.</p></div>
+        <div class="notes-grid">
+          <section class="panel note-editor">
+            <input id="noteTitle" placeholder="Título da anotação">
+            <textarea id="noteText" placeholder="Escreva aqui..."></textarea>
+            <button class="primary-btn" id="saveNote">Salvar anotação</button>
+          </section>
+          <section class="panel"><div class="panel-head"><h2>Minhas notas</h2></div><div id="notesList"></div></section>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
