@@ -1,4 +1,4 @@
-FRONTLAB — Plataforma Interativa de Estudos - *PROJETO em desenvolvimento por C.D.*
+FRONTLAB — Plataforma Interativa de Estudos - *PROJETO em desenvolvimento*
 
 Versão 9 — Estudo, Quiz, Corretor de Desafios, Anotações e Banco de Referência.
 
