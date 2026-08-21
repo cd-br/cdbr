@@ -30,8 +30,9 @@
         <button class="nav-item" data-view="quiz">? <span>Quiz inteligente</span></button>
         <button class="nav-item" data-view="flashcards">◆ <span>Flashcards</span></button>
         <button class="nav-item" data-view="desafios">⚡ <span>Desafios práticos</span></button>
-        <button class="nav-item" data-view="playground">⌘ <span>Meus códigos</span></button>
+        <button class="nav-item" data-view="playground">⌘ <span>Meus projetos</span></button>
         <button class="nav-item" data-view="anotacoes">✎ <span>Minhas anotações</span></button>
+        <button class="nav-item" data-view="code-workshop">💡 <span>Construa com ajuda</span></button>
       </nav>
 
       <div class="sidebar-bottom">
@@ -40,7 +41,7 @@
       </div>
     </aside>
 
-    <main class="main">
+<main class="main">
       <header class="topbar">
         <button class="icon-btn mobile-only" id="menuBtn" aria-label="Abrir menu">☰</button>
         <div class="breadcrumbs"><span>FrontLab</span><b>/</b><strong id="viewTitle">Dashboard</strong></div>
@@ -60,7 +61,7 @@
           <div>
             <span class="eyebrow">SUA CENTRAL DE APRENDIZADO</span>
             <h1>Aprenda Front-End <em>fazendo</em>.</h1>
-            <p>Uma trilha interativa construída a partir dos quatro livros do seu material, transformada em aulas, revisões, testes e desafios.</p>
+            <p>Uma trilha interativa construída a partir de quatro livros, transformada em aulas, revisões, testes e desafios.</p>
             <div class="hero-actions">
               <button class="primary-btn" data-go="trilha">Continuar trilha →</button>
               <button class="secondary-btn" data-go="quiz">Testar meus conhecimentos</button>
@@ -123,10 +124,43 @@
       <section id="view-desafios" class="view">
         <div class="page-intro"><span class="eyebrow">APRENDIZAGEM POR PROJETO</span><h1>Desafios práticos</h1><p>Os quatro desafios do material foram transformados em missões com checklist e autoavaliação.</p></div>
         <div id="challengeGrid" class="challenge-grid"></div>
+        <section id="challengeCorrector" class="panel challenge-corrector hidden">
+          <div class="corrector-head">
+            <div>
+              <span class="eyebrow">CORRETOR DO DESAFIO</span>
+              <h2 id="correctorTitle">Escolha um desafio</h2>
+              <p id="correctorGoal"></p>
+            </div>
+            <button class="ghost-btn small" onclick="closeChallengeCorrector()">Fechar</button>
+          </div>
+          <div id="correctorRequirements" class="corrector-requirements"></div>
+          <div class="corrector-workspace">
+            <div class="corrector-editor">
+              <div class="editor-toolbar">
+                <button class="tab-btn active" data-challenge-editor="html">HTML</button>
+                <button class="tab-btn" data-challenge-editor="css">CSS</button>
+                <button class="tab-btn" data-challenge-editor="js">JS</button>
+              </div>
+              <textarea id="challenge-editor-html" spellcheck="false" placeholder="Escreva o HTML do desafio..."></textarea>
+              <textarea id="challenge-editor-css" class="hidden" spellcheck="false" placeholder="Escreva o CSS do desafio..."></textarea>
+              <textarea id="challenge-editor-js" class="hidden" spellcheck="false" placeholder="Escreva o JavaScript do desafio..."></textarea>
+            </div>
+            <div class="corrector-preview">
+              <div class="preview-label">PRÉVIA</div>
+              <iframe id="challengePreview" title="Prévia do desafio"></iframe>
+            </div>
+          </div>
+          <div class="corrector-actions">
+            <button class="secondary-btn" onclick="runChallengeCode()">▶ Executar</button>
+            <button class="primary-btn" onclick="gradeChallenge()">✓ Corrigir meu código</button>
+            <button class="ghost-btn" onclick="clearChallengeEditor()">Limpar</button>
+          </div>
+          <div id="challengeFeedback" class="challenge-feedback"></div>
+        </section>
       </section>
 
       <section id="view-playground" class="view">
-        <div class="page-intro"><span class="eyebrow">APRENDA CONSTRUINDO</span><h1>Meus códigos</h1><p>Seu laboratório pessoal: pratique HTML, CSS e JavaScript com sugestões inteligentes e prévia em tempo real.</p></div>
+        <div class="page-intro"><span class="eyebrow">APRENDA CONSTRUINDO</span><h1>Meus projetos</h1><p>Seu laboratório pessoal: pratique HTML, CSS e JavaScript com sugestões inteligentes e prévia em tempo real.</p></div>
         <div class="playground panel">
           <div class="code-workspace-head">
             <div>
@@ -142,7 +176,7 @@
           </div>
           <div class="code-layout">
             <aside class="code-library">
-              <div class="library-head"><strong>Meus códigos</strong><button class="icon-btn" id="newCode" title="Novo código">＋</button></div>
+              <div class="library-head"><strong>Meus projetos</strong><button class="icon-btn" id="newCode" title="Novo código">＋</button></div>
               <div id="codeList" class="code-list"></div>
               <div class="library-tip"><strong>💡 Atalho</strong><p>Digite <b>cor</b>, <b>display</b>, <b>grid</b>, <b>flex</b>, <b>&lt;form&gt;</b> ou outras palavras e escolha uma sugestão.</p></div>
             </aside>
@@ -177,6 +211,78 @@
           </div>
           <div class="challenge-prompt"><strong>Missão rápida:</strong> altere a cor do botão, depois use <code>:hover</code> para criar uma mudança visual. Em seguida, tente centralizar o conteúdo com Flexbox.</div>
         </div>
+        <section class="panel code-reference">
+          <div class="reference-head">
+            <div>
+              <span class="eyebrow">CONSULTA RÁPIDA</span>
+              <h2>Banco de informações para seus códigos</h2>
+              <p>Uma referência embutida para você não precisar sair da plataforma para procurar valores básicos de HTML e CSS.</p>
+            </div>
+            <input id="referenceSearch" class="reference-search" placeholder="Buscar: cor, fonte, sombra, espaçamento...">
+          </div>
+          <div id="referenceCategories" class="reference-categories"></div>
+          <div id="referenceGrid" class="reference-grid"></div>
+        </section>
+      </section>
+
+      <section id="view-code-workshop" class="view">
+        <div class="workshop-section">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">OFICINA DE CÓDIGO</span>
+              <h2>Construa com ajuda, teste e aprenda</h2>
+              <p>Descreva o que você quer fazer, escolha uma solução e veja o código funcionando em tempo real.</p>
+            </div>
+          </div>
+          <div class="workshop-grid">
+            <aside class="workshop-panel workshop-assistant">
+              <label class="workshop-label" for="workshop-search">O que você quer fazer?</label>
+              <div class="workshop-search"><span>⌕</span><input id="workshop-search" type="search" placeholder="Ex.: efeitos na fonte, centralizar, sombra no card..." autocomplete="off"></div>
+              <div class="workshop-categories" id="workshop-categories">
+                <button class="workshop-cat active" data-category="all">Tudo</button>
+                <button class="workshop-cat" data-category="text">🔤 Fontes e textos</button>
+                <button class="workshop-cat" data-category="color">🎨 Cores</button>
+                <button class="workshop-cat" data-category="effects">✨ Efeitos</button>
+                <button class="workshop-cat" data-category="layout">📐 Layout</button>
+                <button class="workshop-cat" data-category="spacing">↔ Espaçamento</button>
+                <button class="workshop-cat" data-category="responsive">📱 Responsividade</button>
+                <button class="workshop-cat" data-category="html">🌐 HTML</button>
+                <button class="workshop-cat" data-category="js">⚙ JavaScript</button>
+              </div>
+              <div id="workshop-results" class="workshop-results"></div>
+            </aside>
+            <div class="workshop-panel workshop-editor-panel">
+              <div class="workshop-panel-head">
+                <div><strong>Seu código</strong><span>Experimente e veja a mudança imediatamente.</span></div>
+                <div class="workshop-actions"><button type="button" id="workshop-hint">💡 Dica</button><button type="button" id="workshop-clear">Limpar</button></div>
+              </div>
+              <div class="workshop-editors">
+                <div class="workshop-editor-box"><div class="workshop-editor-title">HTML</div><textarea id="workshop-html" spellcheck="false"><div class="demo-card">
+  <h3>Meu primeiro componente</h3>
+  <p>Comece adicionando estilos pela oficina.</p>
+  <button>Experimentar</button>
+</div></textarea></div>
+                <div class="workshop-editor-box"><div class="workshop-editor-title">CSS</div><textarea id="workshop-css" spellcheck="false">.demo-card {
+  padding: 24px;
+  max-width: 420px;
+  margin: 20px auto;
+  background: #ffffff;
+  border: 1px solid #d0d5dd;
+  border-radius: 14px;
+}
+.demo-card h3 { margin: 0 0 8px; }</textarea></div>
+                <div class="workshop-editor-box"><div class="workshop-editor-title">JavaScript</div><textarea id="workshop-js" spellcheck="false">document.querySelector("button")?.addEventListener("click", () => {
+  document.querySelector(".demo-card p").textContent = "Funcionou! Agora experimente alterar o código.";
+});</textarea></div>
+              </div>
+              <div class="workshop-hint-box" id="workshop-hint-box" hidden></div>
+            </div>
+            <div class="workshop-panel workshop-preview-panel">
+              <div class="workshop-panel-head"><div><strong>Resultado em tempo real</strong><span>O preview é isolado do restante da plataforma.</span></div><span class="live-dot">● AO VIVO</span></div>
+              <iframe id="workshop-preview" title="Prévia do projeto"></iframe>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section id="view-anotacoes" class="view">
@@ -185,11 +291,12 @@
           <section class="panel note-editor">
             <input id="noteTitle" placeholder="Título da anotação">
             <textarea id="noteText" placeholder="Escreva aqui..."></textarea>
-            <button class="primary-btn" id="saveNote">Salvar anotação</button>
+            <div class="note-editor-actions"><button class="primary-btn" id="saveNote">Salvar anotação</button><button class="ghost-btn hidden" id="cancelEditNote">Cancelar edição</button></div>
           </section>
           <section class="panel"><div class="panel-head"><h2>Minhas notas</h2></div><div id="notesList"></div></section>
         </div>
       </section>
+      
     </main>
   </div>
 
@@ -197,3 +304,7 @@
   <script src="script.js"></script>
 </body>
 </html>
+
+
+
+
