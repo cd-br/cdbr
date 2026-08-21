@@ -1,6 +1,3 @@
-/* FrontLab — motor de estudos interativo
-   Conteúdo estruturado a partir do material fornecido pelo usuário. */
-
 const modules = [
   {book:1,title:"Introdução à Web, anatomia e estrutura básica",short:"Entenda o papel do HTML, CSS e JavaScript e aprenda a estrutura mínima de um documento HTML5.",goals:["Diferenciar HTML, CSS e JavaScript.","Reconhecer a anatomia básica de um elemento HTML.","Montar a estrutura mínima de um documento HTML5."],lessons:[
     ["Como a Web funciona?", "Ao acessar um site, o navegador solicita recursos a um servidor. O material apresenta três peças centrais: HTML para estrutura, CSS para aparência e layout e JavaScript para interatividade e lógica. HTML não é linguagem de programação; é uma linguagem de marcação."],
@@ -322,7 +319,7 @@ function applyTheme(){
 function showView(name){
  $$(".view").forEach(v=>v.classList.remove("active"));const view=$("#view-"+name);if(!view)return;view.classList.add("active");
  $$(".nav-item").forEach(n=>n.classList.toggle("active",n.dataset.view===name));
- const label={dashboard:"Dashboard",trilha:"Trilha de estudos",aulas:"Aulas",quiz:"Quiz inteligente",flashcards:"Flashcards",desafios:"Desafios práticos",playground:"Meus códigos",anotacoes:"Anotações"}[name];$("#viewTitle").textContent=label||name;
+ const label={dashboard:"Dashboard",trilha:"Trilha de estudos",aulas:"Aulas",quiz:"Quiz inteligente",flashcards:"Flashcards",desafios:"Desafios práticos",playground:"Meus projetos",anotacoes:"Anotações"}[name];$("#viewTitle").textContent=label||name;
  if(name==="dashboard")renderDashboard();if(name==="trilha")renderRoadmap();if(name==="aulas")renderLessons();if(name==="quiz")renderQuizHome();if(name==="flashcards")renderFlash();if(name==="desafios")renderChallenges();if(name==="playground"){renderCodeList();loadActiveCode()}if(name==="anotacoes")renderNotes();
  $("#sidebar").classList.remove("open");window.scrollTo({top:0,behavior:"smooth"});
 }
@@ -386,29 +383,56 @@ function renderQuizQuestion(){
  const s=state.quizSession;if(!s)return renderQuizHome();
  if(s.pos>=s.pool.length)return renderQuizResult();
  const q=s.pool[s.pos], code=questionCode(q,s.pos);
- $("#quizShell").innerHTML=`<div class="quiz-top"><div><span class="eyebrow">${s.type==="chapter"?"QUIZ DA PARTE":"QUIZ GERAL"}</span><h2 class="quiz-title">${escapeHtml(s.title)}</h2></div><div class="quiz-top-actions"><strong>${s.pos+1}/${s.pool.length}</strong><button class="ghost-btn small" onclick="resetActiveQuiz()">↺ Reiniciar</button></div></div><div class="quiz-progress"><i style="width:${s.pos/s.pool.length*100}%"></i></div><div class="quiz-question-grid"><section class="quiz-question-card"><span class="eyebrow">QUESTÃO ${s.pos+1}</span><div class="question">${escapeHtml(q[0])}</div><div class="options">${q[1].map((o,i)=>`<button class="option" onclick="answerActiveQuiz(${i})">${String.fromCharCode(65+i)}. ${escapeHtml(o)}</button>`).join("")}</div><div class="quiz-footer"><span>Acertos nesta sessão: ${s.correct}</span><button class="ghost-btn" onclick="cancelQuiz()">Sair do quiz</button></div></section><aside class="answer-lab" id="answerLab"><div class="answer-placeholder"><span>💻</span><strong>Laboratório da resposta</strong><p>Depois que você responder, aparecerá aqui uma explicação visual e um exemplo de código que você pode editar e testar.</p></div></aside></div>`;
+ $("#quizShell").innerHTML=`<div class="quiz-top"><div><span class="eyebrow">${s.type==="chapter"?"QUIZ DA PARTE":"QUIZ GERAL"}</span><h2 class="quiz-title">${escapeHtml(s.title)}</h2></div><div class="quiz-top-actions"><strong>${s.pos+1}/${s.pool.length}</strong><button class="ghost-btn small" onclick="resetActiveQuiz()">↺ Reiniciar</button></div></div><div class="quiz-progress"><i style="width:${s.pos/s.pool.length*100}%"></i></div><div class="quiz-question-grid single"><section class="quiz-question-card"><span class="eyebrow">QUESTÃO ${s.pos+1}</span><div class="question">${escapeHtml(q[0])}</div><div class="options">${q[1].map((o,i)=>`<button class="option" onclick="answerActiveQuiz(${i})">${String.fromCharCode(65+i)}. ${escapeHtml(o)}</button>`).join("")}</div><div class="quiz-footer"><span>Acertos nesta sessão: ${s.correct}</span><button class="ghost-btn" onclick="cancelQuiz()">Sair do quiz</button></div><div id="answerExplanation" class="answer-explanation hidden"></div></section></div>`;
 }
 function answerActiveQuiz(choice){
- const s=state.quizSession;if(!s||s._answered!==undefined)return;const q=s.pool[s.pos];s._answered=choice;s.answered++;const correct=choice===q[2];if(correct)s.correct++;state.quiz.total++;if(correct)state.quiz.correct++;save();
- $$(".option").forEach((b,i)=>{b.disabled=true;if(i===q[2])b.classList.add("correct");if(i===choice&&choice!==q[2])b.classList.add("wrong")});
- const code=questionCode(q,s.pos);
- const lab=$("#answerLab");
- lab.innerHTML=`<div class="answer-result ${correct?"is-correct":"is-wrong"}"><div class="answer-heading"><div><span class="eyebrow">${correct?"ACERTOU":"REVISE ESTE PONTO"}</span><h3>${correct?"Boa! Agora veja por que funciona.":"Quase. Compare sua escolha com a solução."}</h3></div><span class="answer-icon">${correct?"✓":"!"}</span></div><p>${escapeHtml(q[3])}</p><div class="code-answer-head"><strong>Como escrever na prática</strong><button class="ghost-btn small" onclick="copyQuizCode()">Copiar código</button></div><textarea id="quizCode" spellcheck="false">${escapeHtml(code.css ? code.css : "")}</textarea><div class="quiz-code-tabs"><button class="mini-code-tab active" data-qcode="css" onclick="switchQuizCode('css')">CSS</button><button class="mini-code-tab" data-qcode="html" onclick="switchQuizCode('html')">HTML</button><button class="mini-code-tab" data-qcode="js" onclick="switchQuizCode('js')">JS</button></div><div id="quizCodePreview" class="quiz-code-preview"></div><div class="quiz-footer answer-footer"><span>${correct?"Você consolidou este conceito.":"Use o exemplo para descobrir exatamente onde estava a diferença."}</span><button class="primary-btn" onclick="nextActiveQuiz()">${s.pos===s.pool.length-1?"Ver desempenho":"Próxima questão"} →</button></div></div>`;
- s.currentCode=code;s.currentCodeType=questionCodeType(q);
- const quizTab=$("#quizCode");
- if(quizTab) quizTab.addEventListener('input',updateQuizCodePreview);
- $$('[data-qcode]').forEach(b=>b.classList.toggle('active',b.dataset.qcode===s.currentCodeType));
- if(quizTab) quizTab.value=code[s.currentCodeType]||code.css||code.html||code.js||"";
- updateQuizCodePreview();
+ const s=state.quizSession;
+ if(!s||s._answered!==undefined)return;
+ const q=s.pool[s.pos];
+ s._answered=choice;
+ s.answered++;
+ const correct=choice===q[2];
+ if(correct)s.correct++;
+ state.quiz.total++;
+ if(correct)state.quiz.correct++;
+ save();
+
+ $$(".option").forEach((b,i)=>{
+   b.disabled=true;
+   if(i===q[2])b.classList.add("correct");
+   if(i===choice&&choice!==q[2])b.classList.add("wrong");
+ });
+
+ const explanation=$("#answerExplanation");
+ if(explanation){
+   explanation.classList.remove("hidden");
+   explanation.className=`answer-explanation ${correct?"is-correct":"is-wrong"}`;
+   explanation.innerHTML=`
+     <div class="explanation-head">
+       <span class="eyebrow">${correct?"RESPOSTA CORRETA":"REVISÃO DA RESPOSTA"}</span>
+       <span class="explanation-icon">${correct?"✓":"!"}</span>
+     </div>
+     <h3>${correct?"Muito bem!":"Vamos entender a resposta certa."}</h3>
+     <p>${escapeHtml(q[3])}</p>
+     <div class="correct-answer-box">
+       <strong>Resposta correta</strong>
+       <span>${String.fromCharCode(65+q[2])}. ${escapeHtml(q[1][q[2]])}</span>
+     </div>
+     <div class="quiz-footer explanation-footer">
+       <span>${correct?"Conceito consolidado.":"Leia a explicação antes de seguir. O objetivo é entender o motivo, não apenas memorizar a alternativa."}</span>
+       <button class="primary-btn" onclick="nextActiveQuiz()">${s.pos===s.pool.length-1?"Ver desempenho":"Próxima questão"} →</button>
+     </div>`;
+ }
 }
-function switchQuizCode(type){
- const s=state.quizSession;if(!s?.currentCode)return; s.currentCodeType=type;const c=s.currentCode;const value=c[type]||"";const area=$("#quizCode");area.value=value;$$('[data-qcode]').forEach(b=>b.classList.toggle('active',b.dataset.qcode===type));updateQuizCodePreview();
+function nextActiveQuiz(){
+ const s=state.quizSession;
+ if(!s)return;
+ s.pos++;
+ delete s._answered;
+ renderQuizQuestion();
 }
-function updateQuizCodePreview(){
- const s=state.quizSession;if(!s?.currentCode)return;const c=s.currentCode,area=$("#quizCode"),type=s.currentCodeType||"css";const edited=area?.value??c[type]??"";let html=c.html||"<div class='demo'>Exemplo</div>",css=c.css||"",js=c.js||"";if(type==='html')html=edited;if(type==='css')css=edited;if(type==='js')js=edited;const frame=document.createElement('iframe');frame.className='quiz-preview-frame';frame.srcdoc=`<!doctype html><html><head><meta charset="UTF-8"><style>body{font-family:Arial,sans-serif;padding:20px}.demo{padding:16px;border-radius:10px;background:#eef3f8}${css}</style></head><body>${html}<script>${js.replace(/<\//g,"<\\/")}<\/script></body></html>`;const host=$("#quizCodePreview");if(host){host.innerHTML="";host.appendChild(frame)}
-}
-function copyQuizCode(){const a=$("#quizCode");if(!a)return;navigator.clipboard?.writeText(a.value).then(()=>toast("Código copiado."))}
-function nextActiveQuiz(){const s=state.quizSession;if(!s)return;s.pos++;delete s._answered;s.currentCode=null;renderQuizQuestion()}
+function cancelQuiz(){delete state.quizSession;save();renderQuizHome()}
+
 function renderQuizResult(){
  const s=state.quizSession;const acc=Math.round(s.correct/s.answered*100)||0;state.quizHistory.unshift({date:Date.now(),type:s.type,title:s.title,chapterIndex:s.chapterIndex,correct:s.correct,total:s.answered,accuracy:acc});state.quizHistory=state.quizHistory.slice(0,20);save();
  const label=acc>=90?"Excelente domínio":acc>=70?"Bom desempenho":"Hora de revisar e tentar novamente";
@@ -420,9 +444,141 @@ function cancelQuiz(){delete state.quizSession;save();renderQuizHome()}
 
 function renderFlash(){const i=state.flashIndex,[q,a]=flashcards[i];$("#flashWrap").innerHTML=`<div class="flashcard" id="flashcard" onclick="this.classList.toggle('flipped')"><div class="flash-inner"><div class="flash-face"><small>PERGUNTA ${i+1}/${flashcards.length}</small><h2>${q}</h2><p>Clique para revelar a resposta</p></div><div class="flash-face back"><small>RESPOSTA</small><h2>${a}</h2><p>Clique para voltar</p></div></div></div><div class="flash-controls"><button class="secondary-btn" onclick="prevFlash()">← Anterior</button><button class="primary-btn" onclick="nextFlash()">Próximo →</button></div>`}
 function nextFlash(){state.flashIndex=(state.flashIndex+1)%flashcards.length;save();renderFlash()}function prevFlash(){state.flashIndex=(state.flashIndex-1+flashcards.length)%flashcards.length;save();renderFlash()}
-function renderChallenges(){$("#challengeGrid").innerHTML=challenges.map(c=>{const checks=state.challengeChecks[c.id]||{};const done=c.items.filter((_,i)=>checks[i]).length;return `<article class="panel challenge"><span class="badge">${c.level}</span><span class="score">${done}/${c.items.length}</span><h2>Desafio ${c.id}: ${c.title}</h2><p><strong>Foco:</strong> ${c.focus}</p><p>${c.goal}</p><ul>${c.items.map((it,i)=>`<li><label class="checkline"><input type="checkbox" ${checks[i]?"checked":""} onchange="toggleChallenge(${c.id},${i},this.checked)"> ${it}</label></li>`).join("")}</ul><button class="secondary-btn" onclick="openChallenge(${c.id})">Abrir no Playground</button></article>`}).join("")}
-function toggleChallenge(id,i,v){state.challengeChecks[id]=state.challengeChecks[id]||{};state.challengeChecks[id][i]=v;save();renderChallenges()}
-function openChallenge(id){showView("playground");toast("Missão aberta. Use o checklist do desafio como seu objetivo de implementação.")}
+function renderChallenges(){
+ const grid=$("#challengeGrid");
+ if(!grid)return;
+ grid.innerHTML=challenges.map(c=>{
+   const checks=state.challengeChecks[c.id]||{};
+   const done=c.items.filter((_,i)=>checks[i]).length;
+   const active=state.activeChallenge===c.id;
+   return `<article class="panel challenge ${active?"selected":""}">
+     <span class="badge">${c.level}</span><span class="score">${done}/${c.items.length}</span>
+     <h2>Desafio ${c.id}: ${c.title}</h2>
+     <p><strong>Foco:</strong> ${c.focus}</p><p>${c.goal}</p>
+     <ul>${c.items.map((it,i)=>`<li><label class="checkline"><input type="checkbox" ${checks[i]?"checked":""} onchange="toggleChallenge(${c.id},${i},this.checked)"> ${it}</label></li>`).join("")}</ul>
+     <button class="primary-btn" onclick="openChallenge(${c.id})">🧪 Abrir corretor</button>
+   </article>`;
+ }).join("");
+ renderChallengeCorrector();
+}
+function toggleChallenge(id,i,v){
+ state.challengeChecks[id]=state.challengeChecks[id]||{};
+ state.challengeChecks[id][i]=v;
+ save();
+ renderChallenges();
+}
+function openChallenge(id){
+ state.activeChallenge=id;
+ save();
+ renderChallenges();
+ document.querySelector("#challengeCorrector")?.scrollIntoView({behavior:"smooth",block:"start"});
+ toast(`Corretor do Desafio ${id} aberto.`);
+}
+function closeChallengeCorrector(){
+ state.activeChallenge=null;
+ save();
+ renderChallenges();
+}
+function renderChallengeCorrector(){
+ const panel=$("#challengeCorrector");
+ if(!panel)return;
+ const id=state.activeChallenge;
+ if(!id){panel.classList.add("hidden");return}
+ const c=challenges.find(x=>x.id===id);
+ if(!c){panel.classList.add("hidden");return}
+ panel.classList.remove("hidden");
+ $("#correctorTitle").textContent=`Desafio ${c.id}: ${c.title}`;
+ $("#correctorGoal").textContent=c.goal;
+ const checks=state.challengeChecks[c.id]||{};
+ $("#correctorRequirements").innerHTML=c.items.map((item,i)=>`<div class="requirement-row ${checks[i]?"manual-done":""}"><span>${checks[i]?"✓":"○"}</span><p>${item}</p><button class="ghost-btn tiny" onclick="toggleChallenge(${id},${i},${!checks[i]})">${checks[i]?"Desmarcar":"Marcar"}</button></div>`).join("");
+ const saved=state.challengeDrafts?.[id]||{};
+ $("#challenge-editor-html").value=saved.html||"";
+ $("#challenge-editor-css").value=saved.css||"";
+ $("#challenge-editor-js").value=saved.js||"";
+ switchChallengeEditor("html");
+ runChallengeCode();
+ $("#challengeFeedback").innerHTML="";
+}
+function challengeDraft(){
+ state.challengeDrafts=state.challengeDrafts||{};
+ const id=state.activeChallenge;if(!id)return;
+ state.challengeDrafts[id]={
+   html:$("#challenge-editor-html").value,
+   css:$("#challenge-editor-css").value,
+   js:$("#challenge-editor-js").value
+ };
+ save();
+}
+function switchChallengeEditor(type){
+ $$("[data-challenge-editor]").forEach(b=>b.classList.toggle("active",b.dataset.challengeEditor===type));
+ ["html","css","js"].forEach(k=>$("#challenge-editor-"+k)?.classList.toggle("hidden",k!==type));
+}
+function runChallengeCode(){
+ const html=$("#challenge-editor-html")?.value||"",css=$("#challenge-editor-css")?.value||"",jsCode=$("#challenge-editor-js")?.value||"";
+ const frame=$("#challengePreview");if(!frame)return;
+ frame.srcdoc=`<!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>html,body{margin:0;min-height:100%;font-family:Arial,sans-serif}*{box-sizing:border-box}${css}</style></head><body>${html}<script>${jsCode.replace(/<\//g,"<\\/")}<\/script></body></html>`;
+ challengeDraft();
+}
+function clearChallengeEditor(){
+ if(!state.activeChallenge)return;
+ if(confirm("Limpar o código deste desafio?")){
+   state.challengeDrafts=state.challengeDrafts||{};
+   state.challengeDrafts[state.activeChallenge]={html:"",css:"",js:""};
+   save();
+   renderChallengeCorrector();
+   toast("Editor limpo.");
+ }
+}
+function gradeChallenge(){
+ const id=state.activeChallenge;
+ const c=challenges.find(x=>x.id===id);
+ if(!c)return;
+ const html=$("#challenge-editor-html").value;
+ const css=$("#challenge-editor-css").value;
+ const all=(html+"\\n"+css+"\\n"+($("#challenge-editor-js").value||"")).toLowerCase();
+ const checks=challengeRequirementChecks(id,html,css,all);
+ const passed=checks.filter(Boolean).length;
+ const pct=Math.round(passed/checks.length*100);
+ state.challengeGrades=state.challengeGrades||{};
+ state.challengeGrades[id]={passed,total:checks.length,pct,date:Date.now()};
+ save();
+ $("#challengeFeedback").innerHTML=`<div class="grade-card ${pct===100?"grade-perfect":pct>=60?"grade-good":"grade-review"}">
+   <div><span class="eyebrow">CORREÇÃO AUTOMÁTICA</span><strong>${passed}/${checks.length} requisitos detectados</strong><b>${pct}%</b></div>
+   <p>${pct===100?"Excelente! O corretor encontrou todos os requisitos principais. Agora revise seu código e tente deixá-lo mais limpo e semântico.":pct>=60?"Boa evolução. Você já cumpriu parte importante do desafio. Corrija os itens abaixo e tente novamente.":"Ainda há pontos fundamentais faltando. Use as pistas do corretor e faça uma nova tentativa."}</p>
+   <ul>${c.items.map((item,i)=>`<li class="${checks[i]?"pass":"fail"}"><span>${checks[i]?"✓":"✗"}</span>${item}</li>`).join("")}</ul>
+ </div>`;
+}
+function challengeRequirementChecks(id,html,css,all){
+ const H=html.toLowerCase(),C=css.toLowerCase();
+ if(id===1)return [
+   /<!doctype html/i.test(html)||/<html\b/i.test(html),
+   /<title>\s*currículo|<title>\s*curriculo/i.test(html),
+   /<(header|main|section|article)\b/i.test(html),
+   /<ul\b[\s\S]*<li\b/i.test(html),
+   /<a\b[^>]*target\s*=\s*["']?_blank|target\s*=\s*["']?_blank[\s\S]*<a\b/i.test(html)&&/mailto:/i.test(html)
+ ];
+ if(id===2)return [
+   (H.match(/class\s*=\s*["'][^"']*(card|produto)/gi)||[]).length>=3 || (H.match(/<article\b/g)||[]).length>=3,
+   /<img\b/i.test(H)&&/<h3\b/i.test(H)&&/<button\b/i.test(H),
+   /box-sizing\s*:/i.test(C)&&/border-radius\s*:/i.test(C)&&/padding\s*:/i.test(C)&&/box-shadow\s*:/i.test(C),
+   /display\s*:\s*flex/i.test(C)&&/gap\s*:\s*20px/i.test(C),
+   /transition\s*:/i.test(C)&&/:hover\b/i.test(C)&&/translateY\s*\(\s*-8px\s*\)/i.test(C)
+ ];
+ if(id===3)return [
+   /<(header|aside|main|footer)\b/i.test(H),
+   /display\s*:\s*grid/i.test(C),
+   /grid-template-areas\s*:/i.test(C),
+   /250px\s+1fr|250px.*1fr|grid-template-columns\s*:[^;]*250px[^;]*1fr/i.test(C),
+   /gap\s*:\s*15px/i.test(C)&&/grid-template-areas/i.test(C)
+ ];
+ return [
+   /grid-template-columns\s*:\s*1fr/i.test(C),
+   /@media\s*\(\s*min-width\s*:\s*768px/i.test(C)&&/grid-template-columns\s*:\s*repeat\s*\(\s*2\s*,/i.test(C),
+   /@media\s*\(\s*min-width\s*:\s*1024px/i.test(C)&&/grid-template-columns\s*:\s*repeat\s*\(\s*3\s*,/i.test(C),
+   /\brem\b/i.test(C),
+   /max-width\s*:\s*100%/i.test(C)&&/height\s*:\s*auto/i.test(C)
+ ];
+}
 
 const codeCatalog={
  html:[
@@ -440,6 +596,81 @@ const codeCatalog={
  ]
 };
 const colorNames=["#000000","#ffffff","#ef4444","#f97316","#eab308","#22c55e","#06b6d4","#3b82f6","#6366f1","#8b5cf6","#ec4899","#0f766e"];
+const codeReference=[
+ {cat:"Cores",items:[
+  ["Cor de texto","color: #2563eb;","color: #2563eb;","Escolha a cor do texto. Hexadecimal usa #RRGGBB."],
+  ["Fundo","background-color: #eef3f8;","background-color: #eef3f8;","Define a cor de fundo."],
+  ["Cor em hexadecimal","#2563eb","color: #2563eb;","Formato #RRGGBB. Exemplos: #000000 preto, #ffffff branco."],
+  ["Transparência","rgba(37, 99, 235, .35)","background: rgba(37, 99, 235, .35);","RGBA permite controlar o canal alpha de 0 a 1."]
+ ]},
+ {cat:"Fontes",items:[
+  ["Tamanho","font-size: 1rem;","font-size: 1rem;","Use rem para manter o tamanho relativo à raiz."],
+  ["Peso","font-weight: 700;","font-weight: 700;","400 é regular; 600/700 deixam o texto mais forte."],
+  ["Itálico","font-style: italic;","font-style: italic;","Aplica estilo itálico."],
+  ["Sublinhado","text-decoration: underline;","text-decoration: underline;","Adiciona sublinhado ao texto."],
+  ["Altura da linha","line-height: 1.6;","line-height: 1.6;","Controla o espaço vertical entre linhas."]
+ ]},
+ {cat:"Espaçamento",items:[
+  ["Padding","padding: 1rem;","padding: 1rem;","Espaço interno entre conteúdo e borda."],
+  ["Margin","margin: 1rem;","margin: 1rem;","Espaço externo ao redor do elemento."],
+  ["Gap","gap: 1rem;","gap: 1rem;","Espaço entre itens de Flexbox ou Grid."]
+ ]},
+ {cat:"Efeitos",items:[
+  ["Sombra","box-shadow: 0 10px 30px rgba(0,0,0,.12);","box-shadow: 0 10px 30px rgba(0,0,0,.12);","Cria profundidade visual."],
+  ["Arredondamento","border-radius: 12px;","border-radius: 12px;","Arredonda os cantos."],
+  ["Transição","transition: .2s ease;","transition: .2s ease;","Suaviza mudanças de propriedades."],
+  ["Hover","transform: translateY(-4px);","transform: translateY(-4px);","Geralmente usado dentro de :hover para movimento."]
+ ]},
+ {cat:"Layout",items:[
+  ["Flexbox","display: flex;","display: flex;","Ativa layout Flexbox."],
+  ["Centralizar Flex","justify-content + align-items","display:flex; justify-content:center; align-items:center;","Centraliza nos dois eixos quando o contexto permite."],
+  ["Grid","display: grid;","display: grid;","Ativa CSS Grid."],
+  ["Colunas Grid","repeat(3, 1fr)","grid-template-columns: repeat(3, 1fr);","Cria três colunas proporcionais."]
+ ]},
+ {cat:"Responsividade",items:[
+  ["Media Query","@media (min-width: 768px)","@media (min-width: 768px) { ... }","Permite adaptar o layout conforme a largura da tela."],
+  ["Imagem responsiva","max-width: 100%","img { max-width: 100%; height: auto; }","Evita que a imagem ultrapasse o container."],
+  ["Unidade rem","1rem","font-size: 1rem;","Relacionada ao tamanho da fonte do elemento raiz."]
+ ]},
+ {cat:"HTML",items:[
+  ["Título","<h1>...</h1>","<h1>Título principal</h1>","Use para o título principal da página."],
+  ["Link","<a href=\"...\">","<a href=\"https://exemplo.com\">Visitar</a>","Cria hiperlinks."],
+  ["Imagem","<img>","<img src=\"imagem.jpg\" alt=\"Descrição\">","Inclua texto alternativo em imagens."]
+ ]},
+ {cat:"JavaScript",items:[
+  ["Selecionar elemento","querySelector","const el = document.querySelector('.card');","Seleciona o primeiro elemento que corresponde ao seletor."],
+  ["Clique","addEventListener","button.addEventListener('click', () => {});","Registra uma função para responder a eventos."],
+  ["Alterar texto","textContent","el.textContent = 'Novo texto';","Troca o conteúdo textual de um elemento."]
+ ]}
+];
+let referenceCategory="Todos";
+function renderCodeReference(){
+ const grid=$("#referenceGrid"),cats=$("#referenceCategories");
+ if(!grid||!cats)return;
+ const allItems=codeReference.flatMap(g=>g.items.map(x=>({...x,cat:g.cat})));
+ const query=($("#referenceSearch")?.value||"").toLowerCase().trim();
+ const catsList=["Todos",...codeReference.map(g=>g.cat)];
+ cats.innerHTML=catsList.map(cat=>`<button class="reference-cat ${referenceCategory===cat?"active":""}" onclick="setReferenceCategory(${JSON.stringify(cat)})">${cat}</button>`).join("");
+ const items=allItems.filter(x=>(referenceCategory==="Todos"||x.cat===referenceCategory)&&(!query||(x[0]+" "+x[1]+" "+x[3]).toLowerCase().includes(query)));
+ grid.innerHTML=items.length?items.map((x,i)=>`<article class="reference-card">
+   <span class="reference-tag">${escapeHtml(x.cat)}</span><h3>${escapeHtml(x[0])}</h3>
+   <code>${escapeHtml(x[1])}</code><p>${escapeHtml(x[3])}</p>
+   <button class="ghost-btn tiny" onclick="insertReference(${JSON.stringify(x[2])})">Inserir no editor</button>
+ </article>`).join(""):`<p class="muted-empty">Nenhuma informação encontrada.</p>`;
+}
+function setReferenceCategory(cat){referenceCategory=cat;renderCodeReference()}
+function insertReference(snippet){
+ const c=activeCode();if(!c)return;
+ const type=snippet.trim().startsWith("<")?"html":(/^[a-z-]+\s*:/.test(snippet.trim())||snippet.includes("{"))?"css":"js";
+ const area=$("#editor-"+type);
+ if(!area)return;
+ const pos=area.selectionStart??area.value.length;
+ area.setRangeText((area.value&&pos>0?"\n":"")+snippet,pos,pos,"end");
+ area.focus();
+ saveCurrentCode();
+ runCode();
+ toast(`Trecho inserido no editor ${type.toUpperCase()}.`);
+}
 function initEditor(){
  if(state.codes.length===0){state.codes=[{id:Date.now(),name:"Meu primeiro código",html:defaultEditor.html,css:defaultEditor.css,js:defaultEditor.js,updated:Date.now()}];state.activeCode=state.codes[0].id;save();}
  renderCodeList();loadActiveCode();bindEditorTools();
@@ -491,19 +722,107 @@ function handleEditorKey(e,type){
  const items=[...box.querySelectorAll('.suggestion-item')];let idx=items.findIndex(x=>x.classList.contains('keyboard-active'));if(e.key==='ArrowDown'){e.preventDefault();idx=(idx+1)%items.length;items.forEach(x=>x.classList.remove('keyboard-active'));items[idx].classList.add('keyboard-active');items[idx].scrollIntoView({block:'nearest'});}else if(e.key==='ArrowUp'){e.preventDefault();idx=(idx<=0?items.length:idx)-1;items.forEach(x=>x.classList.remove('keyboard-active'));items[idx].classList.add('keyboard-active');}else if(e.key==='Enter'&&idx>=0){e.preventDefault();items[idx].dispatchEvent(new MouseEvent('mousedown',{bubbles:true,cancelable:true}));}else if(e.key==='Escape'){box.classList.add('hidden');}
 }
 
-function renderNotes(){$("#notesList").innerHTML=state.notes.length?state.notes.map((n,i)=>`<article class="note"><button class="delete-note" onclick="deleteNote(${i})">×</button><h3>${escapeHtml(n.title||"Sem título")}</h3><small>${new Date(n.date).toLocaleString("pt-BR")}</small><p>${escapeHtml(n.text)}</p></article>`).join(""):`<p style="color:var(--muted)">Nenhuma anotação ainda.</p>`}
+function renderNotes(){
+ const list=$("#notesList");
+ if(!list)return;
+ list.innerHTML=state.notes.length?state.notes.map((n,i)=>`<article class="note">
+   <div class="note-actions"><button class="edit-note" onclick="editNote(${i})">✎ Editar</button><button class="delete-note" onclick="deleteNote(${i})">×</button></div>
+   <h3>${escapeHtml(n.title||"Sem título")}</h3>
+   <small>${new Date(n.date).toLocaleString("pt-BR")}</small>
+   <p>${escapeHtml(n.text)}</p>
+ </article>`).join(""):`<p style="color:var(--muted)">Nenhuma anotação ainda.</p>`;
+}
+function editNote(i){
+ const n=state.notes[i];if(!n)return;
+ state.editingNote=i;
+ $("#noteTitle").value=n.title||"";
+ $("#noteText").value=n.text||"";
+ $("#saveNote").textContent="Salvar alterações";
+ $("#cancelEditNote").classList.remove("hidden");
+ $("#noteTitle").focus();
+}
+function cancelEditNote(){
+ state.editingNote=null;
+ $("#noteTitle").value="";
+ $("#noteText").value="";
+ $("#saveNote").textContent="Salvar anotação";
+ $("#cancelEditNote").classList.add("hidden");
+}
 function escapeHtml(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
-$("#saveNote").addEventListener("click",()=>{const title=$("#noteTitle").value.trim(),text=$("#noteText").value.trim();if(!text){toast("Escreva alguma coisa primeiro.");return}state.notes.unshift({title,text,date:Date.now()});$("#noteTitle").value="";$("#noteText").value="";save();renderNotes();toast("Anotação salva.")});
-function deleteNote(i){state.notes.splice(i,1);save();renderNotes()}
+$("#saveNote").addEventListener("click",()=>{
+ const title=$("#noteTitle").value.trim(),text=$("#noteText").value.trim();
+ if(!text){toast("Escreva alguma coisa primeiro.");return}
+ if(Number.isInteger(state.editingNote)){
+   state.notes[state.editingNote]={...state.notes[state.editingNote],title,text,date:Date.now()};
+   toast("Anotação atualizada.");
+ }else{
+   state.notes.unshift({title,text,date:Date.now()});
+   toast("Anotação salva.");
+ }
+ cancelEditNote();
+ save();
+ renderNotes();
+});
+$("#cancelEditNote").addEventListener("click",cancelEditNote);
+function deleteNote(i){
+ if(confirm("Remover esta anotação?")){
+   if(state.editingNote===i)cancelEditNote();
+   state.notes.splice(i,1);
+   save();
+   renderNotes();
+ }
+}
 
 $("#themeBtn").addEventListener("click",()=>{state.theme=state.theme==="dark"?"light":"dark";applyTheme();save();toast(state.theme==="light"?"Tema claro ativado":"Tema escuro ativado")});
 $("#fontDown").addEventListener("click",()=>{state.fontScale=Math.max(.9,Math.round((state.fontScale-.05)*100)/100);applyTheme();save();toast("Texto reduzido para facilitar a leitura")});
 $("#fontUp").addEventListener("click",()=>{state.fontScale=Math.min(1.25,Math.round((state.fontScale+.05)*100)/100);applyTheme();save();toast("Texto ampliado para facilitar a leitura")});
 $("#menuBtn").addEventListener("click",()=>$("#sidebar").classList.toggle("open"));
-$("#resetProgress").addEventListener("click",()=>{if(confirm("Reiniciar progresso, desempenho e checklists? As anotações serão preservadas.")){state.completed={};state.quiz={correct:0,total:0};state.quizHistory=[];state.currentLesson=0;state.challengeChecks={};delete state.quizSession;save();renderDashboard();toast("Progresso reiniciado.")}});
+$("#resetProgress").addEventListener("click",()=>{if(confirm("Reiniciar progresso, desempenho e checklists? As anotações serão preservadas.")){state.completed={};state.quiz={correct:0,total:0};state.quizHistory=[];state.currentLesson=0;state.challengeChecks={};state.challengeDrafts={};state.challengeGrades={};state.activeChallenge=null;delete state.quizSession;save();renderDashboard();toast("Progresso reiniciado.")}});
+$("#referenceSearch")?.addEventListener("input",()=>renderCodeReference());
 $("#globalSearch").addEventListener("input",e=>{const q=e.target.value.trim().toLowerCase(),box=$("#searchResults");if(!q){box.classList.add("hidden");return}const results=[];modules.forEach((m,i)=>{if((m.title+" "+m.short).toLowerCase().includes(q))results.push({type:"Aula",i,title:m.title,text:m.short});m.lessons.forEach(l=>{if((l[0]+" "+l[1]).toLowerCase().includes(q))results.push({type:"Conceito",i,title:l[0],text:l[1]})})});globalQuestions.forEach(x=>{if(x[0].toLowerCase().includes(q))results.push({type:"Quiz",title:x[0],text:"Questão de recuperação ativa"})});box.innerHTML=results.slice(0,12).map(r=>`<div class="search-result" onclick="${r.i!==undefined?`openLesson(${r.i})`:"showView('quiz')"}"><small>${r.type}</small><strong>${r.title}</strong><p>${r.text}</p></div>`).join("")||`<div class="search-result"><p>Nenhum resultado.</p></div>`;box.classList.remove("hidden")});
+$$("[data-challenge-editor]").forEach(b=>b.addEventListener("click",()=>switchChallengeEditor(b.dataset.challengeEditor)));
+["html","css","js"].forEach(k=>$("#challenge-editor-"+k)?.addEventListener("input",()=>{challengeDraft();clearTimeout(window._challengeTimer);window._challengeTimer=setTimeout(runChallengeCode,180)}));
 document.addEventListener("keydown",e=>{if(e.key==="/"&&document.activeElement.tagName!=="INPUT"&&document.activeElement.tagName!=="TEXTAREA"){e.preventDefault();$("#globalSearch").focus()}});
 
-window.openLesson=openLesson;window.showView=showView;window.completeLesson=completeLesson;window.startChapterQuiz=startChapterQuiz;window.startGlobalQuiz=startGlobalQuiz;window.answerActiveQuiz=answerActiveQuiz;window.nextActiveQuiz=nextActiveQuiz;window.cancelQuiz=cancelQuiz;window.newQuizSameType=newQuizSameType;window.nextFlash=nextFlash;window.prevFlash=prevFlash;window.toggleChallenge=toggleChallenge;window.openChallenge=openChallenge;window.deleteNote=deleteNote;window.saveMicroCheck=saveMicroCheck;window.resetActiveQuiz=resetActiveQuiz;window.resetQuizData=resetQuizData;window.switchQuizCode=switchQuizCode;window.copyQuizCode=copyQuizCode;window.openCode=openCode;window.deleteCode=deleteCode;
+window.openLesson=openLesson;window.showView=showView;window.completeLesson=completeLesson;window.startChapterQuiz=startChapterQuiz;window.startGlobalQuiz=startGlobalQuiz;window.answerActiveQuiz=answerActiveQuiz;window.nextActiveQuiz=nextActiveQuiz;window.cancelQuiz=cancelQuiz;window.newQuizSameType=newQuizSameType;window.nextFlash=nextFlash;window.prevFlash=prevFlash;window.toggleChallenge=toggleChallenge;window.openChallenge=openChallenge;window.closeChallengeCorrector=closeChallengeCorrector;window.gradeChallenge=gradeChallenge;window.runChallengeCode=runChallengeCode;window.clearChallengeEditor=clearChallengeEditor;window.deleteNote=deleteNote;window.editNote=editNote;window.saveMicroCheck=saveMicroCheck;window.resetActiveQuiz=resetActiveQuiz;window.resetQuizData=resetQuizData;window.openCode=openCode;window.deleteCode=deleteCode;window.setReferenceCategory=setReferenceCategory;window.insertReference=insertReference;
 
 applyTheme();initEditor();updateProgress();renderDashboard();
+
+const WORKSHOP_LIBRARY=[
+{id:"font-weight",cat:"text",title:"Negrito",desc:"Deixe a fonte mais forte.",code:"font-weight: 700;",lang:"css",hint:"Experimente 400, 600, 700 ou 900."},
+{id:"font-style",cat:"text",title:"Itálico",desc:"Incline o texto.",code:"font-style: italic;",lang:"css",hint:"Use normal para voltar ao padrão."},
+{id:"underline",cat:"text",title:"Sublinhado",desc:"Adicione uma linha ao texto.",code:"text-decoration: underline;",lang:"css",hint:"Também existem none e line-through."},
+{id:"font-size",cat:"text",title:"Tamanho da fonte",desc:"Controle o tamanho do texto.",code:"font-size: 1.25rem;",lang:"css",hint:"Compare px, rem e em."},
+{id:"letter-spacing",cat:"text",title:"Espaçamento das letras",desc:"Afaste ou aproxime os caracteres.",code:"letter-spacing: 0.06em;",lang:"css",hint:"Valores negativos aproximam."},
+{id:"text-shadow",cat:"effects",title:"Sombra no texto",desc:"Crie profundidade no texto.",code:"text-shadow: 0 2px 8px rgba(0,0,0,.22);",lang:"css",hint:"A ordem é X, Y, blur e cor."},
+{id:"uppercase",cat:"text",title:"Maiúsculas",desc:"Transforme visualmente o texto.",code:"text-transform: uppercase;",lang:"css",hint:"Também há lowercase e capitalize."},
+{id:"text-center",cat:"layout",title:"Centralizar texto",desc:"Centralize texto.",code:"text-align: center;",lang:"css",hint:"Para elementos, considere Flexbox ou Grid."},
+{id:"color",cat:"color",title:"Cor do texto",desc:"Aplique uma cor.",code:"color: #2563eb;",lang:"css",hint:"Troque o hexadecimal e veja o resultado."},
+{id:"background",cat:"color",title:"Cor de fundo",desc:"Aplique uma cor ao fundo.",code:"background: #eef3f8;",lang:"css",hint:"Você também pode usar gradientes."},
+{id:"border",cat:"effects",title:"Borda",desc:"Adicione uma borda.",code:"border: 1px solid #d0d5dd;",lang:"css",hint:"Espessura, estilo e cor."},
+{id:"radius",cat:"effects",title:"Cantos arredondados",desc:"Arredonde os cantos.",code:"border-radius: 12px;",lang:"css",hint:"Aumente o valor para mais arredondamento."},
+{id:"shadow",cat:"effects",title:"Sombra no componente",desc:"Crie profundidade.",code:"box-shadow: 0 10px 30px rgba(0,0,0,.12);",lang:"css",hint:"Teste blur e transparência."},
+{id:"transition",cat:"effects",title:"Transição suave",desc:"Deixe mudanças naturais.",code:"transition: .2s ease;",lang:"css",hint:"Combine com :hover."},
+{id:"hover",cat:"effects",title:"Efeito ao passar o mouse",desc:"Mude o elemento no hover.",code:".demo-card:hover { transform: translateY(-4px); }",lang:"css",hint:"Experimente cor, sombra ou escala."},
+{id:"flex-center",cat:"layout",title:"Centralizar com Flexbox",desc:"Centralize filhos nos dois eixos.",code:"display: flex;\njustify-content: center;\nalign-items: center;",lang:"css",hint:"Flexbox é ótimo para alinhamento em uma dimensão."},
+{id:"flex-gap",cat:"layout",title:"Espaço entre itens",desc:"Crie distância consistente.",code:"display: flex;\ngap: 16px;",lang:"css",hint:"gap evita margens individuais."},
+{id:"grid",cat:"layout",title:"Grade com Grid",desc:"Monte colunas.",code:"display: grid;\ngrid-template-columns: repeat(3, 1fr);\ngap: 16px;",lang:"css",hint:"Grid controla linhas e colunas."},
+{id:"padding",cat:"spacing",title:"Espaço interno",desc:"Espaço entre conteúdo e borda.",code:"padding: 20px;",lang:"css",hint:"Padding atua dentro da borda."},
+{id:"margin",cat:"spacing",title:"Espaço externo",desc:"Distância ao redor.",code:"margin: 20px;",lang:"css",hint:"Margin atua fora da borda."},
+{id:"responsive",cat:"responsive",title:"Media Query",desc:"Adapte o layout.",code:"@media (max-width: 768px) {\n  .demo-card { padding: 16px; }\n}",lang:"css",hint:"Você pode começar pelo mobile e adaptar telas maiores."},
+{id:"semantic-card",cat:"html",title:"Estrutura semântica",desc:"Use HTML com significado.",code:"<article>\n  <h2>Título</h2>\n  <p>Conteúdo</p>\n</article>",lang:"html",hint:"Escolha tags que expressem a função do conteúdo."},
+{id:"image",cat:"html",title:"Imagem acessível",desc:"Imagem com texto alternativo.",code:'<img src="imagem.jpg" alt="Descrição da imagem">',lang:"html",hint:"O alt ajuda na acessibilidade."},
+{id:"query",cat:"js",title:"Selecionar elemento",desc:"Encontre um elemento.",code:'document.querySelector(".demo-card");',lang:"js",hint:"Use um seletor CSS."},
+{id:"event",cat:"js",title:"Clique com JavaScript",desc:"Reaja a uma interação.",code:'document.querySelector("button")?.addEventListener("click", () => {\n  console.log("Clique!");\n});',lang:"js",hint:"Eventos conectam ações do usuário ao comportamento."}
+];
+(function(){
+const s=document.getElementById("workshop-search"),r=document.getElementById("workshop-results"),cats=document.getElementById("workshop-categories"),he=document.getElementById("workshop-html"),ce=document.getElementById("workshop-css"),je=document.getElementById("workshop-js"),pv=document.getElementById("workshop-preview"),clear=document.getElementById("workshop-clear"),hint=document.getElementById("workshop-hint"),hb=document.getElementById("workshop-hint-box");
+if(!s||!r||!pv)return;let cat="all";
+const map={"efeitos na fonte":"text-shadow font-weight font-style underline letter-spacing","efeitos fonte":"text-shadow font-weight font-style underline letter-spacing","fontes":"font-size font-weight font-style letter-spacing","sombra":"shadow text-shadow","centralizar":"flex-center text-center","cor":"color background","cores":"color background","fundo":"background","botao":"hover radius shadow transition color","botão":"hover radius shadow transition color","card":"radius shadow padding border","espaçamento":"padding margin flex-gap","espacamento":"padding margin flex-gap","responsivo":"responsive","responsividade":"responsive","grid":"grid","flex":"flex-center flex-gap"};
+const norm=x=>(x||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,""),esc=x=>x.replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
+function list(){let q=norm(s.value).trim(),a=WORKSHOP_LIBRARY.filter(x=>cat==="all"||x.cat===cat);if(!q)return a;let words=norm(map[q]||q).split(/\s+/);return a.map(x=>({x,score:words.reduce((n,w)=>n+(norm(x.title+" "+x.desc+" "+x.code+" "+x.id).includes(w)?2:0),0)})).filter(o=>o.score).sort((a,b)=>b.score-a.score).map(o=>o.x)}
+function render(){let a=list();r.innerHTML=a.length?a.map(x=>`<article class="workshop-item"><strong>${x.title}</strong><p>${x.desc}</p><code>${esc(x.code)}</code><div class="workshop-item-actions"><button class="primary" data-add="${x.id}">Adicionar</button><button data-hint="${x.id}">Por que usar?</button></div></article>`).join(""):`<div class="workshop-item"><strong>Nada encontrado.</strong><p>Tente “cor”, “sombra”, “centralizar”, “fonte”, “grid” ou “responsivo”.</p></div>`}
+function update(){let h=he.value,c=ce.value,j=je.value.replace(/<\/script/gi,"<\\/script");pv.srcdoc=`<!doctype html><html><head><meta charset="utf-8"><style>${c}</style></head><body>${h}<script>${j}<\/script></body></html>`;localStorage.setItem("frontlab_workshop_v1",JSON.stringify({h:he.value,c:ce.value,j:je.value}))}
+function add(x){let t=x.lang==="html"?he:x.lang==="js"?je:ce,v=t.value.trimEnd();t.value=(v?v+"\n\n":"")+x.code;t.dispatchEvent(new Event("input"));update()}
+s.addEventListener("input",render);cats?.addEventListener("click",e=>{let b=e.target.closest("[data-category]");if(!b)return;cat=b.dataset.category;cats.querySelectorAll(".workshop-cat").forEach(x=>x.classList.toggle("active",x===b));render()});r.addEventListener("click",e=>{let a=e.target.closest("[data-add]"),b=e.target.closest("[data-hint]");if(a){let x=WORKSHOP_LIBRARY.find(y=>y.id===a.dataset.add);if(x)add(x)}if(b){let x=WORKSHOP_LIBRARY.find(y=>y.id===b.dataset.hint);if(x){hb.hidden=false;hb.innerHTML="<strong>💡 "+x.title+"</strong><br>"+x.hint}}});[he,ce,je].forEach(x=>x?.addEventListener("input",update));clear?.addEventListener("click",()=>{he.value="";ce.value="";je.value="";update()});hint?.addEventListener("click",()=>{hb.hidden=!hb.hidden;if(!hb.hidden)hb.innerHTML="<strong>💡 Dica de estudo</strong><br>Escolha uma propriedade, altere um valor e observe. Depois tente reproduzir o resultado sem ajuda."});try{let x=JSON.parse(localStorage.getItem("frontlab_workshop_v1")||"null");if(x){he.value=x.h;ce.value=x.c;je.value=x.j}}catch(e){}render();update()
+})();
