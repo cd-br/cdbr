@@ -5,52 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Plataforma interativa de estudos de HTML5, CSS3, Flexbox, CSS Grid e Web Design Responsivo.">
   <title>FrontLab — Plataforma Interativa de Front-End</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="app-shell">
-    <aside class="sidebar" id="sidebar">
-      <div class="brand">
-        <div class="brand-mark">&lt;/&gt;</div>
-        <div>
-          <strong>FrontLab</strong>
-          <span>Estudo Front-End</span>
-        </div>
-      </div>
-
-      <div class="progress-mini">
-        <div class="progress-row"><span>Progresso geral</span><strong id="progressPercent">0%</strong></div>
-        <div class="progress-bar"><i id="progressBar"></i></div>
-      </div>
-
-      <nav class="nav" aria-label="Navegação principal">
-        <button class="nav-item active" data-view="dashboard">⌂ <span>Dashboard</span></button>
-        <button class="nav-item" data-view="trilha">▣ <span>Trilha de estudos</span></button>
-        <button class="nav-item" data-view="aulas">▤ <span>Aulas</span></button>
-        <button class="nav-item" data-view="quiz">? <span>Quiz inteligente</span></button>
-        <button class="nav-item" data-view="flashcards">◆ <span>Flashcards</span></button>
-        <button class="nav-item" data-view="desafios">⚡ <span>Desafios práticos</span></button>
-        <button class="nav-item" data-view="playground">⌘ <span>Meus projetos</span></button>
-        <button class="nav-item" data-view="anotacoes">✎ <span>Minhas anotações</span></button>
-        <button class="nav-item" data-view="code-workshop">💡 <span>Construa com ajuda</span></button>
-      </nav>
-
-      <div class="sidebar-bottom">
-        <button class="ghost-btn" id="resetProgress">↻ Reiniciar progresso</button>
-        <small>© 2026 Desenvolvido por C.D. | Todos os direitos reservados..</small>
-      </div>
-    </aside>
-
 <main class="main">
       <header class="topbar">
-        <button class="icon-btn mobile-only" id="menuBtn" aria-label="Abrir menu">☰</button>
-        <div class="breadcrumbs"><span>FrontLab</span><b>/</b><strong id="viewTitle">Dashboard</strong></div>
+        <div class="topbar-brand">
+          <div class="brand-mark">&lt;/&gt;</div>
+          <strong>FrontLab</strong>
+        </div>
+        <nav class="topnav" id="topnav" aria-label="Navegação principal">
+          <button class="topnav-item active" data-view="dashboard"><span class="ic">⌂</span><span>Dashboard</span></button>
+          <button class="topnav-item" data-view="trilha"><span class="ic">▣</span><span>Trilha</span></button>
+          <button class="topnav-item" data-view="quiz"><span class="ic">?</span><span>Quiz</span></button>
+          <button class="topnav-item" data-view="desafios"><span class="ic">⚡</span><span>Desafios</span></button>
+          <button class="topnav-item" data-view="playground"><span class="ic">⌘</span><span>Projetos</span></button>
+          <button class="topnav-item" data-view="anotacoes"><span class="ic">✎</span><span>Anotações</span></button>
+        </nav>
         <div class="top-actions">
           <label class="search">
             <span>⌕</span>
             <input id="globalSearch" type="search" placeholder="Buscar aula, conceito ou exercício...">
           </label>
-          <button class="icon-btn" id="fontDown" title="Diminuir tamanho do texto">A−</button><button class="icon-btn" id="fontUp" title="Aumentar tamanho do texto">A+</button><button class="icon-btn" id="themeBtn" title="Alternar tema">◐</button>
+          <button class="icon-btn" id="fontDown" title="Diminuir tamanho do texto">A−</button><button class="icon-btn" id="fontUp" title="Aumentar tamanho do texto">A+</button><button class="icon-btn" id="themeBtn" title="Alternar tema">◐</button><button class="icon-btn" id="resetProgress" title="Reiniciar progresso">↻</button>
+          <button class="icon-btn mobile-only" id="menuBtn" aria-label="Abrir menu">☰</button>
         </div>
       </header>
 
@@ -59,44 +41,69 @@
       <section id="view-dashboard" class="view active">
         <div class="hero-card">
           <div>
-            <span class="eyebrow">SUA CENTRAL DE APRENDIZADO</span>
-            <h1>Aprenda Front-End <em>fazendo</em>.</h1>
-            <p>Uma trilha interativa construída a partir de quatro livros, transformada em aulas, revisões, testes e desafios.</p>
+            <span class="eyebrow">Sua central de aprendizado</span>
+            <h1>Aprenda front-end <em>fazendo</em>.</h1>
+            <p>Uma trilha construída a partir de quatro livros, transformada em aulas, revisões, testes e desafios práticos.</p>
             <div class="hero-actions">
               <button class="primary-btn" data-go="trilha">Continuar trilha →</button>
               <button class="secondary-btn" data-go="quiz">Testar meus conhecimentos</button>
             </div>
           </div>
-          <div class="hero-orbit" aria-hidden="true">
-            <div class="orbit o1"></div><div class="orbit o2"></div><div class="orbit o3"></div>
-            <div class="code-orb">&lt;/&gt;</div>
+          <div class="hero-code" aria-hidden="true">
+            <div class="hero-code-chrome"><i></i><i></i><i></i><span>estilo.css</span></div>
+            <pre class="hero-code-body"><code><span class="tk-sel">.card</span> {
+  <span class="tk-prop">display</span>: <span class="tk-val">flex</span>;
+  <span class="tk-prop">gap</span>: <span class="tk-val">16px</span>;
+  <span class="tk-prop">padding</span>: <span class="tk-val">24px</span>;
+  <span class="tk-prop">border-radius</span>: <span class="tk-val">14px</span>;
+}
+
+<span class="tk-sel">.card:hover</span> {
+  <span class="tk-prop">transform</span>: <span class="tk-val">translateY(-4px)</span>;
+}</code><span class="hero-code-cursor"></span></pre>
           </div>
         </div>
 
         <div class="stats-grid">
-          <article class="stat-card"><span>📚</span><div><small>Módulos</small><strong>16 partes</strong></div></article>
-          <article class="stat-card"><span>🧠</span><div><small>Conceitos</small><strong>40+ conceitos</strong></div></article>
-          <article class="stat-card"><span>⚡</span><div><small>Desafios</small><strong>4 projetos</strong></div></article>
-          <article class="stat-card"><span>🎯</span><div><small>Revisão</small><strong id="dashAccuracy">0% acerto</strong></div></article>
+          <article class="stat-card"><span>◆</span><div><small>Módulos</small><strong>16 partes</strong></div></article>
+          <article class="stat-card"><span>▤</span><div><small>Conceitos</small><strong>40+ conceitos</strong></div></article>
+          <article class="stat-card"><span>▲</span><div><small>Desafios</small><strong>4 projetos</strong></div></article>
+          <article class="stat-card"><span>◎</span><div><small>Revisão</small><strong id="dashAccuracy">0% acerto</strong></div></article>
         </div>
+        
+        <section class="panel continue-panel">
+          <div class="panel-head"><div><span class="eyebrow">PRÓXIMO PASSO</span><h2>Continue de onde parou</h2></div></div>
+          <div class="continue-card" id="continueCard"></div>
+        </section>
 
-        <div class="section-head"><div><span class="eyebrow">PRÓXIMO PASSO</span><h2>Continue de onde parou</h2></div></div>
-        <article class="continue-card" id="continueCard"></article>
-
-        <div class="dashboard-grid">
+      <div class="dashboard-grid">
+        <div class="dashboard-col">
           <section class="panel">
             <div class="panel-head"><div><span class="eyebrow">MAPA</span><h2>Os 4 livros</h2></div></div>
             <div id="bookMap" class="book-map"></div>
           </section>
-          <section class="panel">
-            <div class="panel-head"><div><span class="eyebrow">REVISÃO</span><h2>Memória ativa</h2></div></div>
-            <div class="review-tip">
-              <div class="tip-icon">🧠</div>
-              <div><strong>Não apenas releia.</strong><p>Use o quiz, tente explicar o conceito com suas próprias palavras e depois aplique-o no playground.</p></div>
-            </div>
-            <button class="wide-btn" data-go="flashcards">Abrir flashcards →</button>
+
+          <section class="panel challenges-teaser">
+            <span class="eyebrow">APRENDIZAGEM POR PROJETO</span>
+            <h2>Desafios práticos</h2>
+            <p>Os quatro desafios do material foram transformados em missões com checklist e autoavaliação.</p>
+            <button class="secondary-btn small" data-go="desafios">Ver desafios →</button>
           </section>
         </div>
+
+        <section class="panel">
+          <div class="panel-head"><div><span class="eyebrow">REVISÃO RÁPIDA</span><h2>Flashcards</h2><p>Leia a pergunta, tente responder mentalmente e revele a resposta.</p></div></div>
+          <div class="flash-wrap" id="flashWrap"></div>
+        </section>
+      </div>
+
+      <div class="review-tip">
+        <div class="tip-icon">◎</div>
+        <div><strong>Não apenas releia.</strong><p>Use o quiz, tente explicar o conceito com suas próprias palavras e depois aplique-o no playground.</p></div>
+        <button class="secondary-btn small" data-go="quiz">Ir para o quiz →</button>
+      </div>
+
+      <footer class="page-footer">© 2026 Desenvolvido por C.D. | Todos os direitos reservados.</footer>
       </section>
 
       <section id="view-trilha" class="view">
@@ -114,11 +121,6 @@
       <section id="view-quiz" class="view">
         <div class="page-intro"><span class="eyebrow">RECUPERAÇÃO ATIVA</span><h1>Quiz inteligente</h1><p>Responda sem consultar. O sistema registra seu desempenho e explica a resposta.</p></div>
         <div class="quiz-shell panel" id="quizShell"></div>
-      </section>
-
-      <section id="view-flashcards" class="view">
-        <div class="page-intro"><span class="eyebrow">REVISÃO</span><h1>Flashcards</h1><p>Leia a pergunta, tente responder mentalmente e revele a resposta.</p></div>
-        <div class="flash-wrap" id="flashWrap"></div>
       </section>
 
       <section id="view-desafios" class="view">
@@ -211,78 +213,24 @@
           </div>
           <div class="challenge-prompt"><strong>Missão rápida:</strong> altere a cor do botão, depois use <code>:hover</code> para criar uma mudança visual. Em seguida, tente centralizar o conteúdo com Flexbox.</div>
         </div>
-        <section class="panel code-reference">
+        <section class="panel code-reference" id="codeReferencePanel">
           <div class="reference-head">
             <div>
               <span class="eyebrow">CONSULTA RÁPIDA</span>
               <h2>Banco de informações para seus códigos</h2>
-              <p>Uma referência embutida para você não precisar sair da plataforma para procurar valores básicos de HTML e CSS.</p>
+              <p>Busque por nome ou por frase — como "tabela de cores", "sombra suave" ou "centralizar" — e adicione direto no seu código.</p>
             </div>
-            <input id="referenceSearch" class="reference-search" placeholder="Buscar: cor, fonte, sombra, espaçamento...">
+            <div class="reference-head-actions">
+              <input id="referenceSearch" class="reference-search" placeholder="Buscar: cor, fonte, sombra, espaçamento...">
+              <button type="button" class="ghost-btn small" id="referenceToggle" aria-expanded="true">Recolher ▴</button>
+            </div>
           </div>
-          <div id="referenceCategories" class="reference-categories"></div>
-          <div id="referenceGrid" class="reference-grid"></div>
+          <div id="referenceBody">
+            <div id="referenceCategories" class="reference-categories"></div>
+            <div class="reference-count" id="referenceCount"></div>
+            <div id="referenceGrid" class="reference-grid"></div>
+          </div>
         </section>
-      </section>
-
-      <section id="view-code-workshop" class="view">
-        <div class="workshop-section">
-          <div class="section-heading">
-            <div>
-              <span class="eyebrow">OFICINA DE CÓDIGO</span>
-              <h2>Construa com ajuda, teste e aprenda</h2>
-              <p>Descreva o que você quer fazer, escolha uma solução e veja o código funcionando em tempo real.</p>
-            </div>
-          </div>
-          <div class="workshop-grid">
-            <aside class="workshop-panel workshop-assistant">
-              <label class="workshop-label" for="workshop-search">O que você quer fazer?</label>
-              <div class="workshop-search"><span>⌕</span><input id="workshop-search" type="search" placeholder="Ex.: efeitos na fonte, centralizar, sombra no card..." autocomplete="off"></div>
-              <div class="workshop-categories" id="workshop-categories">
-                <button class="workshop-cat active" data-category="all">Tudo</button>
-                <button class="workshop-cat" data-category="text">🔤 Fontes e textos</button>
-                <button class="workshop-cat" data-category="color">🎨 Cores</button>
-                <button class="workshop-cat" data-category="effects">✨ Efeitos</button>
-                <button class="workshop-cat" data-category="layout">📐 Layout</button>
-                <button class="workshop-cat" data-category="spacing">↔ Espaçamento</button>
-                <button class="workshop-cat" data-category="responsive">📱 Responsividade</button>
-                <button class="workshop-cat" data-category="html">🌐 HTML</button>
-                <button class="workshop-cat" data-category="js">⚙ JavaScript</button>
-              </div>
-              <div id="workshop-results" class="workshop-results"></div>
-            </aside>
-            <div class="workshop-panel workshop-editor-panel">
-              <div class="workshop-panel-head">
-                <div><strong>Seu código</strong><span>Experimente e veja a mudança imediatamente.</span></div>
-                <div class="workshop-actions"><button type="button" id="workshop-hint">💡 Dica</button><button type="button" id="workshop-clear">Limpar</button></div>
-              </div>
-              <div class="workshop-editors">
-                <div class="workshop-editor-box"><div class="workshop-editor-title">HTML</div><textarea id="workshop-html" spellcheck="false"><div class="demo-card">
-  <h3>Meu primeiro componente</h3>
-  <p>Comece adicionando estilos pela oficina.</p>
-  <button>Experimentar</button>
-</div></textarea></div>
-                <div class="workshop-editor-box"><div class="workshop-editor-title">CSS</div><textarea id="workshop-css" spellcheck="false">.demo-card {
-  padding: 24px;
-  max-width: 420px;
-  margin: 20px auto;
-  background: #ffffff;
-  border: 1px solid #d0d5dd;
-  border-radius: 14px;
-}
-.demo-card h3 { margin: 0 0 8px; }</textarea></div>
-                <div class="workshop-editor-box"><div class="workshop-editor-title">JavaScript</div><textarea id="workshop-js" spellcheck="false">document.querySelector("button")?.addEventListener("click", () => {
-  document.querySelector(".demo-card p").textContent = "Funcionou! Agora experimente alterar o código.";
-});</textarea></div>
-              </div>
-              <div class="workshop-hint-box" id="workshop-hint-box" hidden></div>
-            </div>
-            <div class="workshop-panel workshop-preview-panel">
-              <div class="workshop-panel-head"><div><strong>Resultado em tempo real</strong><span>O preview é isolado do restante da plataforma.</span></div><span class="live-dot">● AO VIVO</span></div>
-              <iframe id="workshop-preview" title="Prévia do projeto"></iframe>
-            </div>
-          </div>
-        </div>
       </section>
 
       <section id="view-anotacoes" class="view">
