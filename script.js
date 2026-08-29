@@ -2,82 +2,98 @@ const modules = [
   {book:1,title:"Introdução à Web, anatomia e estrutura básica",short:"Entenda o papel do HTML, CSS e JavaScript e aprenda a estrutura mínima de um documento HTML5.",goals:["Diferenciar HTML, CSS e JavaScript.","Reconhecer a anatomia básica de um elemento HTML.","Montar a estrutura mínima de um documento HTML5."],lessons:[
     ["Como a Web funciona?", "Ao acessar um site, o navegador solicita recursos a um servidor. O material apresenta três peças centrais: HTML para estrutura, CSS para aparência e layout e JavaScript para interatividade e lógica. HTML não é linguagem de programação; é uma linguagem de marcação."],
     ["Anatomia de uma tag", "Um elemento HTML normalmente é formado por uma tag de abertura, conteúdo e tag de fechamento. Atributos acrescentam informações à tag de abertura e seguem a forma nome=\"valor\"."],
-    ["Documento HTML5", "A base do documento usa <!DOCTYPE html>, o elemento <html lang=\"pt-BR\">, um <head> com informações como charset, viewport e title, e um <body> com o conteúdo que será exibido." ]
+    ["Documento HTML5", "A base do documento usa <!DOCTYPE html>, o elemento <html lang=\"pt-BR\">, um <head> com informações como charset, viewport e title, e um <body> com o conteúdo que será exibido." ],
+    ["Boas práticas e ferramentas", "O atalho Emmet do VS Code gera essa estrutura inteira digitando apenas ! e apertando Tab. Vale também validar o HTML no validador oficial do W3C de vez em quando — ele aponta tags mal fechadas ou atributos incorretos que o navegador esconde de você."]
   ]},
   {book:1,title:"Texto, listas, links e semântica",short:"Organize conteúdo com títulos, parágrafos, listas, links e elementos semânticos.",goals:["Construir uma hierarquia de títulos coerente.","Usar listas conforme o tipo de conteúdo.","Criar links internos e externos com os atributos adequados."],lessons:[
     ["Hierarquia de títulos", "Use h1 até h6 para representar níveis de título. A hierarquia ajuda a organizar o conteúdo e torna a estrutura mais compreensível."],
     ["Parágrafos e listas", "p representa parágrafos. strong indica importância e em indica ênfase. ul cria listas não ordenadas e ol cria listas ordenadas; cada item é colocado em li."],
-    ["Links", "O elemento a cria hiperlinks. href define o destino. target=\"_blank\" pode abrir o destino em uma nova aba; mailto: permite criar um link para e-mail." ]
+    ["Links", "O elemento a cria hiperlinks. href define o destino. target=\"_blank\" pode abrir o destino em uma nova aba; mailto: permite criar um link para e-mail." ],
+    ["Erros comuns", "Evite pular níveis de título (ir de h1 direto para h4) só por causa do tamanho da fonte — isso quebra a hierarquia para leitores de tela; ajuste o tamanho depois, com CSS. Em links externos com target=\"_blank\", é boa prática adicionar rel=\"noopener\" por segurança."]
   ]},
   {book:1,title:"Mídias, tabelas e estrutura semântica",short:"Trabalhe com imagens, áudio, vídeo, tabelas e as principais áreas semânticas do HTML5.",goals:["Inserir imagens com texto alternativo.","Estruturar dados tabulares corretamente.","Separar áreas da página usando elementos semânticos."],lessons:[
     ["Imagens e mídias", "img usa src para indicar o arquivo e alt para fornecer uma descrição textual. audio e video permitem mídia nativa; controls adiciona controles ao usuário e poster pode definir uma imagem de capa para vídeo."],
     ["Tabelas", "Use table para dados tabulares, com tr para linhas, th para células de cabeçalho e td para células de dados. O material ressalta que tabelas não devem ser usadas para criar o layout da página."],
-    ["Estrutura semântica", "header representa cabeçalho, nav navegação, main conteúdo principal, article conteúdo independente, section uma seção temática, aside conteúdo complementar e footer rodapé." ]
+    ["Estrutura semântica", "header representa cabeçalho, nav navegação, main conteúdo principal, article conteúdo independente, section uma seção temática, aside conteúdo complementar e footer rodapé." ],
+    ["Além do material", "Duas técnicas modernas que valem a pena conhecer: loading=\"lazy\" no <img> atrasa o carregamento de imagens fora da tela, melhorando a performance; e a tag <caption>, colocada logo após <table>, dá um título acessível à tabela."]
   ]},
   {book:1,title:"Formulários, validação e acessibilidade",short:"Monte formulários claros usando labels, inputs, textarea, select e validação nativa.",goals:["Associar corretamente labels e campos.","Conhecer os principais tipos de input.","Usar atributos de validação e estrutura semântica."],lessons:[
     ["Estrutura de formulário", "form representa o formulário. action indica o destino do envio e method define como os dados serão enviados. O conteúdo do formulário fica dentro do elemento form."],
     ["Inputs e labels", "Cada campo deve ter uma label associada ao id correspondente. O material apresenta tipos como text, email, password, number, date, checkbox, radio e file, além de textarea e select."],
-    ["Validação nativa", "required, minlength, min e max ajudam o navegador a validar campos antes do envio. A validação não substitui uma aplicação completa de tratamento dos dados, mas é uma camada importante no formulário." ]
+    ["Validação nativa", "required, minlength, min e max ajudam o navegador a validar campos antes do envio. A validação não substitui uma aplicação completa de tratamento dos dados, mas é uma camada importante no formulário." ],
+    ["Acessibilidade extra", "fieldset e legend agrupam campos relacionados (como endereço) com um título semântico. O atributo autocomplete (ex: autocomplete=\"email\") ajuda o navegador a preencher formulários automaticamente, melhorando a experiência do usuário."]
   ]},
   {book:2,title:"CSS, seletores, cores e tipografia",short:"Aprenda a escrever regras CSS, selecionar elementos e controlar cores, fontes, alinhamento e legibilidade.",goals:["Entender seletor, propriedade e valor.","Distinguir tag, classe e ID.","Aplicar propriedades básicas de texto e cor."],lessons:[
     ["Como o CSS funciona", "CSS define apresentação, espaçamento e layout. O material apresenta CSS inline, interno e externo e recomenda o arquivo externo como abordagem padrão para projetos organizados."],
     ["Seletores básicos", "Um seletor de tag aplica regras a elementos daquele tipo. .classe pode ser reutilizada em vários elementos. #id identifica um elemento específico."],
-    ["Cores e tipografia", "Cores podem ser escritas por nomes, hexadecimal e RGB/RGBA. Para texto, o material trabalha com font-family, font-size, font-weight, line-height, text-align e text-decoration." ]
+    ["Cores e tipografia", "Cores podem ser escritas por nomes, hexadecimal e RGB/RGBA. Para texto, o material trabalha com font-family, font-size, font-weight, line-height, text-align e text-decoration." ],
+    ["Seletores combinados", "Seletores podem ser combinados: .card p seleciona todo <p> dentro de .card; .card > p seleciona só os filhos diretos; h1, h2, h3 aplica a mesma regra a vários seletores de uma vez, separados por vírgula."]
   ]},
   {book:2,title:"Box Model e dimensionamento",short:"Domine content, padding, border, margin e box-sizing para controlar dimensões previsíveis.",goals:["Visualizar as quatro camadas do Box Model.","Diferenciar padding e margin.","Entender por que border-box simplifica o dimensionamento."],lessons:[
     ["As quatro camadas", "Todo elemento é tratado como uma caixa. De dentro para fora: content, padding, border e margin. Content é o conteúdo; padding é o espaço interno; border envolve a caixa; margin cria espaço externo."],
     ["content-box e border-box", "Com content-box, padding e border são adicionados ao tamanho declarado. Com border-box, padding e border ficam dentro do tamanho definido, tornando o cálculo do layout mais previsível."],
-    ["Reset inicial", "O material apresenta como reset comum: * { margin: 0; padding: 0; box-sizing: border-box; }. Isso reduz diferenças iniciais entre elementos e facilita o controle do layout." ]
+    ["Reset inicial", "O material apresenta como reset comum: * { margin: 0; padding: 0; box-sizing: border-box; }. Isso reduz diferenças iniciais entre elementos e facilita o controle do layout." ],
+    ["Depurando o Box Model", "As DevTools do navegador (F12) mostram um diagrama visual do Box Model de qualquer elemento selecionado, com os valores exatos de cada camada — é a forma mais rápida de entender por que um elemento está com um tamanho inesperado."]
   ]},
   {book:2,title:"Position, display e z-index",short:"Entenda fluxo normal, block, inline e os principais valores de position.",goals:["Reconhecer o comportamento básico de display.","Saber quando relative, absolute, fixed e sticky entram em cena.","Entender o papel do z-index em sobreposições."],lessons:[
     ["display", "block normalmente ocupa a largura disponível e inicia uma nova linha. inline ocupa apenas o espaço necessário. inline-block permite dimensionamento mantendo o comportamento lado a lado. none remove o elemento do layout."],
     ["position", "static é o comportamento padrão. relative mantém o espaço no fluxo e permite deslocamento. absolute sai do fluxo e se posiciona em relação ao ancestral posicionado mais próximo. fixed se relaciona à viewport. sticky combina comportamento de fluxo e fixação conforme a rolagem."],
-    ["z-index", "Quando elementos posicionados se sobrepõem, z-index ajuda a definir a ordem de empilhamento." ]
+    ["z-index", "Quando elementos posicionados se sobrepõem, z-index ajuda a definir a ordem de empilhamento." ],
+    ["Armadilhas comuns", "position: sticky não funciona se o elemento pai tiver overflow: hidden ou altura insuficiente. display: none remove o elemento do layout e da árvore de acessibilidade; visibility: hidden apenas o esconde visualmente, mas ainda ocupa espaço."]
   ]},
   {book:2,title:"Pseudo-classes, pseudo-elementos e efeitos",short:"Crie respostas visuais para interação e efeitos com hover, focus, before, after, sombras, transition e transform.",goals:["Usar estados como :hover e :focus.","Diferenciar pseudo-classe de pseudo-elemento.","Aplicar efeitos sem perder a clareza do layout."],lessons:[
     ["Pseudo-classes", ":hover representa interação com o ponteiro, :focus representa foco, :first-child seleciona o primeiro filho e :nth-child permite selecionar elementos por posição."],
     ["Pseudo-elementos", "::first-letter estiliza a primeira letra. ::before e ::after permitem criar conteúdo visual antes ou depois do conteúdo do elemento."],
-    ["Efeitos", "box-shadow e text-shadow criam sombras. transition suaviza mudanças e transform permite alterações visuais como scale e translate." ]
+    ["Efeitos", "box-shadow e text-shadow criam sombras. transition suaviza mudanças e transform permite alterações visuais como scale e translate." ],
+    ["Mais pseudo-classes úteis", ":not(.destaque) seleciona tudo exceto o que casa com .destaque. :nth-of-type(2) funciona como :nth-child, mas conta apenas elementos do mesmo tipo — útil quando há tags diferentes misturadas no mesmo pai."]
   ]},
   {book:3,title:"Flexbox: eixo principal, transversal e alinhamento",short:"Organize componentes em uma dimensão usando container flexível, eixos, alinhamento, wrap e gap.",goals:["Identificar main axis e cross axis.","Distribuir e alinhar itens corretamente.","Construir layouts flexíveis sem depender de margens artificiais."],lessons:[
     ["O modelo Flexbox", "display: flex transforma os filhos diretos em flex items e cria um sistema de layout unidimensional: linha ou coluna por vez."],
     ["Eixos", "O main axis é o eixo principal e o cross axis é perpendicular a ele. A direção inicial é horizontal; flex-direction pode mudar a orientação."],
-    ["Alinhamento e espaçamento", "justify-content atua no eixo principal. align-items atua no eixo transversal. flex-wrap permite quebra e gap cria espaçamento entre os itens." ]
+    ["Alinhamento e espaçamento", "justify-content atua no eixo principal. align-items atua no eixo transversal. flex-wrap permite quebra e gap cria espaçamento entre os itens." ],
+    ["Atalhos úteis do Flexbox", "flex-flow é o shorthand que combina flex-direction e flex-wrap em uma linha só. A propriedade order muda a ordem visual dos itens sem precisar reordenar o HTML — útil para ajustes responsivos."]
   ]},
   {book:3,title:"Flexbox avançado",short:"Aprofunde-se em crescimento, encolhimento, base, shorthand flex e alinhamento individual.",goals:["Compreender grow, shrink e basis.","Usar o shorthand flex com segurança.","Diferenciar align-items de align-self."],lessons:[
     ["Crescimento e encolhimento", "flex-grow controla quanto um item pode crescer quando existe espaço disponível. flex-shrink controla a capacidade de encolher quando o espaço é insuficiente."],
     ["flex-basis e shorthand", "flex-basis define o tamanho inicial no eixo principal. A propriedade flex reúne grow, shrink e basis em uma única declaração."],
-    ["Alinhamento individual", "align-self permite alterar o alinhamento de um item específico sem mudar o alinhamento definido para todos os itens." ]
+    ["Alinhamento individual", "align-self permite alterar o alinhamento de um item específico sem mudar o alinhamento definido para todos os itens." ],
+    ["Quando Flexbox não é a melhor escolha", "Para alinhar itens em duas dimensões ao mesmo tempo (linhas E colunas relacionadas entre si), o CSS Grid tende a exigir menos gambiarra que o Flexbox, que foi desenhado para apenas uma dimensão por vez."]
   ]},
   {book:3,title:"CSS Grid: linhas, colunas e fr",short:"Monte layouts bidimensionais com Grid, templates, gap, repeat e unidades fr.",goals:["Ativar e configurar um grid.","Definir colunas e linhas.","Usar repeat e fr para grades flexíveis."],lessons:[
     ["Grid em duas dimensões", "CSS Grid trabalha simultaneamente com linhas e colunas. Por isso, é especialmente útil para estruturas gerais de página e grades."],
     ["Templates e gap", "display: grid ativa o Grid. grid-template-columns e grid-template-rows definem a grade. gap cria espaço entre linhas e colunas."],
-    ["fr e repeat", "fr representa uma fração do espaço livre. repeat(3, 1fr), por exemplo, cria três colunas de uma fração cada." ]
+    ["fr e repeat", "fr representa uma fração do espaço livre. repeat(3, 1fr), por exemplo, cria três colunas de uma fração cada." ],
+    ["Grid implícito", "Quando você não define todas as linhas com grid-template-rows, o Grid cria linhas implícitas automaticamente. grid-auto-rows controla a altura dessas linhas extras, e minmax(150px, 1fr) evita que colunas fiquem menores que um tamanho mínimo."]
   ]},
   {book:3,title:"Grid Areas e Flexbox + Grid",short:"Desenhe estruturas com áreas nomeadas e combine Grid para estrutura com Flexbox para componentes.",goals:["Ler um layout de grid por áreas nomeadas.","Escolher Grid ou Flexbox conforme o problema.","Combinar os dois sistemas em uma mesma página."],lessons:[
     ["Áreas nomeadas", "grid-template-areas permite representar visualmente a estrutura do layout usando nomes de áreas como header, sidebar, main e footer."],
     ["Grid ou Flexbox?", "O material resume Grid como bidimensional, adequado à estrutura geral, e Flexbox como unidimensional, adequado a componentes menores como menus, alinhamento de ícones e formulários."],
-    ["Composição", "Uma arquitetura real pode usar Grid para a estrutura maior e Flexbox dentro de cada componente para organizar seu conteúdo interno." ]
+    ["Composição", "Uma arquitetura real pode usar Grid para a estrutura maior e Flexbox dentro de cada componente para organizar seu conteúdo interno." ],
+    ["Grid responsivo sem media query", "repeat(auto-fit, minmax(220px, 1fr)) faz o número de colunas se ajustar sozinho ao espaço disponível — adiciona ou remove colunas automaticamente conforme a tela cresce ou encolhe, sem escrever nenhuma @media."]
   ]},
   {book:4,title:"Unidades relativas: rem, em, %, vh e vw",short:"Construa interfaces mais adaptáveis usando unidades relativas e limites como max-width.",goals:["Entender por que unidades relativas são úteis.","Diferenciar rem de em.","Usar porcentagens e unidades da viewport com intenção."],lessons:[
     ["Por que evitar depender apenas de px", "O material apresenta unidades relativas como uma escolha importante para interfaces que precisam se adaptar a diferentes telas e às preferências de zoom do usuário."],
     ["rem e em", "rem é relativo ao tamanho de fonte do elemento raiz. em é relativo ao tamanho de fonte do elemento pai direto. O material destaca rem para escalas previsíveis e em para componentes que devem acompanhar o texto do pai."],
-    ["%, vh, vw e max-width", "% depende do container de referência. 1vw representa 1% da largura da viewport e 1vh representa 1% da altura. max-width pode limitar a expansão de um elemento." ]
+    ["%, vh, vw e max-width", "% depende do container de referência. 1vw representa 1% da largura da viewport e 1vh representa 1% da altura. max-width pode limitar a expansão de um elemento." ],
+    ["A função clamp()", "clamp(1rem, 2vw, 1.5rem) define um valor mínimo, um valor ideal (que escala com a tela) e um valor máximo, tudo em uma única linha — muito usado hoje para tipografia fluida sem precisar de várias media queries."]
   ]},
   {book:4,title:"Media Queries e mobile-first",short:"Crie responsividade progressiva começando pelo celular e ampliando o layout conforme a largura aumenta.",goals:["Entender o papel das media queries.","Aplicar a estratégia mobile-first.","Trabalhar com breakpoints progressivos."],lessons:[
     ["Media queries", "@media permite aplicar regras CSS conforme características do dispositivo, especialmente a largura da viewport."],
     ["Mobile-first", "Escreva primeiro o layout para telas pequenas. Depois use min-width para adicionar colunas, espaçamentos e componentes mais complexos conforme a tela cresce."],
-    ["Breakpoints do material", "O exemplo fornecido usa 768px para tablet e 1024px para desktop, levando a grade de uma coluna para duas e depois três colunas." ]
+    ["Breakpoints do material", "O exemplo fornecido usa 768px para tablet e 1024px para desktop, levando a grade de uma coluna para duas e depois três colunas." ],
+    ["Testando responsividade de verdade", "As DevTools têm um modo de simulação de dispositivos (ícone de celular/tablet) que testa vários tamanhos de tela sem precisar redimensionar a janela manualmente. A media feature orientation: landscape/portrait também pode refinar ainda mais o layout."]
   ]},
   {book:4,title:"Imagens e mídias responsivas",short:"Evite estouro horizontal e preserve proporções de imagens e vídeos.",goals:["Impedir que mídia ultrapasse o container.","Preservar proporções.","Entender por que max-width: 100% é tão importante."],lessons:[
     ["Regra essencial", "Uma regra comum do material é img, video { max-width: 100%; height: auto; display: block; }. Ela limita a mídia ao espaço disponível e mantém a proporção."],
     ["O problema do overflow", "Uma imagem maior que a tela pode criar rolagem horizontal. max-width: 100% impede que a largura ultrapasse o container de referência."],
-    ["Teste prático", "Reduza a janela do navegador e observe a mídia. O objetivo é que ela acompanhe a largura disponível sem ficar deformada." ]
+    ["Teste prático", "Reduza a janela do navegador e observe a mídia. O objetivo é que ela acompanhe a largura disponível sem ficar deformada." ],
+    ["Além do max-width: srcset", "Para casos mais avançados que uma imagem só, o atributo srcset permite oferecer vários arquivos da mesma imagem em resoluções diferentes, deixando o navegador escolher a mais adequada ao dispositivo do usuário."]
   ]},
   {book:4,title:"Projeto final: portal responsivo",short:"Integre HTML semântico, CSS, Grid, Flexbox, unidades relativas e media queries em um projeto completo.",goals:["Planejar a estrutura semântica.","Combinar Grid e Flexbox.","Implementar uma evolução mobile → tablet → desktop."],lessons:[
     ["Estrutura do portal", "O projeto final do material propõe header, navegação, hero, conteúdo principal, cards, formulário e footer, organizados com HTML semântico."],
     ["Layout e estilo", "O exemplo integra reset, variáveis CSS, container, botão, header sticky, Grid para cards, efeitos de hover e media queries."],
-    ["Integração final", "A meta é combinar os conhecimentos anteriores em um único projeto: estrutura semântica, estilização, Box Model, Flexbox, Grid, unidades relativas e responsividade." ]
+    ["Integração final", "A meta é combinar os conhecimentos anteriores em um único projeto: estrutura semântica, estilização, Box Model, Flexbox, Grid, unidades relativas e responsividade." ],
+    ["Performance e SEO no projeto final", "Antes de publicar, vale rodar o Lighthouse (aba do DevTools) para medir performance, acessibilidade e SEO. Uma <meta name=\"description\"> bem escrita no <head> também melhora como a página aparece nos resultados de busca."]
   ]}
 ];
 
@@ -125,26 +141,23 @@ const globalCodeExamples = [
   {html:`<main>Conteúdo</main>`,css:`main { display: grid; grid-template-columns: 1fr; }`,js:``}
 ];
 function questionCode(q, idx=0){ return q[4] || globalCodeExamples[idx % globalCodeExamples.length]; }
-function questionCodeType(q){ return q[5] || "css"; }
-
-
 const chapterCodeExamples = [
-  {html:`<!doctype html>\n<html lang="pt-BR">\n<head>\n  <meta charset="UTF-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n  <title>Minha página</title>\n</head>\n<body>\n  <h1>Olá, mundo!</h1>\n</body>\n</html>`,css:`body { font-family: Arial, sans-serif; }`,js:`console.log("HTML estruturado!");`},
-  {html:`<header><h1>Meu site</h1></header>\n<main>\n  <section><h2>Sobre</h2><p>Conteúdo.</p></section>\n</main>`,css:`h1 { margin: 0; }`,js:``},
-  {html:`<main>\n  <section><h2>Galeria</h2><img src="https://picsum.photos/500/280" alt="Imagem de exemplo"></section>\n  <section><h2>Dados</h2><table><tr><th>Item</th><th>Valor</th></tr><tr><td>HTML</td><td>Estrutura</td></tr></table></section>\n</main>`,css:`img { max-width: 100%; height: auto; }\ntable { border-collapse: collapse; }\nth, td { border: 1px solid #ccc; padding: 8px; }`,js:``},
-  {html:`<form>\n  <label for="email">E-mail</label>\n  <input id="email" name="email" type="email" required>\n  <button type="submit">Enviar</button>\n</form>`,css:`form { display: grid; gap: 10px; max-width: 360px; }`,js:``},
-  {html:`<p class="destaque">Texto em destaque.</p>\n<button id="btn-comprar">Comprar</button>`,css:`p { color: #333; }\n.destaque { font-weight: bold; color: #0f766e; }\n#btn-comprar { background: #2563eb; color: white; }`,js:``},
-  {html:`<div class="card">Conteúdo</div>`,css:`* { box-sizing: border-box; }\n.card { width: 300px; padding: 20px; border: 2px solid #111; margin: 20px auto; }`,js:``},
-  {html:`<div class="box">Posicionado</div>`,css:`.box { position: relative; top: 10px; z-index: 2; }`,js:``},
-  {html:`<button class="btn">Passe o mouse</button>`,css:`.btn { transition: transform .2s, box-shadow .2s; }\n.btn:hover { transform: translateY(-3px); box-shadow: 0 10px 25px #0002; }`,js:``},
-  {html:`<div class="container"><div>A</div><div>B</div><div>C</div></div>`,css:`.container { display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap; }`,js:``},
-  {html:`<div class="container"><div class="item">Item</div></div>`,css:`.container { display: flex; gap: 10px; }\n.item { flex: 1 1 200px; }`,js:``},
-  {html:`<div class="grid"><div>A</div><div>B</div><div>C</div></div>`,css:`.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }`,js:``},
-  {html:`<div class="layout"><header>Header</header><aside>Sidebar</aside><main>Main</main><footer>Footer</footer></div>`,css:`.layout { display: grid; grid-template-columns: 250px 1fr; grid-template-areas: "header header" "sidebar main" "footer footer"; gap: 15px; }\nheader { grid-area: header; }\naside { grid-area: sidebar; }\nmain { grid-area: main; }\nfooter { grid-area: footer; }`,js:``},
-  {html:`<div class="cards"><article>1</article><article>2</article><article>3</article></div>`,css:`.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }`,js:``},
-  {html:`<nav><a href="#">Início</a><a href="#">Artigos</a></nav>`,css:`html { font-size: 16px; }\nnav { display: flex; gap: 1rem; }\na { font-size: 1rem; }\n@media (min-width: 768px) { nav { justify-content: center; } }`,js:``},
-  {html:`<img src="https://picsum.photos/900/500" alt="Imagem responsiva">`,css:`img { max-width: 100%; height: auto; display: block; }`,js:``},
-  {html:`<header>Portal</header><main><article>Notícia</article><article>Outra notícia</article></main><footer>Rodapé</footer>`,css:`* { box-sizing: border-box; }\nmain { display: grid; grid-template-columns: 1fr; gap: 1rem; }\n@media (min-width: 768px) { main { grid-template-columns: repeat(2, 1fr); } }\n@media (min-width: 1024px) { main { grid-template-columns: repeat(3, 1fr); } }`,js:``}
+  {html:`<!doctype html>\n<html lang="pt-BR">\n<head>\n  <meta charset="UTF-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n  <title>Minha página</title>\n</head>\n<body>\n  <h1>Olá, mundo!</h1>\n  <p>Este parágrafo já está dentro da estrutura mínima do HTML5.</p>\n</body>\n</html>`,css:``,js:``,note:"Este livro ainda não ensina CSS — repare que o exemplo é feito só com HTML, exatamente como o conteúdo desta parte."},
+  {html:`<h1>Receitas da Casa</h1>\n<p>Um <strong>caderno de receitas</strong> simples, escrito à mão. <em>Atualizado toda semana.</em></p>\n<ul>\n  <li>Bolo de cenoura</li>\n  <li>Pão caseiro</li>\n  <li>Suco verde</li>\n</ul>\n<a href="https://developer.mozilla.org" target="_blank">Documentação MDN</a>`,css:``,js:``,note:"Só HTML: hierarquia de título, texto com strong/em, lista não ordenada e um link externo."},
+  {html:`<header>\n  <h1>Galeria de Fotos</h1>\n</header>\n<main>\n  <section>\n    <h2>Álbum</h2>\n    <img src="https://picsum.photos/500/280" alt="Paisagem de exemplo">\n  </section>\n  <section>\n    <h2>Ficha técnica</h2>\n    <table>\n      <thead><tr><th>Item</th><th>Detalhe</th></tr></thead>\n      <tbody><tr><td>Câmera</td><td>Mirrorless</td></tr></tbody>\n    </table>\n  </section>\n</main>\n<footer><p>&copy; 2026</p></footer>`,css:``,js:``,note:"Combina mídia (img), tabela (table/thead/tbody) e as tags semânticas header/main/section/footer — tudo ainda sem CSS."},
+  {html:`<main>\n  <form action="/enviar" method="POST">\n    <label for="nome">Nome completo</label>\n    <input id="nome" name="nome" type="text" required>\n\n    <label for="email">E-mail</label>\n    <input id="email" name="email" type="email" required>\n\n    <label for="plano">Plano de estudo</label>\n    <select id="plano" name="plano">\n      <option value="iniciante">Iniciante</option>\n      <option value="intermediario">Intermediário</option>\n    </select>\n\n    <button type="submit">Enviar cadastro</button>\n  </form>\n</main>`,css:``,js:``,note:"Formulário completo em HTML puro: label associada por for/id, dois tipos de input e um select — sem nenhum estilo ainda."},
+  {html:`<h1 id="titulo">Loja Online</h1>\n<p class="destaque">Frete grátis esta semana.</p>\n<button id="btn-comprar">Comprar</button>`,css:`#titulo { color: #1a1a2e; }\n.destaque { font-weight: bold; color: #0f766e; }\n#btn-comprar { background: #2563eb; color: white; padding: 8px 16px; border: none; border-radius: 6px; }`,js:``,note:"O HTML acima já existia; aqui o CSS entra pela primeira vez, usando os três seletores desta parte: tag (h1 implícito), classe (.destaque) e ID (#titulo, #btn-comprar)."},
+  {html:`<div class="cartao">\n  <h2>Notebook X1</h2>\n  <p>Ideal para quem estuda front-end.</p>\n</div>`,css:`* { margin: 0; padding: 0; box-sizing: border-box; }\n.cartao { width: 320px; padding: 20px; border: 2px solid #111; border-radius: 10px; margin: 20px auto; }`,js:``,note:"O reset universal (*) zera as margens padrão do navegador antes do Box Model entrar em ação no .cartao."},
+  {html:`<div class="pagina">\n  <div class="selo">Novo</div>\n  <p>Conteúdo do cartão.</p>\n</div>`,css:`.pagina { position: relative; width: 280px; padding: 16px; border: 1px solid #ccc; }\n.selo { position: absolute; top: -10px; right: -10px; background: #ef4444; color: #fff; padding: 4px 10px; border-radius: 999px; z-index: 2; }`,js:``,note:"O .selo usa position: absolute em relação ao .pagina, que precisa ser position: relative para servir de referência."},
+  {html:`<button class="btn">Passe o mouse aqui</button>\n<p class="aviso">Atenção com este conceito.</p>`,css:`.btn { padding: 10px 18px; background: #2563eb; color: #fff; border: none; border-radius: 6px; transition: transform .2s, box-shadow .2s; }\n.btn:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,0,0,.2); }\n.aviso::before { content: "⚠ "; }`,js:``,note:"Combina uma pseudo-classe (:hover) com um pseudo-elemento (::before) no mesmo exemplo."},
+  {html:`<div class="container">\n  <div class="item">A</div>\n  <div class="item">B</div>\n  <div class="item">C</div>\n</div>`,css:`.container { display: flex; justify-content: center; align-items: center; gap: 20px; height: 160px; background: #f4f4f5; }\n.item { padding: 20px; background: #fff; border: 1px solid #ddd; }`,js:``,note:"justify-content centraliza no eixo principal, align-items no eixo transversal — a dupla mais usada do Flexbox."},
+  {html:`<div class="container">\n  <div class="item destaque">Cresce o dobro</div>\n  <div class="item">Normal</div>\n</div>`,css:`.container { display: flex; gap: 10px; }\n.item { flex: 1; padding: 16px; background: #e5e7eb; }\n.destaque { flex: 2; background: #bfdbfe; }`,js:``,note:"flex: 2 faz o item crescer o dobro do espaço disponível em relação a um item com flex: 1."},
+  {html:`<div class="grid">\n  <div>1</div><div>2</div><div>3</div>\n</div>`,css:`.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }\n.grid div { background: #f0fdfa; padding: 24px; text-align: center; }`,js:``,note:"repeat(3, 1fr) cria três colunas de largura igual — o mesmo que escrever 1fr 1fr 1fr."},
+  {html:`<div class="layout">\n  <header>Cabeçalho</header>\n  <aside>Menu</aside>\n  <main>Conteúdo</main>\n  <footer>Rodapé</footer>\n</div>`,css:`.layout { display: grid; grid-template-columns: 220px 1fr; grid-template-areas: "header header" "sidebar main" "footer footer"; gap: 15px; }\nheader { grid-area: header; } aside { grid-area: sidebar; } main { grid-area: main; } footer { grid-area: footer; }`,js:``,note:"grid-area conecta cada elemento ao nome definido em grid-template-areas no elemento pai."},
+  {html:`<div class="produto">\n  <img src="https://picsum.photos/300/180" alt="Produto">\n  <div class="info"><h3>Título</h3><span>R$ 99</span></div>\n</div>`,css:`.produto { display: grid; grid-template-rows: auto 1fr; border: 1px solid #ddd; }\n.info { display: flex; justify-content: space-between; align-items: center; padding: 12px; }`,js:``,note:"Grid organiza a estrutura maior do cartão (imagem em cima, informações embaixo) enquanto Flexbox alinha os itens dentro de .info — a combinação típica do dia a dia."},
+  {html:`<nav>\n  <a href="#">Início</a>\n  <a href="#">Artigos</a>\n  <a href="#">Contato</a>\n</nav>`,css:`html { font-size: 16px; }\nnav { display: flex; gap: 1rem; padding: 1rem; }\na { font-size: 1rem; }\n@media (min-width: 768px) { nav { justify-content: center; gap: 2rem; } }`,js:``,note:"1rem sempre equivale ao font-size do html — aqui, 16px. A media query só entra em ação em telas de 768px ou mais."},
+  {html:`<img src="https://picsum.photos/900/500" alt="Paisagem responsiva">`,css:`img { max-width: 100%; height: auto; display: block; }`,js:``,note:"Sem esta regra, uma imagem maior que a tela do celular estoura a largura do container e cria rolagem horizontal."},
+  {html:`<header>Portal</header>\n<main>\n  <article>Notícia 1</article>\n  <article>Notícia 2</article>\n  <article>Notícia 3</article>\n</main>\n<footer>Rodapé</footer>`,css:`* { box-sizing: border-box; }\nmain { display: grid; grid-template-columns: 1fr; gap: 1rem; padding: 1rem; }\narticle { background: #f4f4f5; padding: 1rem; }\n@media (min-width: 768px) { main { grid-template-columns: repeat(2, 1fr); } }\n@media (min-width: 1024px) { main { grid-template-columns: repeat(3, 1fr); } }`,js:``,note:"Mobile-first: a base é 1 coluna; min-width vai adicionando colunas conforme a tela cresce — nunca o contrário."}
 ];
 
 function chapterCodeFor(mi, qi){
@@ -304,24 +317,20 @@ state.quizSession=null;
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 function save(){localStorage.setItem("frontlab-state",JSON.stringify({...state,quizSession:null}));updateProgress()}
 function toast(msg){const t=$("#toast");t.textContent=msg;t.classList.add("show");clearTimeout(window._toast);window._toast=setTimeout(()=>t.classList.remove("show"),2300)}
-function completedCount(){return Object.keys(state.completed).filter(k=>state.completed[k]).length}
 function updateProgress(){
- const pct=Math.round(completedCount()/modules.length*100);$("#progressPercent").textContent=pct+"%";$("#progressBar").style.width=pct+"%";
  const acc=state.quiz.total?Math.round(state.quiz.correct/state.quiz.total*100):0;$("#dashAccuracy").textContent=acc+"% acerto";
 }
 function applyTheme(){
  document.documentElement.dataset.theme=state.theme;
  document.documentElement.style.fontSize=(16*state.fontScale)+"px";
- document.body.classList.toggle("light",state.theme==="light");
  $("#themeBtn").textContent=state.theme==="light"?"☀":"◐";
  $("#themeBtn").title=state.theme==="light"?"Mudar para tema escuro":"Mudar para tema claro";
 }
 function showView(name){
  $$(".view").forEach(v=>v.classList.remove("active"));const view=$("#view-"+name);if(!view)return;view.classList.add("active");
- $$(".nav-item").forEach(n=>n.classList.toggle("active",n.dataset.view===name));
- const label={dashboard:"Dashboard",trilha:"Trilha de estudos",aulas:"Aulas",quiz:"Quiz inteligente",flashcards:"Flashcards",desafios:"Desafios práticos",playground:"Meus projetos",anotacoes:"Anotações"}[name];$("#viewTitle").textContent=label||name;
- if(name==="dashboard")renderDashboard();if(name==="trilha")renderRoadmap();if(name==="aulas")renderLessons();if(name==="quiz")renderQuizHome();if(name==="flashcards")renderFlash();if(name==="desafios")renderChallenges();if(name==="playground"){renderCodeList();loadActiveCode()}if(name==="anotacoes")renderNotes();
- $("#sidebar").classList.remove("open");window.scrollTo({top:0,behavior:"smooth"});
+ $$(".topnav-item").forEach(n=>n.classList.toggle("active",n.dataset.view===(name==="aulas"?"trilha":name)));
+ $("#topnav").classList.remove("open");window.scrollTo({top:0,behavior:"smooth"});
+ if(name==="dashboard"){renderDashboard();renderFlash();}if(name==="trilha")renderRoadmap();if(name==="aulas")renderLessons();if(name==="quiz")renderQuizHome();if(name==="desafios")renderChallenges();if(name==="playground"){renderCodeList();loadActiveCode();renderCodeReference()}if(name==="anotacoes")renderNotes();
 }
 $$('[data-view]').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.view)));
 $$('[data-go]').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.go)));
@@ -334,31 +343,43 @@ function renderDashboard(){
 }
 function renderRoadmap(){
  const books={1:"A Estrutura Semântica com HTML5",2:"A Estilização e o Box Model com CSS3",3:"Layouts Modernos: Flexbox e CSS Grid",4:"Web Design Responsivo e Projeto Final"};
- $("#roadmap").innerHTML=Object.entries(books).map(([b,title])=>{const arr=modules.map((m,i)=>({m,i})).filter(x=>x.m.book==b);return `<section class="book-section"><div class="book-header"><div><span class="eyebrow">LIVRO ${b}</span><h2>${title}</h2><p>${arr.filter(x=>state.completed[x.i]).length}/${arr.length} partes concluídas</p></div></div><div class="parts">${arr.map((x,j)=>`<div class="part-card ${state.completed[x.i]?"done":""}" onclick="openLesson(${x.i})"><div class="part-number">${j+1}</div><div><strong>${x.m.title}</strong><small>${x.m.short}</small></div><span class="part-status">${state.completed[x.i]?"✓":"→"}</span></div>`).join("")}</div></section>`}).join("");
+ $("#roadmap").innerHTML=Object.entries(books).map(([b,title])=>{const arr=modules.map((m,i)=>({m,i})).filter(x=>x.m.book==b);return `<section class="book-section"><div class="book-header" onclick="openLesson(${arr[0].i})"><div><span class="eyebrow">LIVRO ${b}</span><h2>${title}</h2><p>${arr.filter(x=>state.completed[x.i]).length}/${arr.length} partes concluídas</p></div><span class="book-enter">Abrir livro →</span></div><div class="parts">${arr.map((x,j)=>`<div class="part-card ${state.completed[x.i]?"done":""}" onclick="event.stopPropagation();openLesson(${x.i})"><div class="part-number">${j+1}</div><div><strong>${x.m.title}</strong><small>${x.m.short}</small></div><span class="part-status">${state.completed[x.i]?"✓":"→"}</span></div>`).join("")}</div></section>`}).join("");
 }
 function openLesson(i){state.currentLesson=i;save();showView("aulas")}
 function renderLessons(){
- $("#lessonList").innerHTML=modules.map((m,i)=>`<button class="lesson-nav ${i===state.currentLesson?"active":""}" onclick="openLesson(${i})"><b>LIVRO ${m.book}</b>${i+1}. ${m.title}</button>`).join("");renderLessonContent();
+ const book=modules[state.currentLesson].book;
+ const arr=modules.map((m,i)=>({m,i})).filter(x=>x.m.book===book);
+ $("#lessonList").innerHTML=`<button class="lesson-back" onclick="showView('trilha')">← Voltar para a trilha</button>`+arr.map(x=>`<button class="lesson-nav ${x.i===state.currentLesson?"active":""}" onclick="openLesson(${x.i})"><b>PARTE ${(x.i%4)+1} DE 4</b>${x.m.title}</button>`).join("");
+ renderLessonContent();
+}
+function estimateReadingTime(m,ex){
+ const text=m.lessons.map(l=>l[0]+" "+l[1]).join(" ")+" "+m.short+" "+m.goals.join(" ");
+ const words=text.trim().split(/\s+/).filter(Boolean).length;
+ const codeChars=ex?((ex.html||"")+(ex.css||"")+(ex.js||"")).length:0;
+ return Math.max(4,Math.ceil(words/150+codeChars/450));
 }
 function renderLessonContent(){
  const i=state.currentLesson,m=modules[i],done=!!state.completed[i];
- const sections=m.lessons.map((l,j)=>`<section class="lesson-section"><h2>${j+1}. ${l[0]}</h2><p>${l[1]}</p><div class="study-check"><label><input type="checkbox" onchange="saveMicroCheck(${i},${j},this.checked)"> Eu consigo explicar este conceito sem consultar.</label></div></section>`).join("");
- let example='';
- if(i===0)example=`<pre><code>&lt;!DOCTYPE html&gt;\n&lt;html lang="pt-BR"&gt;\n&lt;head&gt;\n  &lt;meta charset="UTF-8"&gt;\n  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;\n  &lt;title&gt;Minha página&lt;/title&gt;\n&lt;/head&gt;\n&lt;body&gt;\n  &lt;h1&gt;Olá, mundo!&lt;/h1&gt;\n&lt;/body&gt;\n&lt;/html&gt;</code></pre>`;
- if(i===4)example=`<pre><code>p { color: #333; }\n.destaque { font-weight: bold; }\n#btn-comprar { background: green; }</code></pre>`;
- if(i===5)example=`<pre><code>* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n\n.card {\n  width: 300px;\n  padding: 20px;\n  border: 2px solid #000;\n  margin: 20px auto;\n}</code></pre>`;
- if(i===7)example=`<pre><code>.card:hover {\n  transform: translateY(-8px);\n  box-shadow: 0 12px 30px rgba(0,0,0,.18);\n  transition: transform .3s ease, box-shadow .3s ease;\n}</code></pre>`;
- if(i===8)example=`<pre><code>.container {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  gap: 20px;\n  flex-wrap: wrap;\n}</code></pre>`;
- if(i===10)example=`<pre><code>.grid-container {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 20px;\n}</code></pre>`;
- if(i===11)example=`<pre><code>.layout {\n  display: grid;\n  grid-template-columns: 250px 1fr;\n  grid-template-areas:\n    "header header"\n    "sidebar main"\n    "footer footer";\n  gap: 15px;\n}</code></pre>`;
- if(i===13)example=`<pre><code>/* Mobile */\n.grid-artigos { grid-template-columns: 1fr; }\n\n@media (min-width: 768px) {\n  .grid-artigos { grid-template-columns: repeat(2, 1fr); }\n}\n\n@media (min-width: 1024px) {\n  .grid-artigos { grid-template-columns: repeat(3, 1fr); }\n}</code></pre>`;
- if(i===14)example=`<pre><code>img, video {\n  max-width: 100%;\n  height: auto;\n  display: block;\n}</code></pre>`;
+ const totalSecs=m.lessons.length;
+ const mins=estimateReadingTime(m,chapterCodeExamples[i]);
+ const rail=m.lessons.map((_,j)=>`<i data-jump="${j}" title="Ir para a seção ${j+1}"></i>`).join("");
+ const sections=m.lessons.map((l,j)=>`<section class="lesson-section" id="lsec-${j}"><h2>${j+1}. ${l[0]}</h2><p>${l[1]}</p></section>`).join("");
+ const example=formatChapterExample(chapterCodeExamples[i]);
+ const recap=`<div class="recap-box"><span class="eyebrow">Pontos-chave para fixar</span><ul>${m.goals.map((g,n)=>`<li><b>${String(n+1).padStart(2,"0")}</b><span>${g}</span></li>`).join("")}</ul></div>`;
  const next=i<modules.length-1?`<button class="primary-btn" onclick="completeLesson(${i})">${done?"Continuar para a próxima parte":"Concluir e continuar"} →</button>`:`<button class="primary-btn" onclick="completeLesson(${i})">${done?"Revisar conclusão":"Concluir trilha"}</button>`;
- $("#lessonContent").innerHTML=`<span class="eyebrow">LIVRO ${m.book} • PARTE ${((i)%4)+1}</span><h1>${m.title}</h1><p class="lesson-lead">${m.short}</p><div class="goal-grid">${m.goals.map((g,n)=>`<div><b>${n+1}</b><span>${g}</span></div>`).join("")}</div>${sections}${example}<div class="concept"><strong>Agora é a sua vez</strong><p>Feche mentalmente a explicação e tente escrever um exemplo sozinho. Só depois compare com o exemplo acima. Se você conseguir explicar o motivo de cada linha, o conceito está começando a consolidar.</p></div><div class="lesson-actions"><button class="secondary-btn" onclick="startChapterQuiz(${i})">🧠 Quiz desta parte</button>${next}</div>`;
+ $("#lessonContent").innerHTML=`<span class="eyebrow">Livro ${m.book} • Parte ${((i)%4)+1}</span><h1>${m.title}</h1><p class="lesson-lead">${m.short}</p><div class="lesson-meta"><span>◷ ${mins} min de leitura</span><span>· ${totalSecs} seções</span></div><div class="lesson-progress-rail">${rail}</div><div class="goal-grid">${m.goals.map((g,n)=>`<div><b>${n+1}</b><span>${g}</span></div>`).join("")}</div>${sections}${example}${recap}<div class="lesson-actions"><button class="secondary-btn" onclick="startChapterQuiz(${i})">Quiz desta parte</button>${next}</div>`;
+ $$(".lesson-progress-rail i").forEach(el=>el.addEventListener("click",()=>{const t=$("#lsec-"+el.dataset.jump);if(t)t.scrollIntoView({behavior:"smooth",block:"start"})}));
 }
-const micro={};
-function saveMicroCheck(i,j,v){micro[i]=micro[i]||{};micro[i][j]=v}
-function completeLesson(i){state.completed[i]=true;state.currentLesson=Math.min(i+1,modules.length-1);save();toast("Parte concluída. Excelente — continue para a próxima.");renderLessonContent();renderDashboard()}
+function formatChapterExample(ex){
+ if(!ex)return"";
+ const parts=[];
+ if(ex.html&&ex.html.trim())parts.push(`<div class="example-block"><span class="example-label">HTML</span><pre><code>${escapeHtml(ex.html)}</code></pre></div>`);
+ if(ex.css&&ex.css.trim())parts.push(`<div class="example-block"><span class="example-label">CSS</span><pre><code>${escapeHtml(ex.css)}</code></pre></div>`);
+ if(ex.js&&ex.js.trim())parts.push(`<div class="example-block"><span class="example-label">JavaScript</span><pre><code>${escapeHtml(ex.js)}</code></pre></div>`);
+ if(!parts.length)return"";
+ return `<div class="section-block"><h3><span class="num">▤</span>Exemplo prático</h3>${ex.note?`<p class="example-note">${ex.note}</p>`:""}<div class="example-group">${parts.join("")}</div></div>`;
+}
+function completeLesson(i){state.completed[i]=true;state.currentLesson=Math.min(i+1,modules.length-1);save();toast("Parte concluída. Excelente — continue para a próxima.");renderLessons();renderDashboard()}
 
 function renderQuizHome(){
  if(state.quizSession){renderQuizQuestion();return}
@@ -434,13 +455,20 @@ function nextActiveQuiz(){
 function cancelQuiz(){delete state.quizSession;save();renderQuizHome()}
 
 function renderQuizResult(){
- const s=state.quizSession;const acc=Math.round(s.correct/s.answered*100)||0;state.quizHistory.unshift({date:Date.now(),type:s.type,title:s.title,chapterIndex:s.chapterIndex,correct:s.correct,total:s.answered,accuracy:acc});state.quizHistory=state.quizHistory.slice(0,20);save();
+ const s=state.quizSession;const acc=Math.round(s.correct/s.answered*100)||0;state.quizHistory.unshift({date:Date.now(),type:s.type,title:s.title,chapterIndex:s.chapterIndex,correct:s.correct,total:s.answered,accuracy:acc});state.quizHistory=state.quizHistory.slice(0,20);
+ state.lastSession={pool:s.pool,type:s.type,title:s.title,chapterIndex:s.chapterIndex};
+ save();
  const label=acc>=90?"Excelente domínio":acc>=70?"Bom desempenho":"Hora de revisar e tentar novamente";
- $("#quizShell").innerHTML=`<div class="score-card"><span class="eyebrow">DESEMPENHO DA SESSÃO</span><strong>${acc}%</strong><h2>${escapeHtml(s.title)}</h2><p>${label}. Você acertou <b>${s.correct}</b> de <b>${s.answered}</b> questões.</p><div class="metric-cards"><div><small>Acertos</small><b>${s.correct}</b></div><div><small>Erros</small><b>${s.answered-s.correct}</b></div><div><small>Precisão</small><b>${acc}%</b></div></div><div class="result-actions"><button class="primary-btn" onclick="newQuizSameType()">↻ Responder novo quiz</button><button class="secondary-btn" onclick="newQuizSameType()">↺ Refazer esta sessão</button><button class="ghost-btn" onclick="renderQuizHome()">Escolher outro modo</button></div></div>`;
+ $("#quizShell").innerHTML=`<div class="score-card"><span class="eyebrow">DESEMPENHO DA SESSÃO</span><strong>${acc}%</strong><h2>${escapeHtml(s.title)}</h2><p>${label}. Você acertou <b>${s.correct}</b> de <b>${s.answered}</b> questões.</p><div class="metric-cards"><div><small>Acertos</small><b>${s.correct}</b></div><div><small>Erros</small><b>${s.answered-s.correct}</b></div><div><small>Precisão</small><b>${acc}%</b></div></div><div class="result-actions"><button class="primary-btn" onclick="newQuizSameType()">↻ Novo quiz (questões diferentes)</button><button class="secondary-btn" onclick="repeatLastSession()">↺ Refazer estas mesmas questões</button><button class="ghost-btn" onclick="renderQuizHome()">Escolher outro modo</button></div></div>`;
  delete state.quizSession;
 }
 function newQuizSameType(){const last=state.quizHistory[0];if(last?.type==="chapter"&&Number.isInteger(last.chapterIndex))startChapterQuiz(last.chapterIndex);else startGlobalQuiz()}
-function cancelQuiz(){delete state.quizSession;save();renderQuizHome()}
+function repeatLastSession(){
+ const ls=state.lastSession;if(!ls){newQuizSameType();return}
+ if(ls.type==="chapter")showView("quiz");
+ state.quizSession={pool:ls.pool,pos:0,correct:0,answered:0,type:ls.type,title:ls.title,chapterIndex:ls.chapterIndex};
+ renderQuizQuestion();
+}
 
 function renderFlash(){const i=state.flashIndex,[q,a]=flashcards[i];$("#flashWrap").innerHTML=`<div class="flashcard" id="flashcard" onclick="this.classList.toggle('flipped')"><div class="flash-inner"><div class="flash-face"><small>PERGUNTA ${i+1}/${flashcards.length}</small><h2>${q}</h2><p>Clique para revelar a resposta</p></div><div class="flash-face back"><small>RESPOSTA</small><h2>${a}</h2><p>Clique para voltar</p></div></div></div><div class="flash-controls"><button class="secondary-btn" onclick="prevFlash()">← Anterior</button><button class="primary-btn" onclick="nextFlash()">Próximo →</button></div>`}
 function nextFlash(){state.flashIndex=(state.flashIndex+1)%flashcards.length;save();renderFlash()}function prevFlash(){state.flashIndex=(state.flashIndex-1+flashcards.length)%flashcards.length;save();renderFlash()}
@@ -600,77 +628,362 @@ const codeReference=[
  {cat:"Cores",items:[
   ["Cor de texto","color: #2563eb;","color: #2563eb;","Escolha a cor do texto. Hexadecimal usa #RRGGBB."],
   ["Fundo","background-color: #eef3f8;","background-color: #eef3f8;","Define a cor de fundo."],
-  ["Cor em hexadecimal","#2563eb","color: #2563eb;","Formato #RRGGBB. Exemplos: #000000 preto, #ffffff branco."],
-  ["Transparência","rgba(37, 99, 235, .35)","background: rgba(37, 99, 235, .35);","RGBA permite controlar o canal alpha de 0 a 1."]
+  ["Transparência (RGBA)","rgba(37, 99, 235, .35)","background: rgba(37, 99, 235, .35);","RGBA permite controlar o canal alpha (transparência) de 0 a 1."],
+  ["Vermelho","#ef4444","background-color: #ef4444;","Ótimo para alertas, erros e chamadas de atenção.","#ef4444"],
+  ["Vermelho escuro","#b91c1c","background-color: #b91c1c;","Uma variação mais séria do vermelho.","#b91c1c"],
+  ["Rosa","#ec4899","background-color: #ec4899;","Cor vibrante, comum em destaques e selos.","#ec4899"],
+  ["Roxo","#8b5cf6","background-color: #8b5cf6;","Transmite criatividade; comum em marcas modernas.","#8b5cf6"],
+  ["Índigo","#6366f1","background-color: #6366f1;","Azul-arroxeado equilibrado, muito usado em interfaces.","#6366f1"],
+  ["Azul","#3b82f6","background-color: #3b82f6;","Cor clássica para links e ações primárias.","#3b82f6"],
+  ["Azul claro","#60a5fa","background-color: #60a5fa;","Uma variação mais suave do azul.","#60a5fa"],
+  ["Ciano","#06b6d4","background-color: #06b6d4;","Fresco e moderno, bom para destaques.","#06b6d4"],
+  ["Teal (verde-azulado)","#0f766e","background-color: #0f766e;","Combina bem com fundos claros e escuros.","#0f766e"],
+  ["Verde","#22c55e","background-color: #22c55e;","Associado a sucesso, confirmação e crescimento.","#22c55e"],
+  ["Verde lima","#84cc16","background-color: #84cc16;","Uma cor vibrante e energética.","#84cc16"],
+  ["Amarelo","#eab308","background-color: #eab308;","Chama atenção; use com moderação em textos.","#eab308"],
+  ["Âmbar","#f59e0b","background-color: #f59e0b;","Bom para avisos e alertas de atenção.","#f59e0b"],
+  ["Laranja","#f97316","background-color: #f97316;","Energética, ótima para botões de ação.","#f97316"],
+  ["Marrom","#78350f","background-color: #78350f;","Tom terroso, usado em temas mais naturais.","#78350f"],
+  ["Cinza claro","#e2e8f0","background-color: #e2e8f0;","Ótimo para fundos neutros e divisores sutis.","#e2e8f0"],
+  ["Cinza","#94a3b8","background-color: #94a3b8;","Boa opção para textos secundários.","#94a3b8"],
+  ["Cinza escuro","#1e293b","background-color: #1e293b;","Comum em temas escuros como fundo de painel.","#1e293b"],
+  ["Preto","#000000","background-color: #000000;","Use com cautela — prefira cinza escuro em telas grandes de texto.","#000000"],
+  ["Branco","#ffffff","background-color: #ffffff;","Fundo neutro clássico para temas claros.","#ffffff"]
+ ]},
+ {cat:"Gradientes",items:[
+  ["Degradê azul → ciano","linear-gradient(135deg,#3b82f6,#06b6d4)","background: linear-gradient(135deg, #3b82f6, #06b6d4);","Ótimo para banners e botões de destaque.","linear-gradient(135deg,#3b82f6,#06b6d4)"],
+  ["Degradê roxo → rosa","linear-gradient(135deg,#8b5cf6,#ec4899)","background: linear-gradient(135deg, #8b5cf6, #ec4899);","Combinação vibrante para seções de destaque.","linear-gradient(135deg,#8b5cf6,#ec4899)"],
+  ["Degradê verde → ciano","linear-gradient(135deg,#22c55e,#06b6d4)","background: linear-gradient(135deg, #22c55e, #06b6d4);","Transmite frescor; funciona bem em cards.","linear-gradient(135deg,#22c55e,#06b6d4)"],
+  ["Degradê pôr do sol","linear-gradient(135deg,#f97316,#ec4899)","background: linear-gradient(135deg, #f97316, #ec4899);","Cores quentes, ótimo para heróis chamativos.","linear-gradient(135deg,#f97316,#ec4899)"],
+  ["Degradê escuro","linear-gradient(135deg,#0b1020,#1e293b)","background: linear-gradient(135deg, #0b1020, #1e293b);","Sutil, ideal para fundos de seções escuras.","linear-gradient(135deg,#0b1020,#1e293b)"],
+  ["Degradê radial","radial-gradient(circle,#3b82f6,#0b1020)","background: radial-gradient(circle, #3b82f6, #0b1020);","Parte de um ponto central e se espalha para fora — bom para holofotes e destaques.","radial-gradient(circle,#3b82f6,#0b1020)"],
+  ["Degradê com 3 cores","linear-gradient com 3 paradas","background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);","Use porcentagens para controlar onde cada cor começa e termina.","linear-gradient(135deg,#3b82f6,#8b5cf6,#ec4899)"],
+  ["Texto com gradiente","background-clip: text","background: linear-gradient(135deg,#3b82f6,#ec4899);\n-webkit-background-clip: text;\n-webkit-text-fill-color: transparent;","Aplica o degradê diretamente no texto em vez do fundo."]
  ]},
  {cat:"Fontes",items:[
   ["Tamanho","font-size: 1rem;","font-size: 1rem;","Use rem para manter o tamanho relativo à raiz."],
   ["Peso","font-weight: 700;","font-weight: 700;","400 é regular; 600/700 deixam o texto mais forte."],
   ["Itálico","font-style: italic;","font-style: italic;","Aplica estilo itálico."],
   ["Sublinhado","text-decoration: underline;","text-decoration: underline;","Adiciona sublinhado ao texto."],
-  ["Altura da linha","line-height: 1.6;","line-height: 1.6;","Controla o espaço vertical entre linhas."]
+  ["Remover sublinhado","text-decoration: none;","text-decoration: none;","Comum em links para removerem o sublinhado padrão."],
+  ["Altura da linha","line-height: 1.6;","line-height: 1.6;","Controla o espaço vertical entre linhas."],
+  ["Fonte do sistema","font-family: system-ui, sans-serif;","font-family: system-ui, sans-serif;","Usa a fonte nativa do sistema operacional — carrega mais rápido."],
+  ["Pilha de fontes com fallback","font-family: 'Inter', Arial, sans-serif;","font-family: 'Inter', Arial, sans-serif;","Se a primeira fonte não carregar, o navegador tenta a próxima da lista."],
+  ["Alinhamento de texto","text-align: center;","text-align: center;","Alinha o texto: left, center, right ou justify."],
+  ["Espaçamento entre letras","letter-spacing: .05em;","letter-spacing: .05em;","Útil em títulos maiúsculos e rótulos pequenos."],
+  ["Maiúsculas via CSS","text-transform: uppercase;","text-transform: uppercase;","Transforma o texto sem alterar o HTML original."],
+  ["Sombra no texto","text-shadow: 0 2px 6px rgba(0,0,0,.3);","text-shadow: 0 2px 6px rgba(0,0,0,.3);","Adiciona profundidade ao texto, útil sobre imagens de fundo."],
+  ["Impedir quebra de linha","white-space: nowrap;","white-space: nowrap;","Mantém o texto em uma única linha, mesmo que ultrapasse o espaço."],
+  ["Quebrar palavras longas","word-break: break-word;","word-break: break-word;","Evita que uma palavra ou URL muito longa estoure o layout."]
  ]},
  {cat:"Espaçamento",items:[
   ["Padding","padding: 1rem;","padding: 1rem;","Espaço interno entre conteúdo e borda."],
   ["Margin","margin: 1rem;","margin: 1rem;","Espaço externo ao redor do elemento."],
-  ["Gap","gap: 1rem;","gap: 1rem;","Espaço entre itens de Flexbox ou Grid."]
+  ["Gap","gap: 1rem;","gap: 1rem;","Espaço entre itens de Flexbox ou Grid."],
+  ["Padding só nas laterais","padding: 0 20px;","padding: 0 20px;","Atalho: topo/baixo 0, esquerda/direita 20px."],
+  ["Centralizar bloco","margin: 0 auto;","margin: 0 auto;","Centraliza horizontalmente um elemento com largura definida."],
+  ["Espaço só embaixo","margin-bottom: 16px;","margin-bottom: 16px;","Empurra o próximo elemento pra baixo."],
+  ["Margin negativa","margin-top: -10px;","margin-top: -10px;","Aproxima elementos sobrepondo levemente o espaço padrão."]
+ ]},
+ {cat:"Bordas",items:[
+  ["Borda simples","border: 1px solid #d0d5dd;","border: 1px solid #d0d5dd;","Contorno básico ao redor do elemento."],
+  ["Arredondamento total","border-radius: 999px;","border-radius: 999px;","Cria formato de pílula ou círculo perfeito (em quadrados)."],
+  ["Arredondamento parcial","border-radius: 12px 12px 0 0;","border-radius: 12px 12px 0 0;","Arredonda só os cantos de cima."],
+  ["Borda só embaixo","border-bottom: 2px solid #2563eb;","border-bottom: 2px solid #2563eb;","Comum em abas e indicadores de seleção."],
+  ["Contorno de foco","outline: 2px solid #2563eb;","outline: 2px solid #2563eb;","Não ocupa espaço no layout como a borda comum."],
+  ["Borda tracejada","border: 2px dashed #94a3b8;","border: 2px dashed #94a3b8;","Boa para áreas de upload ou zonas de destaque leve."]
  ]},
  {cat:"Efeitos",items:[
-  ["Sombra","box-shadow: 0 10px 30px rgba(0,0,0,.12);","box-shadow: 0 10px 30px rgba(0,0,0,.12);","Cria profundidade visual."],
-  ["Arredondamento","border-radius: 12px;","border-radius: 12px;","Arredonda os cantos."],
+  ["Sombra padrão","box-shadow: 0 10px 30px rgba(0,0,0,.12);","box-shadow: 0 10px 30px rgba(0,0,0,.12);","Cria profundidade visual equilibrada."],
+  ["Sombra leve","box-shadow: 0 4px 12px rgba(0,0,0,.08);","box-shadow: 0 4px 12px rgba(0,0,0,.08);","Sombra sutil, boa para cards discretos."],
+  ["Sombra forte","box-shadow: 0 20px 45px rgba(0,0,0,.28);","box-shadow: 0 20px 45px rgba(0,0,0,.28);","Sombra intensa, cria bastante profundidade."],
+  ["Sombra colorida","box-shadow: 0 12px 30px rgba(37,99,235,.35);","box-shadow: 0 12px 30px rgba(37,99,235,.35);","Usa a cor do próprio elemento na sombra, efeito moderno."],
+  ["Sombra interna","box-shadow: inset 0 2px 6px rgba(0,0,0,.2);","box-shadow: inset 0 2px 6px rgba(0,0,0,.2);","A palavra inset faz a sombra aparecer para dentro do elemento."],
   ["Transição","transition: .2s ease;","transition: .2s ease;","Suaviza mudanças de propriedades."],
-  ["Hover","transform: translateY(-4px);","transform: translateY(-4px);","Geralmente usado dentro de :hover para movimento."]
+  ["Hover com movimento","transform: translateY(-4px);","transform: translateY(-4px);","Geralmente usado dentro de :hover para dar sensação de elevação."],
+  ["Opacidade","opacity: .6;","opacity: .6;","Controla a transparência geral do elemento, de 0 a 1."],
+  ["Desfoque de fundo","backdrop-filter: blur(8px);","backdrop-filter: blur(8px);","Efeito vidro fosco atrás de um elemento semitransparente."],
+  ["Desfoque no elemento","filter: blur(4px);","filter: blur(4px);","Desfoca o próprio elemento (imagem, card, etc)."],
+  ["Escala de cinza","filter: grayscale(100%);","filter: grayscale(100%);","Remove a cor da imagem; comum em galerias com hover colorido."],
+  ["Brilho","filter: brightness(1.1);","filter: brightness(1.1);","Valores acima de 1 clareiam, abaixo de 1 escurecem."],
+  ["Contraste","filter: contrast(1.2);","filter: contrast(1.2);","Aumenta ou diminui a diferença entre claros e escuros."],
+  ["Mesclar cores do fundo","mix-blend-mode: multiply;","mix-blend-mode: multiply;","Mescla a cor do elemento com o que está atrás dele."]
+ ]},
+ {cat:"Transformações",items:[
+  ["Girar elemento","transform: rotate(8deg);","transform: rotate(8deg);","Rotaciona o elemento em graus."],
+  ["Aumentar no hover","transform: scale(1.05);","transform: scale(1.05);","Cresce levemente o elemento — efeito clássico de hover em cards."],
+  ["Inclinar elemento","transform: skew(-6deg);","transform: skew(-6deg);","Inclina o elemento nos eixos X/Y, criando efeito dinâmico."],
+  ["Mover sem afetar o layout","transform: translate(10px, -5px);","transform: translate(10px, -5px);","Desloca o elemento visualmente sem empurrar os vizinhos."],
+  ["Ponto de origem da transformação","transform-origin: top left;","transform-origin: top left;","Define a partir de qual ponto o rotate/scale acontece."],
+  ["Combinar transformações","transform: rotate(5deg) scale(1.1);","transform: rotate(5deg) scale(1.1);","Várias transformações podem ser aplicadas juntas, separadas por espaço."],
+  ["Animação simples","@keyframes","@keyframes surgir {\n  from { opacity: 0; transform: translateY(10px); }\n  to { opacity: 1; transform: translateY(0); }\n}","Define os passos de uma animação; aplique com a propriedade animation."],
+  ["Aplicar animação","animation: surgir .4s ease;","animation: surgir .4s ease;","Usa um @keyframes já definido, com duração e curva de tempo."],
+  ["Animação em loop","animation: girar 2s linear infinite;","animation: girar 2s linear infinite;","infinite repete a animação para sempre; útil para spinners de carregamento."],
+  ["Atraso na transição","transition-delay: .15s;","transition-delay: .15s;","Atrasa o início de uma transição — útil para animações em sequência."]
+ ]},
+ {cat:"Posicionamento",items:[
+  ["Relativo","position: relative;","position: relative;","Serve de referência para filhos com position: absolute."],
+  ["Absoluto","position: absolute;","position: absolute;","Sai do fluxo normal e se posiciona em relação ao pai posicionado."],
+  ["Fixo","position: fixed;","position: fixed;","Fica fixo na tela mesmo com a rolagem da página."],
+  ["Grudento (sticky)","position: sticky;","position: sticky;","Rola normalmente até atingir um limite, depois gruda na tela."],
+  ["Camadas (z-index)","z-index: 10;","z-index: 10;","Controla qual elemento fica por cima; só funciona em elementos posicionados."]
+ ]},
+ {cat:"Cursor e overflow",items:[
+  ["Cursor de clique","cursor: pointer;","cursor: pointer;","Indica visualmente que o elemento é clicável."],
+  ["Esconder excesso","overflow: hidden;","overflow: hidden;","Esconde qualquer conteúdo que ultrapasse os limites da caixa."],
+  ["Rolagem automática","overflow: auto;","overflow: auto;","Mostra barra de rolagem só quando necessário."],
+  ["Texto cortado com reticências","text-overflow: ellipsis;","white-space: nowrap; overflow: hidden; text-overflow: ellipsis;","Corta o texto longo em uma linha e adiciona “...” no final."]
  ]},
  {cat:"Layout",items:[
   ["Flexbox","display: flex;","display: flex;","Ativa layout Flexbox."],
   ["Centralizar Flex","justify-content + align-items","display:flex; justify-content:center; align-items:center;","Centraliza nos dois eixos quando o contexto permite."],
+  ["Flexbox em coluna","flex-direction: column;","display:flex; flex-direction:column;","Empilha os itens na vertical em vez da horizontal."],
+  ["Permitir quebra de linha no flex","flex-wrap: wrap;","flex-wrap: wrap;","Deixa os itens passarem para a próxima linha quando não cabem mais."],
+  ["Distribuir espaço entre itens","justify-content: space-between;","justify-content: space-between;","Empurra o primeiro item para o início e o último para o fim, distribuindo o resto."],
+  ["Crescer para preencher espaço","flex: 1;","flex: 1;","Faz o item crescer para ocupar o espaço disponível no flex container."],
+  ["Alinhar múltiplas linhas","align-content: center;","align-content: center;","Controla o alinhamento de várias linhas quando há flex-wrap."],
   ["Grid","display: grid;","display: grid;","Ativa CSS Grid."],
-  ["Colunas Grid","repeat(3, 1fr)","grid-template-columns: repeat(3, 1fr);","Cria três colunas proporcionais."]
+  ["Colunas Grid","repeat(3, 1fr)","grid-template-columns: repeat(3, 1fr);","Cria três colunas proporcionais."],
+  ["Grid responsivo automático","repeat(auto-fit, minmax(...))","grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));","Cria colunas automaticamente, sem precisar de media query."],
+  ["Áreas nomeadas de Grid","grid-template-areas","grid-template-areas:\n  \"header header\"\n  \"menu   conteudo\";","Desenha o layout com nomes, ligados via grid-area em cada filho."],
+  ["Item ocupando várias colunas","grid-column: span 2;","grid-column: span 2;","Faz um item do grid ocupar duas colunas em vez de uma."],
+  ["Centralizar em Grid","place-items: center;","place-items: center;","Atalho que centraliza nos dois eixos dentro de um grid container."],
+  ["Múltiplas colunas de texto","columns: 3;","columns: 3;","Divide o texto em colunas, como um jornal."],
+  ["Proporção fixa","aspect-ratio: 16 / 9;","aspect-ratio: 16 / 9;","Mantém a proporção largura/altura mesmo quando o tamanho muda."],
+  ["Ocultar elemento","display: none;","display: none;","Remove o elemento completamente do layout."]
+ ]},
+ {cat:"Seletores CSS",items:[
+  ["Seletor de classe",".minha-classe",".minha-classe { color: blue; }","Aplica o estilo a qualquer elemento com essa classe."],
+  ["Seletor de ID","#meu-id","#meu-id { color: blue; }","Aplica o estilo a um único elemento — use com moderação."],
+  ["Seletor descendente",".card p",".card p { color: gray; }","Seleciona todo <p> que esteja dentro de um .card, em qualquer profundidade."],
+  ["Filho direto",".card > p",".card > p { color: gray; }","Seleciona apenas os <p> que são filhos diretos de .card."],
+  ["Irmão adjacente","h2 + p","h2 + p { margin-top: 0; }","Seleciona o elemento que vem logo depois, no mesmo nível."],
+  ["Todos os irmãos seguintes","h2 ~ p","h2 ~ p { color: gray; }","Seleciona todos os <p> que vêm depois de h2 no mesmo nível."],
+  ["Seletor de atributo","[type=\"email\"]","input[type=\"email\"] { border-color: blue; }","Seleciona elementos com base em um atributo e valor."],
+  ["Agrupar seletores","h1, h2, h3","h1, h2, h3 { font-family: sans-serif; }","Aplica o mesmo estilo a vários seletores de uma vez, separados por vírgula."],
+  ["Primeiro filho",":first-child",".lista li:first-child { font-weight: bold; }","Seleciona o elemento apenas se for o primeiro filho do seu pai."],
+  ["Último filho",":last-child",".lista li:last-child { border: 0; }","Seleciona o elemento apenas se for o último filho do seu pai."],
+  ["Elemento específico por posição",":nth-child(2)","tr:nth-child(even) { background: #f4f4f4; }","Seleciona elementos por posição; aceita números, even, odd ou fórmulas."],
+  ["Negação",":not(...)",".btn:not(.desativado) { cursor: pointer; }","Seleciona tudo que NÃO casa com o seletor dentro dos parênteses."],
+  ["Pseudo-elemento antes","::before",".aviso::before { content: \"⚠ \"; }","Insere conteúdo gerado antes do elemento, via CSS."],
+  ["Pseudo-elemento depois","::after",".externo::after { content: \" ↗\"; }","Insere conteúdo gerado depois do elemento, via CSS."],
+  ["Seletor universal","*","* { box-sizing: border-box; }","Seleciona absolutamente todos os elementos da página."]
+ ]},
+ {cat:"Variáveis CSS",items:[
+  ["Declarar variável global","--cor-primaria",":root {\n  --cor-primaria: #3b82f6;\n}","Variáveis definidas em :root ficam disponíveis em toda a página."],
+  ["Usar variável","var(--cor-primaria)","color: var(--cor-primaria);","Aplica o valor guardado na variável CSS."],
+  ["Variável com valor padrão","var(--cor, azul)","color: var(--cor-secundaria, #64748b);","Se a variável não existir, usa o valor depois da vírgula como padrão."],
+  ["Redefinir variável num escopo","--espaco local",".card {\n  --espaco: 12px;\n  padding: var(--espaco);\n}","A mesma variável pode ter valores diferentes dentro de contextos específicos."]
+ ]},
+ {cat:"Box Model e Display",items:[
+  ["Incluir borda e padding na largura","box-sizing: border-box;","box-sizing: border-box;","Faz o width definido já incluir padding e borda — muito recomendado usar em tudo (*)."],
+  ["Bloco","display: block;","display: block;","Ocupa a linha toda; aceita width, height, margin e padding em todas as direções."],
+  ["Em linha","display: inline;","display: inline;","Ocupa só o espaço do conteúdo; ignora width, height e margin vertical."],
+  ["Em linha com dimensões","display: inline-block;","display: inline-block;","Fica na mesma linha que os vizinhos, mas aceita width e height."],
+  ["Largura total","width: 100%;","width: 100%;","Faz o elemento ocupar toda a largura disponível do pai."],
+  ["Largura máxima","max-width: 600px;","max-width: 600px;","Impede que o elemento fique mais largo que o valor definido."],
+  ["Altura da tela inteira","height: 100vh;","height: 100vh;","100% da altura visível da janela do navegador."],
+  ["Caixa invisível mas ocupando espaço","visibility: hidden;","visibility: hidden;","Diferente de display:none — o espaço do elemento continua reservado no layout."]
  ]},
  {cat:"Responsividade",items:[
-  ["Media Query","@media (min-width: 768px)","@media (min-width: 768px) { ... }","Permite adaptar o layout conforme a largura da tela."],
+  ["Media Query (tablet)","@media (min-width: 768px)","@media (min-width: 768px) { ... }","Ponto de quebra comum para tablets."],
+  ["Media Query (desktop)","@media (min-width: 1024px)","@media (min-width: 1024px) { ... }","Ponto de quebra comum para telas maiores."],
+  ["Media Query (celular pequeno)","@media (max-width: 480px)","@media (max-width: 480px) { ... }","Ajustes finos para telas bem pequenas."],
   ["Imagem responsiva","max-width: 100%","img { max-width: 100%; height: auto; }","Evita que a imagem ultrapasse o container."],
-  ["Unidade rem","1rem","font-size: 1rem;","Relacionada ao tamanho da fonte do elemento raiz."]
+  ["Ocultar em telas pequenas","display: none dentro de media query","@media (max-width: 600px) {\n  .apenas-desktop { display: none; }\n}","Esconde um elemento apenas abaixo de um tamanho de tela."],
+  ["Fonte fluida sem media query","clamp(min, ideal, max)","font-size: clamp(1.2rem, 4vw, 2.5rem);","O tamanho cresce com a tela, mas nunca fica menor nem maior que os limites."],
+  ["Orientação da tela","@media (orientation: landscape)","@media (orientation: landscape) { ... }","Aplica estilos conforme o celular está na horizontal ou vertical."],
+  ["Media Query combinada","min-width e max-width juntos","@media (min-width: 768px) and (max-width: 1023px) { ... }","Aplica estilos só dentro de uma faixa específica de largura, como tablets."]
  ]},
- {cat:"HTML",items:[
-  ["Título","<h1>...</h1>","<h1>Título principal</h1>","Use para o título principal da página."],
-  ["Link","<a href=\"...\">","<a href=\"https://exemplo.com\">Visitar</a>","Cria hiperlinks."],
-  ["Imagem","<img>","<img src=\"imagem.jpg\" alt=\"Descrição\">","Inclua texto alternativo em imagens."]
+ {cat:"Unidades",items:[
+  ["Pixel","16px","font-size: 16px;","Unidade fixa, não escala com preferências do usuário."],
+  ["Rem","1rem","font-size: 1rem;","Relativa ao tamanho de fonte do elemento raiz (html)."],
+  ["Em","1.2em","padding: 1.2em;","Relativa ao tamanho de fonte do próprio elemento (ou do pai, em alguns casos)."],
+  ["Porcentagem","50%","width: 50%;","Relativa ao tamanho do elemento pai."],
+  ["Viewport width","50vw","width: 50vw;","50% da largura visível da tela."],
+  ["Viewport height","100vh","height: 100vh;","100% da altura visível da tela."],
+  ["Fração do grid","1fr","grid-template-columns: 1fr 2fr;","Só existe dentro do Grid; representa uma fração do espaço disponível."],
+  ["Character unit","20ch","max-width: 20ch;","Baseada na largura do caractere “0” da fonte — ótima para limitar linhas de texto."],
+  ["Graus","45deg","transform: rotate(45deg);","Usada em rotação e em direções de gradiente."],
+  ["Segundos",".3s","transition: .3s ease;","Usada para duração de transições e animações."],
+  ["Valor sem unidade (zero)","margin: 0;","margin: 0;","Zero nunca precisa de unidade em CSS."]
+ ]},
+ {cat:"Acessibilidade",items:[
+  ["Texto alternativo","alt=\"...\"","<img src=\"foto.jpg\" alt=\"Descrição da imagem\">","Essencial para leitores de tela e para quando a imagem falha ao carregar."],
+  ["Rótulo acessível","aria-label=\"...\"","<button aria-label=\"Fechar\">×</button>","Dá nome a elementos sem texto visível, como ícones."],
+  ["Ordem de navegação por teclado","tabindex=\"0\"","<div tabindex=\"0\">Foco por teclado</div>","Permite que um elemento não interativo receba foco via Tab."],
+  ["Foco visível","outline no :focus-visible",":focus-visible { outline: 2px solid #2563eb; }","Mostra contorno de foco só na navegação por teclado, não no clique do mouse."],
+  ["Associar label e input","for + id","<label for=\"nome\">Nome</label>\n<input id=\"nome\">","O for da label deve ser igual ao id do input correspondente."],
+  ["Esconder de todos, exceto leitores de tela","aria-hidden vs sr-only","<span class=\"sr-only\">Menu principal</span>","aria-hidden=\"true\" esconde do leitor de tela; a classe sr-only (custom) esconde visualmente mas mantém acessível."],
+  ["Papel semântico extra","role=\"...\"","<div role=\"alert\">Erro ao salvar!</div>","Informa a leitores de tela o propósito de um elemento genérico."],
+  ["Respeitar preferência de menos movimento","prefers-reduced-motion","@media (prefers-reduced-motion: reduce) {\n  * { animation: none !important; }\n}","Desativa animações para usuários sensíveis a movimento."]
+ ]},
+ {cat:"HTML — Estrutura e texto",items:[
+  ["Estrutura mínima do documento","<!DOCTYPE html>","<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Página</title>\n</head>\n<body>\n\n</body>\n</html>","O esqueleto que todo documento HTML5 deve ter."],
+  ["Meta viewport (responsivo)","<meta name=\"viewport\">","<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">","Essencial para o site se adaptar corretamente a telas de celular."],
+  ["Meta charset","<meta charset=\"UTF-8\">","<meta charset=\"UTF-8\">","Garante que acentos e caracteres especiais apareçam corretamente."],
+  ["Título da página","<h1>...</h1>","<h1>Título principal</h1>","Use para o título principal da página — apenas um h1 por página."],
+  ["Cabeçalho da página","<header>","<header>\n  <h1>Logo</h1>\n</header>","Área de topo com logo, título ou menu principal."],
+  ["Menu de navegação","<nav>","<nav>\n  <a href=\"#\">Início</a>\n  <a href=\"#\">Sobre</a>\n</nav>","Agrupa os principais links de navegação do site."],
+  ["Conteúdo principal","<main>","<main>\n  \n</main>","Deve haver apenas um <main> por página, com o conteúdo central."],
+  ["Seção de conteúdo","<section>","<section>\n  <h2>Sobre nós</h2>\n</section>","Agrupa um bloco de conteúdo relacionado, geralmente com seu próprio título."],
+  ["Artigo independente","<article>","<article>\n  <h2>Título do post</h2>\n  <p>Texto...</p>\n</article>","Conteúdo que faz sentido sozinho, como um post de blog ou notícia."],
+  ["Conteúdo lateral","<aside>","<aside>\n  <p>Anúncio ou link relacionado</p>\n</aside>","Conteúdo complementar, não essencial para o entendimento principal."],
+  ["Rodapé","<footer>","<footer>\n  <p>&copy; 2026 Minha Empresa</p>\n</footer>","Área final da página, com direitos autorais ou links secundários."],
+  ["Link","<a href=\"...\">","<a href=\"https://exemplo.com\">Visitar</a>","Cria hiperlinks; use target=\"_blank\" para abrir em nova aba."],
+  ["Parágrafo","<p>","<p>Texto do parágrafo.</p>","Elemento de bloco para blocos de texto corrido."],
+  ["Negrito com importância","<strong>","<strong>Texto importante</strong>","Diferente de <b>: <strong> indica importância semântica, não só visual."],
+  ["Ênfase (itálico semântico)","<em>","<em>Texto com ênfase</em>","Indica ênfase no tom da frase, lido de forma diferente por leitores de tela."],
+  ["Texto em destaque (marcador)","<mark>","<mark>Texto destacado</mark>","Realça um trecho, como um marcador de texto amarelo."],
+  ["Texto pequeno","<small>","<small>Termos e condições</small>","Usado para avisos legais, créditos ou texto secundário."],
+  ["Citação em bloco","<blockquote>","<blockquote>\n  <p>Uma citação longa.</p>\n</blockquote>","Para citações de outras fontes, geralmente com recuo visual."],
+  ["Abreviação com explicação","<abbr>","<abbr title=\"HyperText Markup Language\">HTML</abbr>","O atributo title mostra a explicação completa ao passar o mouse."],
+  ["Código inline","<code>","<code>const x = 1;</code>","Para trechos curtos de código dentro de um parágrafo."],
+  ["Bloco de código pré-formatado","<pre>","<pre><code>function soma(a, b) {\n  return a + b;\n}</code></pre>","Preserva espaços e quebras de linha exatamente como escritos."],
+  ["Linha divisória","<hr>","<hr>","Cria uma linha horizontal separando seções de conteúdo."],
+  ["Quebra de linha","<br>","Linha 1<br>Linha 2","Força uma quebra de linha simples, sem criar novo parágrafo."],
+  ["Lista não ordenada","<ul><li>...</li></ul>","<ul>\n  <li>Item 1</li>\n  <li>Item 2</li>\n</ul>","Cria uma lista com marcadores."],
+  ["Lista ordenada","<ol><li>...</li></ol>","<ol>\n  <li>Primeiro passo</li>\n  <li>Segundo passo</li>\n</ol>","Cria uma lista numerada, ideal para instruções em sequência."],
+  ["Lista de definições","<dl><dt><dd>","<dl>\n  <dt>HTML</dt>\n  <dd>Linguagem de marcação.</dd>\n</dl>","dt é o termo, dd é a definição — bom para glossários e FAQs."],
+  ["Comentário HTML","<!-- ... -->","<!-- Isto é um comentário, não aparece na página -->","Útil para anotações no código sem afetar o resultado visual."],
+  ["Elemento genérico de bloco","<div>","<div class=\"caixa\">\n  \n</div>","Sem significado semântico próprio — use quando nenhuma tag específica se encaixa."],
+  ["Elemento genérico em linha","<span>","<span class=\"destaque\">texto</span>","Como o div, mas em linha — útil para estilizar um trecho dentro de um parágrafo."],
+  ["Data e hora legíveis pela máquina","<time>","<time datetime=\"2026-06-09\">9 de junho</time>","O atributo datetime deixa a data em formato padrão, mesmo mostrando texto livre."],
+  ["Figura com legenda","<figure><figcaption>","<figure>\n  <img src=\"grafico.png\" alt=\"Gráfico de vendas\">\n  <figcaption>Vendas em 2026</figcaption>\n</figure>","Agrupa uma imagem (ou gráfico/código) com sua legenda oficial."],
+  ["Conteúdo expansível nativo","<details><summary>","<details>\n  <summary>Clique para expandir</summary>\n  <p>Conteúdo escondido.</p>\n</details>","Cria um acordeão funcional sem precisar de JavaScript."]
+ ]},
+ {cat:"HTML — Formulários",items:[
+  ["Formulário","<form>","<form action=\"/enviar\" method=\"POST\">\n  \n</form>","action define para onde os dados vão; method define como são enviados."],
+  ["Campo de texto","<input type=\"text\">","<input type=\"text\" placeholder=\"Seu nome\">","O tipo mais básico de campo de entrada."],
+  ["Campo de e-mail","<input type=\"email\">","<input type=\"email\" placeholder=\"seu@email.com\">","O navegador valida automaticamente o formato de e-mail."],
+  ["Campo de senha","<input type=\"password\">","<input type=\"password\">","Oculta os caracteres digitados com pontos ou asteriscos."],
+  ["Campo numérico","<input type=\"number\">","<input type=\"number\" min=\"0\" max=\"100\">","Mostra setas de incremento e aceita min, max e step."],
+  ["Campo de data","<input type=\"date\">","<input type=\"date\">","Abre um seletor de calendário nativo do navegador."],
+  ["Caixa de seleção","<input type=\"checkbox\">","<input type=\"checkbox\" id=\"aceite\">\n<label for=\"aceite\">Aceito os termos</label>","Permite selecionar uma ou mais opções independentes."],
+  ["Botão de opção único","<input type=\"radio\">","<input type=\"radio\" name=\"plano\" value=\"basico\"> Básico\n<input type=\"radio\" name=\"plano\" value=\"pro\"> Pro","Use o mesmo name em todas as opções para que sejam mutuamente exclusivas."],
+  ["Envio de arquivo","<input type=\"file\">","<input type=\"file\" accept=\"image/*\">","Permite ao usuário selecionar um arquivo do dispositivo."],
+  ["Controle deslizante","<input type=\"range\">","<input type=\"range\" min=\"0\" max=\"10\">","Um slider visual para escolher um valor dentro de um intervalo."],
+  ["Seletor de cor","<input type=\"color\">","<input type=\"color\" value=\"#3b82f6\">","Abre um seletor de cores nativo do sistema operacional."],
+  ["Área de texto grande","<textarea>","<textarea rows=\"4\" placeholder=\"Sua mensagem\"></textarea>","Para textos longos, como mensagens ou comentários."],
+  ["Lista suspensa","<select><option>","<select>\n  <option value=\"html\">HTML</option>\n  <option value=\"css\">CSS</option>\n</select>","Cria um menu de opções para o usuário escolher uma."],
+  ["Sugestões de autocompletar","<datalist>","<input list=\"linguagens\">\n<datalist id=\"linguagens\">\n  <option value=\"HTML\">\n  <option value=\"CSS\">\n</datalist>","Combina um input de texto com uma lista de sugestões editável."],
+  ["Agrupar campos do formulário","<fieldset><legend>","<fieldset>\n  <legend>Dados pessoais</legend>\n  \n</fieldset>","Agrupa campos relacionados visualmente, com um título (legend)."],
+  ["Rótulo do campo","<label for=\"...\">","<label for=\"nome\">Nome</label>\n<input id=\"nome\" type=\"text\">","O for deve corresponder ao id do input associado."],
+  ["Botão de enviar","<button type=\"submit\">","<button type=\"submit\">Enviar</button>","Envia o formulário quando clicado."],
+  ["Botão comum","<button type=\"button\">","<button type=\"button\">Clique aqui</button>","Use type=\"button\" quando não estiver dentro de um formulário, ou não deva enviá-lo."],
+  ["Campo obrigatório","required","<input type=\"text\" required>","Impede o envio do formulário se o campo estiver vazio."],
+  ["Texto de exemplo no campo","placeholder=\"...\"","<input type=\"text\" placeholder=\"Digite seu nome\">","Some assim que o usuário começa a digitar — não substitui o label."]
+ ]},
+ {cat:"HTML — Mídia e tabelas",items:[
+  ["Imagem","<img>","<img src=\"imagem.jpg\" alt=\"Descrição\">","Sempre inclua o atributo alt, mesmo que vazio para imagens decorativas."],
+  ["Imagem com diferentes tamanhos","<picture><source>","<picture>\n  <source media=\"(min-width:800px)\" srcset=\"grande.jpg\">\n  <img src=\"pequena.jpg\" alt=\"Descrição\">\n</picture>","Serve imagens diferentes conforme o tamanho da tela."],
+  ["Vídeo","<video>","<video src=\"video.mp4\" controls></video>","O atributo controls exibe play, pausa e volume."],
+  ["Áudio","<audio>","<audio src=\"musica.mp3\" controls></audio>","Toca arquivos de áudio com os controles nativos do navegador."],
+  ["Página incorporada (iframe)","<iframe>","<iframe src=\"https://exemplo.com\" title=\"Conteúdo externo\"></iframe>","Incorpora outra página dentro da atual — sempre inclua um title."],
+  ["Tabela simples","<table>","<table>\n  <tr><th>Nome</th><th>Idade</th></tr>\n  <tr><td>Ana</td><td>28</td></tr>\n</table>","Estrutura básica de tabela com cabeçalho e uma linha de dados."],
+  ["Tabela com thead/tbody","<thead><tbody>","<table>\n  <thead>\n    <tr><th>Produto</th><th>Preço</th></tr>\n  </thead>\n  <tbody>\n    <tr><td>Caneta</td><td>R$ 2</td></tr>\n  </tbody>\n</table>","Separa o cabeçalho do corpo da tabela — melhora semântica e estilização."],
+  ["Célula ocupando várias colunas","colspan=\"2\"","<td colspan=\"2\">Ocupa duas colunas</td>","Faz uma célula se estender horizontalmente por mais de uma coluna."],
+  ["Célula ocupando várias linhas","rowspan=\"2\"","<td rowspan=\"2\">Ocupa duas linhas</td>","Faz uma célula se estender verticalmente por mais de uma linha."],
+  ["Janela modal nativa","<dialog>","<dialog open>\n  <p>Conteúdo do modal</p>\n</dialog>","Cria uma caixa de diálogo nativa, sem precisar construir do zero com CSS/JS."],
+  ["Atributo de dado customizado","data-*","<div data-id=\"42\" data-status=\"ativo\"></div>","Guarda informações extras no próprio HTML, acessíveis via JavaScript (dataset)."]
  ]},
  {cat:"JavaScript",items:[
   ["Selecionar elemento","querySelector","const el = document.querySelector('.card');","Seleciona o primeiro elemento que corresponde ao seletor."],
+  ["Selecionar vários","querySelectorAll","const cards = document.querySelectorAll('.card');","Retorna uma lista com todos os elementos que casam com o seletor."],
   ["Clique","addEventListener","button.addEventListener('click', () => {});","Registra uma função para responder a eventos."],
-  ["Alterar texto","textContent","el.textContent = 'Novo texto';","Troca o conteúdo textual de um elemento."]
+  ["Alterar texto","textContent","el.textContent = 'Novo texto';","Troca o conteúdo textual de um elemento."],
+  ["Alternar classe","classList.toggle","el.classList.toggle('ativo');","Adiciona a classe se ela não existir, remove se já existir."],
+  ["Verificar condição","if / else","if (condicao) {\n  // ...\n} else {\n  // ...\n}","Executa um bloco ou outro dependendo da condição."],
+  ["Repetir itens","forEach","elementos.forEach(el => {\n  console.log(el);\n});","Percorre uma lista de elementos ou itens de um array."],
+  ["Esperar a página carregar","DOMContentLoaded","document.addEventListener('DOMContentLoaded', () => {\n  // código aqui\n});","Garante que o HTML já foi carregado antes de manipular elementos."],
+  ["Criar elemento novo","createElement","const div = document.createElement('div');\ndiv.textContent = 'Novo';\ndocument.body.appendChild(div);","Cria um elemento do zero e o insere na página via JavaScript."],
+  ["Ler valor de um input","input.value","const nome = document.querySelector('#nome').value;","Pega o texto atual digitado em um campo de formulário."],
+  ["Impedir envio padrão do formulário","preventDefault","form.addEventListener('submit', (e) => {\n  e.preventDefault();\n});","Impede o recarregamento da página ao enviar um formulário, útil para validar antes."]
  ]}
 ];
+const referenceSynonyms={
+ "tabela de cores":"cores paleta cor vermelho azul verde amarelo roxo rosa",
+ "paleta de cores":"cores paleta cor",
+ "sombra suave":"sombra leve suave",
+ "sombra leve":"sombra leve suave",
+ "sombra forte":"sombra forte intensa",
+ "sombra colorida":"sombra colorida",
+ "centralizar":"centralizar center margin auto flex",
+ "gradiente":"gradiente degrade linear-gradient",
+ "degrade":"gradiente degrade linear-gradient",
+ "responsivo":"responsividade media query breakpoint",
+ "responsividade":"responsividade media query breakpoint",
+ "grid responsivo":"grid responsivo auto-fit minmax",
+ "fonte":"fonte font tamanho peso",
+ "espacamento":"espacamento padding margin gap",
+ "animacao":"animacao transform keyframes transicao",
+ "borda arredondada":"borda arredondamento radius",
+ "acessibilidade":"acessibilidade alt aria label foco",
+ "cursor":"cursor pointer overflow"
+};
+function normText(x){return (x||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"")}
 let referenceCategory="Todos";
+let referenceRenderedItems=[];
 function renderCodeReference(){
- const grid=$("#referenceGrid"),cats=$("#referenceCategories");
+ const grid=$("#referenceGrid"),cats=$("#referenceCategories"),countEl=$("#referenceCount");
  if(!grid||!cats)return;
  const allItems=codeReference.flatMap(g=>g.items.map(x=>({...x,cat:g.cat})));
- const query=($("#referenceSearch")?.value||"").toLowerCase().trim();
+ const rawQuery=($("#referenceSearch")?.value||"").trim();
+ const query=normText(rawQuery);
  const catsList=["Todos",...codeReference.map(g=>g.cat)];
- cats.innerHTML=catsList.map(cat=>`<button class="reference-cat ${referenceCategory===cat?"active":""}" onclick="setReferenceCategory(${JSON.stringify(cat)})">${cat}</button>`).join("");
- const items=allItems.filter(x=>(referenceCategory==="Todos"||x.cat===referenceCategory)&&(!query||(x[0]+" "+x[1]+" "+x[3]).toLowerCase().includes(query)));
- grid.innerHTML=items.length?items.map((x,i)=>`<article class="reference-card">
+ cats.innerHTML=catsList.map(cat=>`<button class="reference-cat ${referenceCategory===cat?"active":""}" data-cat="${escapeHtml(cat)}">${escapeHtml(cat)}</button>`).join("");
+ let items=allItems.filter(x=>referenceCategory==="Todos"||x.cat===referenceCategory);
+ if(query){
+   const expanded=normText(referenceSynonyms[query]||rawQuery);
+   const words=expanded.split(/\s+/).filter(Boolean);
+   items=items.map(x=>{
+     const haystack=normText(x[0]+" "+x[1]+" "+x[3]+" "+x.cat);
+     const score=words.reduce((n,w)=>n+(haystack.includes(w)?1:0),0);
+     return {x,score};
+   }).filter(o=>o.score>0).sort((a,b)=>b.score-a.score).map(o=>o.x);
+ }
+ referenceRenderedItems=items;
+ if(countEl)countEl.textContent=(query||referenceCategory!=="Todos")?`${items.length} resultado${items.length===1?"":"s"} encontrado${items.length===1?"":"s"}`:`${items.length} itens no banco de referência`;
+ grid.innerHTML=items.length?items.map((x,i)=>{
+   const swatch=x[4];
+   if(swatch){
+     return `<article class="reference-card has-swatch">
+       <span class="reference-tag">${escapeHtml(x.cat)}</span>
+       <div class="reference-swatch-row"><span class="reference-swatch" style="background:${escapeHtml(swatch)}"></span><div class="reference-swatch-info"><h3>${escapeHtml(x[0])}</h3><small>${escapeHtml(x[1])}</small></div></div>
+       <p>${escapeHtml(x[3])}</p>
+       <button class="ghost-btn tiny" data-copy-ref="${i}">Copiar código</button>
+     </article>`;
+   }
+   return `<article class="reference-card">
    <span class="reference-tag">${escapeHtml(x.cat)}</span><h3>${escapeHtml(x[0])}</h3>
    <code>${escapeHtml(x[1])}</code><p>${escapeHtml(x[3])}</p>
-   <button class="ghost-btn tiny" onclick="insertReference(${JSON.stringify(x[2])})">Inserir no editor</button>
- </article>`).join(""):`<p class="muted-empty">Nenhuma informação encontrada.</p>`;
+   <button class="ghost-btn tiny" data-copy-ref="${i}">Copiar código</button>
+ </article>`;
+ }).join(""):`<p class="muted-empty">Nenhuma informação encontrada. Tente "cor", "sombra", "centralizar" ou "gradiente".</p>`;
 }
 function setReferenceCategory(cat){referenceCategory=cat;renderCodeReference()}
-function insertReference(snippet){
- const c=activeCode();if(!c)return;
- const type=snippet.trim().startsWith("<")?"html":(/^[a-z-]+\s*:/.test(snippet.trim())||snippet.includes("{"))?"css":"js";
- const area=$("#editor-"+type);
- if(!area)return;
- const pos=area.selectionStart??area.value.length;
- area.setRangeText((area.value&&pos>0?"\n":"")+snippet,pos,pos,"end");
- area.focus();
- saveCurrentCode();
- runCode();
- toast(`Trecho inserido no editor ${type.toUpperCase()}.`);
+function copyReferenceSnippet(i){
+ const item=referenceRenderedItems[i];if(!item)return;
+ const text=item[2];
+ const done=()=>toast("Código copiado! Cole onde quiser com Ctrl+V.");
+ if(navigator.clipboard?.writeText)navigator.clipboard.writeText(text).then(done).catch(()=>fallbackCopy(text,done));
+ else fallbackCopy(text,done);
 }
+function fallbackCopy(text,done){
+ const ta=document.createElement("textarea");
+ ta.value=text;ta.style.position="fixed";ta.style.opacity="0";
+ document.body.appendChild(ta);ta.select();
+ try{document.execCommand("copy")}catch(e){}
+ ta.remove();done();
+}
+$("#referenceGrid")?.addEventListener("click",e=>{
+ const btn=e.target.closest("[data-copy-ref]");if(!btn)return;
+ copyReferenceSnippet(Number(btn.dataset.copyRef));
+});
+$("#referenceCategories")?.addEventListener("click",e=>{
+ const btn=e.target.closest("[data-cat]");if(!btn)return;
+ setReferenceCategory(btn.dataset.cat);
+});
 function initEditor(){
  if(state.codes.length===0){state.codes=[{id:Date.now(),name:"Meu primeiro código",html:defaultEditor.html,css:defaultEditor.css,js:defaultEditor.js,updated:Date.now()}];state.activeCode=state.codes[0].id;save();}
  renderCodeList();loadActiveCode();bindEditorTools();
@@ -776,53 +1089,24 @@ function deleteNote(i){
 $("#themeBtn").addEventListener("click",()=>{state.theme=state.theme==="dark"?"light":"dark";applyTheme();save();toast(state.theme==="light"?"Tema claro ativado":"Tema escuro ativado")});
 $("#fontDown").addEventListener("click",()=>{state.fontScale=Math.max(.9,Math.round((state.fontScale-.05)*100)/100);applyTheme();save();toast("Texto reduzido para facilitar a leitura")});
 $("#fontUp").addEventListener("click",()=>{state.fontScale=Math.min(1.25,Math.round((state.fontScale+.05)*100)/100);applyTheme();save();toast("Texto ampliado para facilitar a leitura")});
-$("#menuBtn").addEventListener("click",()=>$("#sidebar").classList.toggle("open"));
-$("#resetProgress").addEventListener("click",()=>{if(confirm("Reiniciar progresso, desempenho e checklists? As anotações serão preservadas.")){state.completed={};state.quiz={correct:0,total:0};state.quizHistory=[];state.currentLesson=0;state.challengeChecks={};state.challengeDrafts={};state.challengeGrades={};state.activeChallenge=null;delete state.quizSession;save();renderDashboard();toast("Progresso reiniciado.")}});
+$("#menuBtn").addEventListener("click",()=>$("#topnav").classList.toggle("open"));
+document.addEventListener("click",e=>{
+ const nav=$("#topnav"),btn=$("#menuBtn");
+ if(nav.classList.contains("open")&&!nav.contains(e.target)&&!btn.contains(e.target))nav.classList.remove("open");
+});
+$("#resetProgress").addEventListener("click",()=>{if(confirm("Reiniciar progresso, desempenho e checklists? As anotações, seus projetos salvos e a Oficina de código serão preservados.")){state.completed={};state.quiz={correct:0,total:0};state.quizHistory=[];state.currentLesson=0;state.challengeChecks={};state.challengeDrafts={};state.challengeGrades={};state.activeChallenge=null;delete state.quizSession;delete state.lastSession;save();renderDashboard();toast("Progresso reiniciado.")}});
 $("#referenceSearch")?.addEventListener("input",()=>renderCodeReference());
+$("#referenceToggle")?.addEventListener("click",()=>{
+ const panel=$("#codeReferencePanel"),btn=$("#referenceToggle");if(!panel||!btn)return;
+ const collapsed=panel.classList.toggle("collapsed");
+ btn.textContent=collapsed?"Expandir ▾":"Recolher ▴";
+ btn.setAttribute("aria-expanded",collapsed?"false":"true");
+});
 $("#globalSearch").addEventListener("input",e=>{const q=e.target.value.trim().toLowerCase(),box=$("#searchResults");if(!q){box.classList.add("hidden");return}const results=[];modules.forEach((m,i)=>{if((m.title+" "+m.short).toLowerCase().includes(q))results.push({type:"Aula",i,title:m.title,text:m.short});m.lessons.forEach(l=>{if((l[0]+" "+l[1]).toLowerCase().includes(q))results.push({type:"Conceito",i,title:l[0],text:l[1]})})});globalQuestions.forEach(x=>{if(x[0].toLowerCase().includes(q))results.push({type:"Quiz",title:x[0],text:"Questão de recuperação ativa"})});box.innerHTML=results.slice(0,12).map(r=>`<div class="search-result" onclick="${r.i!==undefined?`openLesson(${r.i})`:"showView('quiz')"}"><small>${r.type}</small><strong>${r.title}</strong><p>${r.text}</p></div>`).join("")||`<div class="search-result"><p>Nenhum resultado.</p></div>`;box.classList.remove("hidden")});
 $$("[data-challenge-editor]").forEach(b=>b.addEventListener("click",()=>switchChallengeEditor(b.dataset.challengeEditor)));
 ["html","css","js"].forEach(k=>$("#challenge-editor-"+k)?.addEventListener("input",()=>{challengeDraft();clearTimeout(window._challengeTimer);window._challengeTimer=setTimeout(runChallengeCode,180)}));
 document.addEventListener("keydown",e=>{if(e.key==="/"&&document.activeElement.tagName!=="INPUT"&&document.activeElement.tagName!=="TEXTAREA"){e.preventDefault();$("#globalSearch").focus()}});
 
-window.openLesson=openLesson;window.showView=showView;window.completeLesson=completeLesson;window.startChapterQuiz=startChapterQuiz;window.startGlobalQuiz=startGlobalQuiz;window.answerActiveQuiz=answerActiveQuiz;window.nextActiveQuiz=nextActiveQuiz;window.cancelQuiz=cancelQuiz;window.newQuizSameType=newQuizSameType;window.nextFlash=nextFlash;window.prevFlash=prevFlash;window.toggleChallenge=toggleChallenge;window.openChallenge=openChallenge;window.closeChallengeCorrector=closeChallengeCorrector;window.gradeChallenge=gradeChallenge;window.runChallengeCode=runChallengeCode;window.clearChallengeEditor=clearChallengeEditor;window.deleteNote=deleteNote;window.editNote=editNote;window.saveMicroCheck=saveMicroCheck;window.resetActiveQuiz=resetActiveQuiz;window.resetQuizData=resetQuizData;window.openCode=openCode;window.deleteCode=deleteCode;window.setReferenceCategory=setReferenceCategory;window.insertReference=insertReference;
+window.openLesson=openLesson;window.showView=showView;window.completeLesson=completeLesson;window.startChapterQuiz=startChapterQuiz;window.startGlobalQuiz=startGlobalQuiz;window.answerActiveQuiz=answerActiveQuiz;window.nextActiveQuiz=nextActiveQuiz;window.cancelQuiz=cancelQuiz;window.newQuizSameType=newQuizSameType;window.repeatLastSession=repeatLastSession;window.nextFlash=nextFlash;window.prevFlash=prevFlash;window.toggleChallenge=toggleChallenge;window.openChallenge=openChallenge;window.closeChallengeCorrector=closeChallengeCorrector;window.gradeChallenge=gradeChallenge;window.runChallengeCode=runChallengeCode;window.clearChallengeEditor=clearChallengeEditor;window.deleteNote=deleteNote;window.editNote=editNote;window.resetActiveQuiz=resetActiveQuiz;window.resetQuizData=resetQuizData;window.openCode=openCode;window.deleteCode=deleteCode;window.setReferenceCategory=setReferenceCategory;
 
-applyTheme();initEditor();updateProgress();renderDashboard();
-
-const WORKSHOP_LIBRARY=[
-{id:"font-weight",cat:"text",title:"Negrito",desc:"Deixe a fonte mais forte.",code:"font-weight: 700;",lang:"css",hint:"Experimente 400, 600, 700 ou 900."},
-{id:"font-style",cat:"text",title:"Itálico",desc:"Incline o texto.",code:"font-style: italic;",lang:"css",hint:"Use normal para voltar ao padrão."},
-{id:"underline",cat:"text",title:"Sublinhado",desc:"Adicione uma linha ao texto.",code:"text-decoration: underline;",lang:"css",hint:"Também existem none e line-through."},
-{id:"font-size",cat:"text",title:"Tamanho da fonte",desc:"Controle o tamanho do texto.",code:"font-size: 1.25rem;",lang:"css",hint:"Compare px, rem e em."},
-{id:"letter-spacing",cat:"text",title:"Espaçamento das letras",desc:"Afaste ou aproxime os caracteres.",code:"letter-spacing: 0.06em;",lang:"css",hint:"Valores negativos aproximam."},
-{id:"text-shadow",cat:"effects",title:"Sombra no texto",desc:"Crie profundidade no texto.",code:"text-shadow: 0 2px 8px rgba(0,0,0,.22);",lang:"css",hint:"A ordem é X, Y, blur e cor."},
-{id:"uppercase",cat:"text",title:"Maiúsculas",desc:"Transforme visualmente o texto.",code:"text-transform: uppercase;",lang:"css",hint:"Também há lowercase e capitalize."},
-{id:"text-center",cat:"layout",title:"Centralizar texto",desc:"Centralize texto.",code:"text-align: center;",lang:"css",hint:"Para elementos, considere Flexbox ou Grid."},
-{id:"color",cat:"color",title:"Cor do texto",desc:"Aplique uma cor.",code:"color: #2563eb;",lang:"css",hint:"Troque o hexadecimal e veja o resultado."},
-{id:"background",cat:"color",title:"Cor de fundo",desc:"Aplique uma cor ao fundo.",code:"background: #eef3f8;",lang:"css",hint:"Você também pode usar gradientes."},
-{id:"border",cat:"effects",title:"Borda",desc:"Adicione uma borda.",code:"border: 1px solid #d0d5dd;",lang:"css",hint:"Espessura, estilo e cor."},
-{id:"radius",cat:"effects",title:"Cantos arredondados",desc:"Arredonde os cantos.",code:"border-radius: 12px;",lang:"css",hint:"Aumente o valor para mais arredondamento."},
-{id:"shadow",cat:"effects",title:"Sombra no componente",desc:"Crie profundidade.",code:"box-shadow: 0 10px 30px rgba(0,0,0,.12);",lang:"css",hint:"Teste blur e transparência."},
-{id:"transition",cat:"effects",title:"Transição suave",desc:"Deixe mudanças naturais.",code:"transition: .2s ease;",lang:"css",hint:"Combine com :hover."},
-{id:"hover",cat:"effects",title:"Efeito ao passar o mouse",desc:"Mude o elemento no hover.",code:".demo-card:hover { transform: translateY(-4px); }",lang:"css",hint:"Experimente cor, sombra ou escala."},
-{id:"flex-center",cat:"layout",title:"Centralizar com Flexbox",desc:"Centralize filhos nos dois eixos.",code:"display: flex;\njustify-content: center;\nalign-items: center;",lang:"css",hint:"Flexbox é ótimo para alinhamento em uma dimensão."},
-{id:"flex-gap",cat:"layout",title:"Espaço entre itens",desc:"Crie distância consistente.",code:"display: flex;\ngap: 16px;",lang:"css",hint:"gap evita margens individuais."},
-{id:"grid",cat:"layout",title:"Grade com Grid",desc:"Monte colunas.",code:"display: grid;\ngrid-template-columns: repeat(3, 1fr);\ngap: 16px;",lang:"css",hint:"Grid controla linhas e colunas."},
-{id:"padding",cat:"spacing",title:"Espaço interno",desc:"Espaço entre conteúdo e borda.",code:"padding: 20px;",lang:"css",hint:"Padding atua dentro da borda."},
-{id:"margin",cat:"spacing",title:"Espaço externo",desc:"Distância ao redor.",code:"margin: 20px;",lang:"css",hint:"Margin atua fora da borda."},
-{id:"responsive",cat:"responsive",title:"Media Query",desc:"Adapte o layout.",code:"@media (max-width: 768px) {\n  .demo-card { padding: 16px; }\n}",lang:"css",hint:"Você pode começar pelo mobile e adaptar telas maiores."},
-{id:"semantic-card",cat:"html",title:"Estrutura semântica",desc:"Use HTML com significado.",code:"<article>\n  <h2>Título</h2>\n  <p>Conteúdo</p>\n</article>",lang:"html",hint:"Escolha tags que expressem a função do conteúdo."},
-{id:"image",cat:"html",title:"Imagem acessível",desc:"Imagem com texto alternativo.",code:'<img src="imagem.jpg" alt="Descrição da imagem">',lang:"html",hint:"O alt ajuda na acessibilidade."},
-{id:"query",cat:"js",title:"Selecionar elemento",desc:"Encontre um elemento.",code:'document.querySelector(".demo-card");',lang:"js",hint:"Use um seletor CSS."},
-{id:"event",cat:"js",title:"Clique com JavaScript",desc:"Reaja a uma interação.",code:'document.querySelector("button")?.addEventListener("click", () => {\n  console.log("Clique!");\n});',lang:"js",hint:"Eventos conectam ações do usuário ao comportamento."}
-];
-(function(){
-const s=document.getElementById("workshop-search"),r=document.getElementById("workshop-results"),cats=document.getElementById("workshop-categories"),he=document.getElementById("workshop-html"),ce=document.getElementById("workshop-css"),je=document.getElementById("workshop-js"),pv=document.getElementById("workshop-preview"),clear=document.getElementById("workshop-clear"),hint=document.getElementById("workshop-hint"),hb=document.getElementById("workshop-hint-box");
-if(!s||!r||!pv)return;let cat="all";
-const map={"efeitos na fonte":"text-shadow font-weight font-style underline letter-spacing","efeitos fonte":"text-shadow font-weight font-style underline letter-spacing","fontes":"font-size font-weight font-style letter-spacing","sombra":"shadow text-shadow","centralizar":"flex-center text-center","cor":"color background","cores":"color background","fundo":"background","botao":"hover radius shadow transition color","botão":"hover radius shadow transition color","card":"radius shadow padding border","espaçamento":"padding margin flex-gap","espacamento":"padding margin flex-gap","responsivo":"responsive","responsividade":"responsive","grid":"grid","flex":"flex-center flex-gap"};
-const norm=x=>(x||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,""),esc=x=>x.replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
-function list(){let q=norm(s.value).trim(),a=WORKSHOP_LIBRARY.filter(x=>cat==="all"||x.cat===cat);if(!q)return a;let words=norm(map[q]||q).split(/\s+/);return a.map(x=>({x,score:words.reduce((n,w)=>n+(norm(x.title+" "+x.desc+" "+x.code+" "+x.id).includes(w)?2:0),0)})).filter(o=>o.score).sort((a,b)=>b.score-a.score).map(o=>o.x)}
-function render(){let a=list();r.innerHTML=a.length?a.map(x=>`<article class="workshop-item"><strong>${x.title}</strong><p>${x.desc}</p><code>${esc(x.code)}</code><div class="workshop-item-actions"><button class="primary" data-add="${x.id}">Adicionar</button><button data-hint="${x.id}">Por que usar?</button></div></article>`).join(""):`<div class="workshop-item"><strong>Nada encontrado.</strong><p>Tente “cor”, “sombra”, “centralizar”, “fonte”, “grid” ou “responsivo”.</p></div>`}
-function update(){let h=he.value,c=ce.value,j=je.value.replace(/<\/script/gi,"<\\/script");pv.srcdoc=`<!doctype html><html><head><meta charset="utf-8"><style>${c}</style></head><body>${h}<script>${j}<\/script></body></html>`;localStorage.setItem("frontlab_workshop_v1",JSON.stringify({h:he.value,c:ce.value,j:je.value}))}
-function add(x){let t=x.lang==="html"?he:x.lang==="js"?je:ce,v=t.value.trimEnd();t.value=(v?v+"\n\n":"")+x.code;t.dispatchEvent(new Event("input"));update()}
-s.addEventListener("input",render);cats?.addEventListener("click",e=>{let b=e.target.closest("[data-category]");if(!b)return;cat=b.dataset.category;cats.querySelectorAll(".workshop-cat").forEach(x=>x.classList.toggle("active",x===b));render()});r.addEventListener("click",e=>{let a=e.target.closest("[data-add]"),b=e.target.closest("[data-hint]");if(a){let x=WORKSHOP_LIBRARY.find(y=>y.id===a.dataset.add);if(x)add(x)}if(b){let x=WORKSHOP_LIBRARY.find(y=>y.id===b.dataset.hint);if(x){hb.hidden=false;hb.innerHTML="<strong>💡 "+x.title+"</strong><br>"+x.hint}}});[he,ce,je].forEach(x=>x?.addEventListener("input",update));clear?.addEventListener("click",()=>{he.value="";ce.value="";je.value="";update()});hint?.addEventListener("click",()=>{hb.hidden=!hb.hidden;if(!hb.hidden)hb.innerHTML="<strong>💡 Dica de estudo</strong><br>Escolha uma propriedade, altere um valor e observe. Depois tente reproduzir o resultado sem ajuda."});try{let x=JSON.parse(localStorage.getItem("frontlab_workshop_v1")||"null");if(x){he.value=x.h;ce.value=x.c;je.value=x.j}}catch(e){}render();update()
-})();
+applyTheme();initEditor();updateProgress();renderDashboard();renderFlash();renderCodeReference();
