@@ -12,5 +12,8 @@ async function baixarDados() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("baixarDados").addEventListener("click", baixarDados);
+  const btn = document.getElementById("baixarDados");
+  if (btn) {
+    btn.addEventListener("click", baixarDados);
+  }
 });
