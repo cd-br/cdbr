@@ -1,30 +1,6 @@
 # ============================================================
 # LISTA MANUAL DE FONTES — itens sem drop automático
 # ============================================================
-# Complementa a busca automática pra itens que a API não sabe
-# dizer "onde encontrar" (mineração, algumas armas de Dojo, etc).
-#
-# FORMATO (uma linha por item):
-#   Nome do item | categoria | onde encontrar
-#
-#   - "Nome do item": EXATAMENTE como aparece na busca do site
-#     (nome em inglês, é o nome oficial do jogo)
-#   - "categoria": uma palavra só, sem espaço e sem acento
-#     (ex: mineracao, dojo, sindicato, evento)
-#   - "onde encontrar": texto livre — é isso que aparece pro
-#     jogador no card de resultado
-#
-# REGRAS:
-#   - Os três campos são separados pelo caractere | (pipe)
-#   - Linhas começando com # são comentários e são ignoradas
-#   - Uma entrada por linha
-#   - Depois de editar, salve o arquivo e suba de novo pro
-#     GitHub — nenhum outro arquivo do projeto precisa mudar
-#
-# IMPORTANTE: a lista de gemas de mineração abaixo veio do
-# conhecimento do próprio modelo (não é dado automático) — pode
-# não estar 100% completa. Confiram e completem à vontade.
-# ============================================================
 
 # --- Mineração: gemas de Plains of Eidolon (Terra) ---
 Sentirum | mineracao | Mineração em Plains of Eidolon (Terra) — veio raro (precisa de Sunpoint Plasma Drill)
