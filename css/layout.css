@@ -1,0 +1,243 @@
+/* =========================================================
+   LAYOUT.CSS — Estrutura de navegação e grid responsivo
+   Mobile-first: a regra base é sempre a versão de celular.
+   ========================================================= */
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------------------------------------------------------
+   FAIXA DE IDENTIDADE — reforça a marca do clã no topo
+   --------------------------------------------------------- */
+.faixa-cla {
+  text-align: center;
+  padding: 6px var(--sp-3);
+  padding-top: calc(6px + var(--safe-top));
+  background: linear-gradient(90deg, var(--secundario), var(--acento-escuro));
+  color: #05230a;
+  font-family: var(--fonte-display);
+  font-weight: 700;
+  font-size: calc(11px * var(--escala-fonte));
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ---------------------------------------------------------
+   TOPBAR — busca fixa, sempre no topo, em qualquer tela
+   --------------------------------------------------------- */
+.cabecalho-fixo {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+}
+
+.topbar {
+  z-index: var(--z-header);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
+  padding: var(--sp-3) var(--sp-3);
+  padding-top: calc(var(--sp-3) + var(--safe-top));
+  background: rgba(11, 17, 24, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+.topbar__logo {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  flex-shrink: 0;
+}
+
+.topbar__logo img {
+  height: 32px;
+  width: auto;
+}
+
+.topbar__logo span {
+  display: none; /* nome completo só aparece em telas maiores */
+  font-family: var(--fonte-display);
+  font-weight: 700;
+  color: var(--acento);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: calc(14px * var(--escala-fonte));
+}
+
+@media (min-width: 640px) {
+  .topbar__logo span { display: inline; }
+}
+
+.topbar__controles {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  flex-shrink: 0;
+}
+
+/* ---------------------------------------------------------
+   CONTEÚDO PRINCIPAL
+   --------------------------------------------------------- */
+.conteudo {
+  flex: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--sp-4);
+  padding-bottom: calc(var(--altura-bottomnav) + var(--sp-8) + var(--safe-bottom));
+}
+
+/* Chips de filtro (raridade / categoria) */
+.filtros {
+  display: flex;
+  gap: var(--sp-2);
+  flex-wrap: wrap;
+  margin-bottom: var(--sp-5);
+}
+
+/* Bloco de destaque no topo da busca — usa a arte de fundo do jogo
+   com mais presença, em vez do fundo genérico da página inteira. */
+.hero-busca {
+  text-align: center;
+  padding: var(--sp-8) var(--sp-4) var(--sp-6);
+  margin-bottom: var(--sp-5);
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(180deg, rgba(0,13,31,0.35), rgba(0,13,31,0.9)),
+    url('../imagens/FUNDO1.webp');
+  background-size: cover;
+  background-position: center 30%;
+  border: 1px solid var(--border);
+}
+
+.hero-busca__titulo {
+  font-size: calc(30px * var(--escala-fonte));
+  letter-spacing: 0.06em;
+  color: var(--texto);
+  text-shadow: 0 0 24px rgba(166, 255, 0, 0.35);
+}
+
+@keyframes pulsar-brilho {
+  0%, 100% { filter: drop-shadow(0 0 0 rgba(166, 255, 0, 0)); opacity: 1; }
+  50% { filter: drop-shadow(0 0 14px rgba(166, 255, 0, 0.55)); opacity: 0.92; }
+}
+
+.hero-busca__emblema--pulsando,
+.hero-busca__titulo--pulsando {
+  animation: pulsar-brilho 3.2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-busca__emblema--pulsando,
+  .hero-busca__titulo--pulsando {
+    animation: none;
+  }
+}
+
+.hero-busca__emblema {
+  height: 64px;
+  width: auto;
+  margin: 0 auto var(--sp-3);
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.6));
+}
+
+.hero-busca__subtitulo {
+  margin-top: var(--sp-2);
+  color: var(--texto-muted);
+  font-size: calc(14px * var(--escala-fonte));
+}
+
+/* Grid de resultados — se ajusta sozinho ao espaço disponível */
+.resultados-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--sp-4);
+}
+
+/* ---------------------------------------------------------
+   NAVEGAÇÃO MOBILE — barra inferior, alcance do polegar
+   --------------------------------------------------------- */
+.bottom-nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: var(--z-header);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: calc(var(--altura-bottomnav) + var(--safe-bottom));
+  padding-bottom: var(--safe-bottom);
+  background: linear-gradient(90deg, var(--secundario), var(--acento-escuro));
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.bottom-nav__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-width: 56px;
+  min-height: 48px;
+  background: none;
+  border: none;
+  color: rgba(5, 20, 12, 0.62);
+  font-size: calc(11px * var(--escala-fonte));
+  font-family: var(--fonte-corpo);
+  cursor: pointer;
+  border-radius: var(--radius-md);
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.bottom-nav__item svg {
+  width: 22px;
+  height: 22px;
+}
+
+.bottom-nav__item.ativo {
+  color: #05230a;
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.bottom-nav__item:active {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ---------------------------------------------------------
+   SEÇÕES — só uma visível por vez
+   --------------------------------------------------------- */
+.secao {
+  display: none;
+}
+.secao.ativa {
+  display: block;
+  animation: entrada 0.25s ease;
+}
+
+@keyframes entrada {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------------------------------------------------------
+   RODAPÉ / CRÉDITOS
+   --------------------------------------------------------- */
+.rodape {
+  text-align: center;
+  padding: var(--sp-8) var(--sp-4) var(--sp-4);
+  color: var(--texto-fraco);
+  font-size: calc(12px * var(--escala-fonte));
+  border-top: 1px solid var(--border);
+  margin-top: var(--sp-10);
+}
+
+.rodape strong {
+  color: var(--texto-muted);
+}
