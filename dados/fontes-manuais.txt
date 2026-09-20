@@ -1,0 +1,47 @@
+# ============================================================
+# LISTA MANUAL DE FONTES — itens sem drop automático
+# ============================================================
+# Complementa a busca automática pra itens que a API não sabe
+# dizer "onde encontrar" (mineração, algumas armas de Dojo, etc).
+#
+# FORMATO (uma linha por item):
+#   Nome do item | categoria | onde encontrar
+#
+#   - "Nome do item": EXATAMENTE como aparece na busca do site
+#     (nome em inglês, é o nome oficial do jogo)
+#   - "categoria": uma palavra só, sem espaço e sem acento
+#     (ex: mineracao, dojo, sindicato, evento)
+#   - "onde encontrar": texto livre — é isso que aparece pro
+#     jogador no card de resultado
+#
+# REGRAS:
+#   - Os três campos são separados pelo caractere | (pipe)
+#   - Linhas começando com # são comentários e são ignoradas
+#   - Uma entrada por linha
+#   - Depois de editar, salve o arquivo e suba de novo pro
+#     GitHub — nenhum outro arquivo do projeto precisa mudar
+#
+# IMPORTANTE: a lista de gemas de mineração abaixo veio do
+# conhecimento do próprio modelo (não é dado automático) — pode
+# não estar 100% completa. Confiram e completem à vontade.
+# ============================================================
+
+# --- Mineração: gemas de Plains of Eidolon (Terra) ---
+Sentirum | mineracao | Mineração em Plains of Eidolon (Terra) — veio raro (precisa de Sunpoint Plasma Drill)
+Nyth | mineracao | Mineração em Plains of Eidolon (Terra) — veio raro (precisa de Sunpoint Plasma Drill)
+Auroxium | mineracao | Mineração em Plains of Eidolon (Terra)
+Amarast | mineracao | Mineração em Plains of Eidolon (Terra)
+
+# --- Mineração: gemas de Orb Vallis (Vênus) ---
+Thyst | mineracao | Mineração em Orb Vallis (Vênus) — veio raro (precisa de Sunpoint Plasma Drill)
+Zodian | mineracao | Mineração em Orb Vallis (Vênus) — veio raro (precisa de Sunpoint Plasma Drill)
+
+# --- Mineração: gemas de Cambion Drift (Deimos) ---
+Embolos | mineracao | Mineração em Cambion Drift (Deimos) — veio raro
+Xenorhast | mineracao | Mineração em Cambion Drift (Deimos) — veio raro
+
+# --- Armas de Dojo sem material detectável automaticamente ---
+Stug | dojo | Pesquisa no Dojo do clã (Laboratório Tenno)
+Zenith | dojo | Pesquisa no Dojo do clã
+Ohma | dojo | Pesquisa no Dojo do clã (Laboratório Tenno)
+
