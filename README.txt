@@ -1,1 +1,4 @@
-Estudos - *Testes de criação com IA*
+Estudos;
+
+
+Apenas testes por aqui!
