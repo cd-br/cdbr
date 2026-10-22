@@ -1,0 +1,58 @@
+# ============================================================
+# LISTA MANUAL DE FONTES — itens sem drop automático
+# Formato:  Nome do item | categoria | texto que aparece no card (em PT-BR)
+# (o nome precisa ser o do jogo, em inglês, igual ao do catálogo)
+# Esta é a versão em português. A versão em inglês é fontes-manuais.en.txt —
+# mantenha as duas com os MESMOS itens, na MESMA ordem, ao editar.
+# ============================================================
+
+# ------------------------------------------------------------
+# MINERAÇÃO — todas as gemas minerváveis dos 3 mundos abertos.
+# Fonte: descrição oficial de cada item (WFCD/warframe-items, 20/09/2026).
+# Gemas lapidadas (Heart Nyth, Marquise Veridos...) e ligas NÃO entram
+# aqui: são fabricadas, não mineradas.
+# ------------------------------------------------------------
+
+# --- Mineração: Plains of Eidolon (Terra) ---
+Auron | mineracao | Mineração em Plains of Eidolon (Terra) — veios vermelhos e Thumpers
+Azurite | mineracao | Mineração em Plains of Eidolon (Terra) — veios azuis e Thumpers
+Coprun | mineracao | Mineração em Plains of Eidolon (Terra) — veios vermelhos
+Crimzian | mineracao | Mineração em Plains of Eidolon (Terra) — veios azuis e Thumpers
+Devar | mineracao | Mineração em Plains of Eidolon (Terra) — veios azuis e Thumpers
+Ferros | mineracao | Mineração em Plains of Eidolon (Terra) — veios vermelhos e Thumpers
+Nyth | mineracao | Mineração em Plains of Eidolon (Terra) — veios azuis e Thumper Bulls (gema rara: só com Advanced Nosam Cutter ou Sunpoint Plasma Drill)
+Pyrol | mineracao | Mineração em Plains of Eidolon (Terra) — veios vermelhos e Thumpers
+Sentirum | mineracao | Mineração em Plains of Eidolon (Terra) — veios azuis e Thumper Bulls (gema rara: só com Advanced Nosam Cutter ou Sunpoint Plasma Drill)
+Veridos | mineracao | Mineração em Plains of Eidolon (Terra) — veios azuis e Thumpers
+
+# --- Mineração: Orb Vallis (Vênus) ---
+Amarast | mineracao | Mineração em Orb Vallis (Vênus) — veios azuis e contêineres de recursos
+Axidite | mineracao | Mineração em Orb Vallis (Vênus) — veios vermelhos e contêineres de recursos
+Goblite | mineracao | Mineração em Orb Vallis (Vênus) — veios azuis
+Hesperon | mineracao | Mineração em Orb Vallis (Vênus) — veios vermelhos e contêineres de recursos
+Noctrul | mineracao | Mineração em Orb Vallis (Vênus) — veios azuis e contêineres de recursos
+Phasmin | mineracao | Mineração em Orb Vallis (Vênus) — veios azuis e contêineres de recursos
+Thyst | mineracao | Mineração em Orb Vallis (Vênus) — veios azuis e Exploiter Orb (gema rara: só com Advanced Nosam Cutter ou Sunpoint Plasma Drill)
+Travoride | mineracao | Mineração em Orb Vallis (Vênus) — veios vermelhos e contêineres de recursos
+Venerol | mineracao | Mineração em Orb Vallis (Vênus) — veios vermelhos e contêineres de recursos
+Zodian | mineracao | Mineração em Orb Vallis (Vênus) — veios azuis e Exploiter Orb (gema rara: só com Advanced Nosam Cutter ou Sunpoint Plasma Drill)
+
+# --- Mineração: Cambion Drift (Deimos) ---
+Adramalium | mineracao | Mineração em Cambion Drift (Deimos) — lesões amarelas, cistos Infestados Spitia e cistos Infestados Rolizor
+Bapholite | mineracao | Mineração em Cambion Drift (Deimos) — lesões amarelas, cistos Infestados Rolizor e cofres bônus das Isolation Vault Bounties
+Dagonic | mineracao | Mineração em Cambion Drift (Deimos) — lesões azuis, Sagiant Entrati Casket e cofres bônus das Isolation Vault Bounties
+Embolos | mineracao | Mineração em Cambion Drift (Deimos) — lesões azuis (gema rara: só com Advanced Nosam Cutter ou Sunpoint Plasma Drill)
+Heciphron | mineracao | Mineração em Cambion Drift (Deimos) — lesões azuis
+Namalon | mineracao | Mineração em Cambion Drift (Deimos) — lesões amarelas e cofres bônus das Isolation Vault Bounties
+Necrathene | mineracao | Mineração em Cambion Drift (Deimos) — lesões azuis e Requiem Obelisks
+Thaumica | mineracao | Mineração em Cambion Drift (Deimos) — lesões amarelas, Requiem Obelisks e cistos Infestados Spitia
+Tiametrite | mineracao | Mineração em Cambion Drift (Deimos) — lesões azuis, Sagiant Entrati Caskets e cofres bônus das Isolation Vault Bounties
+Xenorhast | mineracao | Mineração em Cambion Drift (Deimos) — lesões azuis (gema rara: só com Advanced Nosam Cutter ou Sunpoint Plasma Drill)
+
+# ------------------------------------------------------------
+# DOJO — as armas de pesquisa dos laboratórios de Energia, Químico e
+# Biológico saem sozinhas do script Node (dados/atual/fontes-itens.json).
+# As armas do Laboratório Tenno estão em dados/fontes-tenno-lab.pt.txt.
+# (Stug e Ohma são vendidas na loja do jogo; Zenith vem do Login diário —
+#  esses casos já saem dos dados automáticos/da lista de login.)
+# ------------------------------------------------------------

@@ -1,0 +1,64 @@
+# ============================================================
+# ARMAS DO LABORATÓRIO TENNO — pesquisa no Dojo do clã
+# Formato:  Nome do item | Quando | Detalhe (em PT-BR)
+# Fonte: página "Research/Tenno Lab" da wiki oficial do Warframe (conferida
+# em 21/09/2026). O Laboratório Tenno é o único dos 3 que o script Node não
+# detecta sozinho: os outros dois (Energia, Químico, Biológico) são
+# reconhecidos automaticamente pelos materiais que a arma pede (Fieldron,
+# Detonite Injector, Mutagen Mass — ver dados/atual/fontes-itens.json). O
+# Tenno Lab não usa nenhum desses três, então essas armas ficam só aqui.
+# Esta é a versão em português. A versão em inglês é fontes-tenno-lab.en.txt
+# — mantenha as duas com os MESMOS itens, na MESMA ordem, ao editar.
+#
+# Cada arma pede a anterior da lista como pré-requisito de pesquisa (ex.:
+# pesquisar Zakti exige já ter pesquisado Akstiletto). Depois de pesquisada,
+# o blueprint é comprado por 15.000 Créditos (Oracle Room é pré-requisito
+# do laboratório). Quando a DE lançar uma arma nova nesse laboratório,
+# acrescente a linha aqui E na versão em inglês.
+# ============================================================
+Akstiletto | Laboratório Tenno (Dojo) | Pesquisa no Dojo do clã — Laboratório Tenno. Blueprint por 15.000 Créditos após a pesquisa. Categoria: arma secundária
+Zakti | Laboratório Tenno (Dojo) | Pesquisa no Dojo do clã — Laboratório Tenno. Blueprint por 15.000 Créditos após a pesquisa. Requer Akstiletto já pesquisada. Categoria: arma secundária
+Sybaris | Laboratório Tenno (Dojo) | Pesquisa no Dojo do clã — Laboratório Tenno. Blueprint por 15.000 Créditos após a pesquisa. Requer Akstiletto já pesquisada. Categoria: arma primária
+Venka | Laboratório Tenno (Dojo) | Pesquisa no Dojo do clã — Laboratório Tenno. Blueprint por 15.000 Créditos após a pesquisa. Requer Sybaris já pesquisada. Categoria: arma corpo a corpo
+Gunsen | Laboratório Tenno (Dojo) | Pesquisa no Dojo do clã — Laboratório Tenno. Blueprint por 15.000 Créditos após a pesquisa. Requer Venka já pesquisada. Categoria: arma corpo a corpo
+Veldt | Laboratório Tenno (Dojo) | Pesquisa no Dojo do clã — Laboratório Tenno. Blueprint por 15.000 Créditos após a pesquisa. Requer Sybaris já pesquisada. Categoria: arma primária
+Tenora | Laboratório Tenno (Dojo) | Pesquisa no Dojo do clã — Laboratório Tenno. Blueprint por 15.000 Créditos após a pesquisa. Requer Sybaris já pesquisada. Categoria: arma primária
+Pyrana | Laboratório Tenno (Dojo) | Pesquisa no Dojo do clã — Laboratório Tenno. Blueprint por 15.000 Créditos após a pesquisa. Requer Akstiletto já pesquisada. Categoria: arma secundária
+Nikana | Laboratório Tenno (Dojo) | Pesquisa no Dojo do clã — Laboratório Tenno. Blueprint por 15.000 Créditos após a pesquisa. Requer Akstiletto já pesquisada. Categoria: arma corpo a corpo
+Daikyu | Laboratório Tenno (Dojo) | Pesquisa no Dojo do clã — Laboratório Tenno. Blueprint por 15.000 Créditos após a pesquisa. Requer Akstiletto já pesquisada. Categoria: arma primária
+Baza | Laboratório Tenno (Dojo) | Pesquisa no Dojo do clã — Laboratório Tenno. Blueprint por 15.000 Créditos após a pesquisa. Requer Akstiletto já pesquisada. Categoria: arma primária
+Attica | Laboratório Tenno (Dojo) | Pesquisa no Dojo do clã — Laboratório Tenno. Blueprint por 15.000 Créditos após a pesquisa. Requer Akstiletto já pesquisada. Categoria: arma primária
+Anku | Laboratório Tenno (Dojo) | Pesquisa no Dojo do clã — Laboratório Tenno. Blueprint por 15.000 Créditos após a pesquisa. Requer Akstiletto já pesquisada. Categoria: arma corpo a corpo
+Cassowar | Laboratório Tenno (Dojo) | Pesquisa no Dojo do clã — Laboratório Tenno. Blueprint por 15.000 Créditos após a pesquisa. Requer Anku já pesquisada. Categoria: arma corpo a corpo
+Castanas | Laboratório Tenno (Dojo) | Pesquisa no Dojo do clã — Laboratório Tenno. Blueprint por 15.000 Créditos após a pesquisa. Categoria: arma secundária
+Talons | Laboratório Tenno (Dojo) | Pesquisa no Dojo do clã — Laboratório Tenno. Blueprint por 15.000 Créditos após a pesquisa. Requer Castanas já pesquisada. Categoria: arma secundária
+Dual Raza | Laboratório Tenno (Dojo) | Pesquisa no Dojo do clã — Laboratório Tenno. Blueprint por 15.000 Créditos após a pesquisa. Categoria: arma corpo a corpo
+Gazal Machete | Laboratório Tenno (Dojo) | Pesquisa no Dojo do clã — Laboratório Tenno. Blueprint por 15.000 Créditos após a pesquisa. Categoria: arma corpo a corpo
+Nami Skyla | Laboratório Tenno (Dojo) | Pesquisa no Dojo do clã — Laboratório Tenno. Blueprint por 15.000 Créditos após a pesquisa. Categoria: arma corpo a corpo
+Tonbo | Laboratório Tenno (Dojo) | Pesquisa no Dojo do clã — Laboratório Tenno. Blueprint por 15.000 Créditos após a pesquisa. Requer Nami Skyla já pesquisada. Categoria: arma corpo a corpo
+Venato | Laboratório Tenno (Dojo) | Pesquisa no Dojo do clã — Laboratório Tenno. Blueprint por 15.000 Créditos após a pesquisa. Requer Tonbo já pesquisada. Categoria: arma corpo a corpo
+Scourge | Laboratório Tenno (Dojo) | Pesquisa no Dojo do clã — Laboratório Tenno. Blueprint por 15.000 Créditos após a pesquisa. Requer Tonbo já pesquisada. Categoria: arma primária
+Shaku | Laboratório Tenno (Dojo) | Pesquisa no Dojo do clã — Laboratório Tenno. Blueprint por 15.000 Créditos após a pesquisa. Requer Nami Skyla já pesquisada. Categoria: arma corpo a corpo
+Okina | Laboratório Tenno (Dojo) | Pesquisa no Dojo do clã — Laboratório Tenno. Blueprint por 15.000 Créditos após a pesquisa. Requer Nami Skyla já pesquisada. Categoria: arma corpo a corpo
+Masseter | Laboratório Tenno (Dojo) | Pesquisa no Dojo do clã — Laboratório Tenno. Blueprint por 15.000 Créditos após a pesquisa. Requer Nami Skyla já pesquisada. Categoria: arma corpo a corpo
+Lacera | Laboratório Tenno (Dojo) | Pesquisa no Dojo do clã — Laboratório Tenno. Blueprint por 15.000 Créditos após a pesquisa. Requer Nami Skyla já pesquisada. Categoria: arma corpo a corpo
+Guandao | Laboratório Tenno (Dojo) | Pesquisa no Dojo do clã — Laboratório Tenno. Blueprint por 15.000 Créditos após a pesquisa. Requer Nami Skyla já pesquisada. Categoria: arma corpo a corpo
+Endura | Laboratório Tenno (Dojo) | Pesquisa no Dojo do clã — Laboratório Tenno. Blueprint por 15.000 Créditos após a pesquisa. Requer Nami Skyla já pesquisada. Categoria: arma corpo a corpo
+Dark Split-Sword | Laboratório Tenno (Dojo) | Pesquisa no Dojo do clã — Laboratório Tenno. Blueprint por 15.000 Créditos após a pesquisa. Requer Nami Skyla já pesquisada. Categoria: arma corpo a corpo (Heavy Blade)
+Silva & Aegis | Laboratório Tenno (Dojo) | Pesquisa no Dojo do clã — Laboratório Tenno. Blueprint por 15.000 Créditos após a pesquisa. Categoria: arma corpo a corpo
+Fluctus | Laboratório Tenno (Dojo) | Pesquisa no Dojo do clã — Laboratório Tenno. Blueprint por 15.000 Créditos após a pesquisa. Categoria: Arch-arma
+Larkspur | Laboratório Tenno (Dojo) | Pesquisa no Dojo do clã — Laboratório Tenno. Blueprint por 15.000 Créditos após a pesquisa. Categoria: Arch-arma
+Velocitus | Laboratório Tenno (Dojo) | Pesquisa no Dojo do clã — Laboratório Tenno. Blueprint por 15.000 Créditos após a pesquisa. Categoria: Arch-arma
+
+# --- Bônus: Warframes e Archwings também pesquisados no Tenno Lab ---
+# Diferente das armas acima, o script Node NÃO detecta estes porque o pedido
+# de materiais de cada peça (Chassis/Neuroptics/Systems) não vem nos dados
+# oficiais de item, só na wiki. Confirmado nas páginas de cada um.
+Banshee | Laboratório Tenno (Dojo) | Warframe pesquisada no Laboratório Tenno. As peças (Chassis, Neuroptics, Systems) também são pesquisadas lá; o Blueprint principal pede Fieldron + Detonite Injector + Mutagen Mass + Orokin Cell
+Nezha | Laboratório Tenno (Dojo) | Warframe pesquisada no Laboratório Tenno. As peças (Chassis, Neuroptics, Systems) também são pesquisadas lá; o Blueprint principal pede Fieldron + Detonite Injector + Mutagen Mass + Orokin Cell
+Volt | Laboratório Tenno (Dojo) | Warframe pesquisada no Laboratório Tenno. As peças (Chassis, Neuroptics, Systems) também são pesquisadas lá; o Blueprint principal pede Fieldron + Detonite Injector + Mutagen Mass + Orokin Cell
+Wukong | Laboratório Tenno (Dojo) | Warframe pesquisada no Laboratório Tenno. As peças (Chassis, Neuroptics, Systems) também são pesquisadas lá; o Blueprint principal pede Fieldron + Detonite Injector + Mutagen Mass + Orokin Cell
+Zephyr | Laboratório Tenno (Dojo) | Warframe pesquisada no Laboratório Tenno. As peças (Chassis, Neuroptics, Systems) também são pesquisadas lá; o Blueprint principal pede Fieldron + Detonite Injector + Mutagen Mass + Orokin Cell
+Amesha | Laboratório Tenno (Dojo) | Archwing pesquisada no Laboratório Tenno (Harness, Systems e Wings também pesquisados lá)
+Elytron | Laboratório Tenno (Dojo) | Archwing pesquisada no Laboratório Tenno (Harness, Systems e Wings também pesquisados lá)
+Itzal | Laboratório Tenno (Dojo) | Archwing pesquisada no Laboratório Tenno (Harness, Systems e Wings também pesquisados lá)
