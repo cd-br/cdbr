@@ -1,0 +1,17 @@
+import{buscarCetusCycle,buscarEarthCycle,buscarVallisCycle,buscarCambionCycle}from"../api/worldstate.js";import{obterIdiomaAtual}from"./idioma.js";import{escaparHtml}from"../utils/html.js";import{t}from"../i18n.js";const REFRESCO_MINIMO_MS=3e4,INTERVALO_ABERTO_MS=6e4;let container=null,ultimaCarga=0,cargaAtual=0,temporizador=null;function iniciarPainelAoVivo(a){container=a,carregarPainel()}function atualizarIdiomaPainelAoVivo(){container&&carregarPainel()}function painelAoVivoAberto(){container&&(Date.now()-ultimaCarga>REFRESCO_MINIMO_MS&&carregarPainel({silencioso:!0}),clearInterval(temporizador),temporizador=setInterval(()=>carregarPainel({silencioso:!0}),INTERVALO_ABERTO_MS))}function painelAoVivoFechado(){clearInterval(temporizador),temporizador=null}async function carregarPainel({silencioso:i=!1}={}){const a=obterIdiomaAtual(),c=++cargaAtual;ultimaCarga=Date.now();var e=[{chave:"cetus",carregar:()=>buscarCetusCycle(a),render:renderCetus},{chave:"terra",carregar:()=>buscarEarthCycle(a),render:renderTerra},{chave:"fortuna",carregar:()=>buscarVallisCycle(a),render:renderFortuna},{chave:"cambion",carregar:()=>buscarCambionCycle(a),render:renderCambion}];i&&container.children.length||(container.innerHTML="",e.forEach(a=>{var e=document.createElement("div");e.className="live-card live-card--carregando",e.dataset.card=a.chave,e.innerHTML='<div class="skeleton-card" style="height:100%"></div>',container.appendChild(e)})),await Promise.all(e.map(async e=>{var r=container.querySelector(`[data-card="${e.chave}"]`);if(r)try{var a=await e.carregar();c===cargaAtual&&(r.classList.remove("live-card--carregando","live-card--erro"),r.innerHTML=e.render(a))}catch(a){c===cargaAtual&&(console.warn(`[painelAoVivo] card "${e.chave}" indisponível:`,a?.message??a),!i||r.classList.contains("live-card--carregando"))&&(r.classList.remove("live-card--carregando"),r.classList.add("live-card--erro"),r.innerHTML=`<div class="live-card__titulo">${escaparHtml(t("live.indisponivel"))}</div>`)}}))}function renderCetus(a){var e=a.isDia?"☀️":"🌙",r=t(a.isDia?"live.cetus.dia":"live.cetus.noite");return`
+    <div class="live-card__titulo">${e} ${t("live.cetus.titulo")}</div>
+    <div class="live-card__principal">${r}</div>
+    <div class="live-card__sub">${t("live.restam")} ${escaparHtml(a.tempoRestante??"—")}</div>
+  `}function renderTerra(a){var e=a.isDia?"☀️":"🌙",r=t(a.isDia?"live.cetus.dia":"live.cetus.noite");return`
+    <div class="live-card__titulo">${e} ${t("live.terra.titulo")}</div>
+    <div class="live-card__principal">${r}</div>
+    <div class="live-card__sub">${t("live.restam")} ${escaparHtml(a.tempoRestante??"—")}</div>
+  `}function renderFortuna(a){var e=a.isQuente?"🔥":"❄️",r=t(a.isQuente?"live.fortuna.quente":"live.fortuna.frio");return`
+    <div class="live-card__titulo">${e} ${t("live.fortuna.titulo")}</div>
+    <div class="live-card__principal">${r}</div>
+    <div class="live-card__sub">${t("live.restam")} ${escaparHtml(a.tempoRestante??"—")}</div>
+  `}function renderCambion(a){var e="fass"===a.estado,r=e?"☣️":"🌫️",e=t(e?"live.cambion.fass":"live.cambion.vome");return`
+    <div class="live-card__titulo">${r} ${t("live.cambion.titulo")}</div>
+    <div class="live-card__principal">${e}</div>
+    <div class="live-card__sub">${t("live.restam")} ${escaparHtml(a.tempoRestante??"—")}</div>
+  `}export{iniciarPainelAoVivo,atualizarIdiomaPainelAoVivo,painelAoVivoAberto,painelAoVivoFechado};
